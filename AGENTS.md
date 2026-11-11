@@ -1,0 +1,3 @@
+# AGENTS.md
+
+Todas as regras para agentes deste repositório estão em [`CLAUDE.md`](./CLAUDE.md). Leia esse arquivo inteiro (e `.memory/agent_state.md`) antes de qualquer tarefa. Não duplique regras aqui.
