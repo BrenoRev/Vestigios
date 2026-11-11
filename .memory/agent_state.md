@@ -2,7 +2,7 @@
 
 > Todo agente lê este arquivo no início e o atualiza ao fim de cada tarefa. Manter curto e atual; histórico fica no Git e em `decisions.md`.
 
-**Fase atual:** 1, estrutura e governança (concluída localmente, aguardando autorização para push e confirmação para a Fase 2).
+**Fase atual:** 1, estrutura e governança (concluída e publicada na `main`; aguardando acesso ao Figma para a Fase 2).
 **Última atualização:** 2026-11-11
 
 ## Feito
@@ -13,6 +13,8 @@
 - Travas de lint contra texto editorial em componente e valor arbitrário de Tailwind. ADR-006.
 - `vercel.json` com fallback da SPA; rota mínima `/` renderizando o nome do produto. ADR-007.
 - Governança: `CLAUDE.md`, `AGENTS.md`, `.cursorrules`, `ARCHITECTURE.md`, `DESIGN_SYSTEM.md` (só estrutura), `README.md`, `.memory/`, `docs/` (esqueletos).
+- Push da Fase 1 para `origin/main` (autorizado em 2026-11-11). About e Topics do GitHub configurados pelo responsável.
+- Créditos: nomes e cursos dos 15 integrantes no README; disciplina IF760, Tópicos Avançados em Mídia.
 - Verificado: `tsc --noEmit`, `eslint .`, `check-conteudo` e `vite build` passam.
 - Validação de PR no GitHub Actions (`.github/workflows/validacao.yml`), jobs **Build** e **Conteúdo**. ADR-008. Simulado num clone limpo; ainda não rodou no GitHub (depende do push).
 
@@ -23,12 +25,10 @@
 ## Bloqueado por decisão
 
 - **Acesso ao Figma** (Fase 2 inteira depende disso).
-- **Push para `origin/main`** e primeiro deploy na Vercel: aguardando autorização.
 - **Configuração do projeto na Vercel:** confirmar que o Framework Preset é Vite, o Build Command é `npm run build`, o Output é `dist` e a versão de Node é compatível com `.nvmrc` (22). Não foi possível conferir daqui (CLI da Vercel deslogado).
 - **Proteção da `main` (ruleset):** exigir PR e os checks **Build** e **Conteúdo** antes do merge. Mudança de configuração do repositório: aguardando autorização. Decidir também se **Conteúdo** é obrigatório desde já (ADR-008).
-- **About e Topics do GitHub:** texto e comando entregues; aguardando autorização para `gh repo edit`.
 - **Nome com ou sem acento:** "Vestigios" (BASE.MD) ou "Vestígios"? O arquivo do Figma se chama "Vestigio — Deterioração do Recife".
-- **Créditos:** nomes, cursos e funções dos 15 integrantes.
+- **Créditos:** nomes e cursos dos 15 integrantes registrados no README; falta a **função** de cada um.
 - **Mapas e gráficos:** técnica ou biblioteca (só depois de ver o protótipo).
 - **Fontes tipográficas:** `public/fonts/` ou `@fontsource/*` (Fase 2).
 - **Página 404:** não está no Figma.
@@ -38,5 +38,5 @@
 
 ## Próximo passo
 
-1. Responsável autoriza o push; conferir o deploy de produção e o preview na Vercel.
+1. Decidir e aplicar a proteção da `main` (ruleset).
 2. Com acesso ao Figma, iniciar a Fase 2: extrair tokens para `DESIGN_SYSTEM.md`, `src/styles/tokens.css` e `.memory/figma_specs.md`.
