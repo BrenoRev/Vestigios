@@ -11,7 +11,7 @@
 ## Contexto do produto
 
 - **Vestigios** é uma reportagem multimídia e interativa (data storytelling) sobre a deterioração do Centro do Recife. **É jornalismo: cada número, nome e imagem publicado tem consequência.**
-- Feito por 15 estudantes de Computação, Design e Jornalismo na disciplina IF760, Narrativas Inovadoras com Dados (UFPE, CIn/CAC, 2026.2). Professores: Nivan Ferreira, Guilherme Ranoya e Rodrigo Cunha.
+- Feito por 15 estudantes de Ciência da Computação, Design e Jornalismo na disciplina IF760, Tópicos Avançados em Mídia (Narrativas Inovadoras com Dados), UFPE, CIn/CAC, 2026.2. Créditos no `README.md`. Professores: Nivan Ferreira, Guilherme Ranoya e Rodrigo Cunha.
 - Repositório: https://github.com/BrenoRev/Vestigios (branch de produção `main`).
 - Deploy: integração Git já existente com a Vercel, projeto `brenorevs-projects/vestigios`, produção em https://vestigios.vercel.app. **Não crie outro projeto, não troque de host e não altere configurações da Vercel.**
 - **Fonte única de verdade visual: o protótipo no Figma.** https://www.figma.com/design/haaMnXS0jhXZjXyBKugccp/Vestigio-%E2%80%94-Deteriora%C3%A7%C3%A3o-do-Recife?node-id=2-2&t=UzVMO4knOonmD3pv-1. Layout, paleta, tipografia, espaçamentos, efeitos, animações, estrutura das seções e fluxo de navegação seguem o protótipo à risca. **O que não está no Figma não existe.**

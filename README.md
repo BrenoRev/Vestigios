@@ -13,7 +13,7 @@ Reportagem multimídia e interativa (data storytelling) sobre a deterioração d
 
 ## Contexto acadêmico
 
-Projeto da disciplina **IF760, Narrativas Inovadoras com Dados**, da Universidade Federal de Pernambuco (UFPE), Centro de Informática (CIn) e Centro de Artes e Comunicação (CAC), semestre **2026.2**.
+Projeto da disciplina **IF760, Tópicos Avançados em Mídia** (Narrativas Inovadoras com Dados), da Universidade Federal de Pernambuco (UFPE), Centro de Informática (CIn) e Centro de Artes e Comunicação (CAC), semestre **2026.2**.
 
 Professores: **Nivan Ferreira**, **Guilherme Ranoya** e **Rodrigo Cunha**.
 
@@ -98,22 +98,22 @@ Todo número, nome, citação e imagem publicado é rastreável até o registro 
 
 ## Créditos
 
-| Nome       | Curso      | Função     |
-| ---------- | ---------- | ---------- |
-| [pendente] | [pendente] | [pendente] |
-| [pendente] | [pendente] | [pendente] |
-| [pendente] | [pendente] | [pendente] |
-| [pendente] | [pendente] | [pendente] |
-| [pendente] | [pendente] | [pendente] |
-| [pendente] | [pendente] | [pendente] |
-| [pendente] | [pendente] | [pendente] |
-| [pendente] | [pendente] | [pendente] |
-| [pendente] | [pendente] | [pendente] |
-| [pendente] | [pendente] | [pendente] |
-| [pendente] | [pendente] | [pendente] |
-| [pendente] | [pendente] | [pendente] |
-| [pendente] | [pendente] | [pendente] |
-| [pendente] | [pendente] | [pendente] |
-| [pendente] | [pendente] | [pendente] |
+| Nome                                         | Curso                 | Função     |
+| -------------------------------------------- | --------------------- | ---------- |
+| Arthur Jorge Barros Costa                    | Ciência da Computação | [pendente] |
+| Breno Silva Xavier de Souza                  | Ciência da Computação | [pendente] |
+| Carolina Gabriela de Arruda Brito dos Santos | Ciência da Computação | [pendente] |
+| Elena Pimentel de Andrade Oliveira           | Ciência da Computação | [pendente] |
+| Isaac Dias Marques da Silva                  | Ciência da Computação | [pendente] |
+| João Henrique Portela de Brito Sousa         | Ciência da Computação | [pendente] |
+| Raissa Machado Figueiredo                    | Ciência da Computação | [pendente] |
+| Alex Viriato Souza                           | Design                | [pendente] |
+| Annah Marcelly Silva e Souza Paixão          | Design                | [pendente] |
+| Débora Lemos de Barros Lima                  | Design                | [pendente] |
+| Raphaella Vitoria da Silva Ferreira          | Design                | [pendente] |
+| Isabelle Arruda Annes e Silva                | Jornalismo            | [pendente] |
+| Jessica Oliveira da Silva                    | Jornalismo            | [pendente] |
+| Sofia de Souza Rodrigues                     | Jornalismo            | [pendente] |
+| Witória Maria Ribeiro de Souza               | Jornalismo            | [pendente] |
 
-Equipe de 15 estudantes de Computação, Design e Jornalismo.
+Equipe de 15 estudantes de Ciência da Computação, Design e Jornalismo, agrupados por curso. As funções de cada integrante ainda serão definidas.
