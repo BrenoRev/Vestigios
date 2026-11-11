@@ -14,6 +14,7 @@
 - `vercel.json` com fallback da SPA; rota mínima `/` renderizando o nome do produto. ADR-007.
 - Governança: `CLAUDE.md`, `AGENTS.md`, `.cursorrules`, `ARCHITECTURE.md`, `DESIGN_SYSTEM.md` (só estrutura), `README.md`, `.memory/`, `docs/` (esqueletos).
 - Verificado: `tsc --noEmit`, `eslint .`, `check-conteudo` e `vite build` passam.
+- Validação de PR no GitHub Actions (`.github/workflows/validacao.yml`), jobs **Build** e **Conteúdo**. ADR-008. Simulado num clone limpo; ainda não rodou no GitHub (depende do push).
 
 ## Em andamento
 
@@ -24,6 +25,7 @@
 - **Acesso ao Figma** (Fase 2 inteira depende disso).
 - **Push para `origin/main`** e primeiro deploy na Vercel: aguardando autorização.
 - **Configuração do projeto na Vercel:** confirmar que o Framework Preset é Vite, o Build Command é `npm run build`, o Output é `dist` e a versão de Node é compatível com `.nvmrc` (22). Não foi possível conferir daqui (CLI da Vercel deslogado).
+- **Proteção da `main` (ruleset):** exigir PR e os checks **Build** e **Conteúdo** antes do merge. Mudança de configuração do repositório: aguardando autorização. Decidir também se **Conteúdo** é obrigatório desde já (ADR-008).
 - **About e Topics do GitHub:** texto e comando entregues; aguardando autorização para `gh repo edit`.
 - **Nome com ou sem acento:** "Vestigios" (BASE.MD) ou "Vestígios"? O arquivo do Figma se chama "Vestigio — Deterioração do Recife".
 - **Créditos:** nomes, cursos e funções dos 15 integrantes.
