@@ -1,0 +1,70 @@
+# Validação de PR: roda a Definição de pronto automatizável (CLAUDE.md)
+# em toda PR para a main e em todo push na main.
+#
+# Dois jobs separados, para o problema aparecer com o nome certo na PR:
+# - "Build": tipos, lint, formatação e vite build.
+# - "Conteúdo": scripts/check-conteudo.mjs, que bloqueia pendente(...),
+#   "em breve" e "lorem ipsum" (mesma regra da build de produção na Vercel).
+
+name: Validação
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - name: Instalar dependências
+        run: npm ci
+
+      - name: Tipos (tsc --noEmit)
+        run: npm run typecheck
+
+      - name: Lint (eslint)
+        run: npm run lint
+
+      - name: Formatação (prettier --check)
+        run: npm run format:check
+
+      - name: Build (vite build)
+        run: npx vite build
+
+  conteudo:
+    name: Conteúdo
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+
+      # Node puro, sem dependências: não precisa de npm ci.
+      - name: Pendências editoriais (check-conteudo)
+        run: node scripts/check-conteudo.mjs

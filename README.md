@@ -51,6 +51,21 @@ Integração Git com a [Vercel](https://vercel.com). A branch de produção é a
 
 A build de produção é bloqueada enquanto houver conteúdo marcado como pendente. Nos previews, as pendências aparecem como blocos tarjados, para revisão da equipe.
 
+## Validação de PR
+
+Toda PR para a `main` passa pelo workflow [`Validação`](./.github/workflows/validacao.yml), no GitHub Actions:
+
+| Job          | O que confere                                                          |
+| ------------ | ---------------------------------------------------------------------- |
+| **Build**    | `tsc --noEmit`, `eslint .`, `prettier --check .` e `vite build`.       |
+| **Conteúdo** | `check-conteudo`: nenhum `pendente(...)`, "em breve" ou "lorem ipsum". |
+
+Para adiantar o resultado antes de abrir a PR:
+
+```bash
+npm run verificar && npm run format:check && npm run check:conteudo
+```
+
 ## Estrutura de pastas
 
 ```text

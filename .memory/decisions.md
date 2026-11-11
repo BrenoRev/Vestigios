@@ -63,3 +63,14 @@ Formato: data, contexto, decisão, alternativas descartadas, consequência. ADR 
 - **Decisão:** `createBrowserRouter` + `RouterProvider` (data mode, que suporta rotas `lazy`), rotas em `src/routes/index.tsx`. `App` envolve tudo em `<MotionConfig reducedMotion="user">`; `global.css` desliga animações e transições CSS sob `prefers-reduced-motion: reduce`. Fallback na Vercel por `rewrites` em `vercel.json`.
 - **Alternativas descartadas:** `<BrowserRouter>` declarativo; `vercel.ts` (exigiria a dependência `@vercel/config`, e o BASE.MD pede `vercel.json`).
 - **Consequência:** não existe página 404 (não está no Figma); rota desconhecida cai na tela de erro padrão do React Router. Pendente de decisão.
+
+## ADR-008: Validação de PR no GitHub Actions
+
+- **Data:** 2026-11-11
+- **Contexto:** o responsável pediu validação automática de PR no GitHub, para pegar problema de build antes do merge. A árvore de pastas está congelada; `.github/` não constava nela.
+- **Decisão:** criar a pasta `.github/workflows/` (autorizada pelo pedido do responsável) com `validacao.yml`. O workflow roda em PR para a `main`, em push na `main` e por disparo manual, com dois jobs:
+  - **Build:** `npm ci`, `tsc --noEmit`, `eslint .`, `prettier --check .` e `vite build`.
+  - **Conteúdo:** `node scripts/check-conteudo.mjs`, em modo bloqueante, que é a mesma regra da build de produção.
+  - Node a partir do `.nvmrc`, cache do npm, `permissions: contents: read`, `persist-credentials: false`, e cancelamento de execuções antigas da mesma branch. Actions oficiais na v7 (`actions/checkout`, `actions/setup-node`).
+- **Alternativas descartadas:** um job único (a PR com conteúdo pendente apareceria como erro de código); hook local de pre-push com husky (dependência fora da lista); depender só do check de deploy da Vercel (ele não roda lint nem formatação, e o preview ignora pendências).
+- **Consequência:** PR com `pendente(...)` fica com o job **Conteúdo** vermelho, coerente com o ADR-004 (produção não recebe pendência). Tornar os jobs obrigatórios para o merge exige ruleset na `main`, que é configuração do repositório e depende de autorização.
