@@ -13,7 +13,7 @@
 - **Vestigios** é uma reportagem multimídia e interativa (data storytelling) sobre a deterioração do Centro do Recife. **É jornalismo: cada número, nome e imagem publicado tem consequência.**
 - Feito por 15 estudantes de Ciência da Computação, Design e Jornalismo na disciplina IF760, Tópicos Avançados em Mídia (Narrativas Inovadoras com Dados), UFPE, CIn/CAC, 2026.2. Créditos no `README.md`. Professores: Nivan Ferreira, Guilherme Ranoya e Rodrigo Cunha.
 - Repositório: https://github.com/BrenoRev/Vestigios (branch de produção `main`).
-- Deploy: integração Git já existente com a Vercel, projeto `brenorevs-projects/vestigios`, produção em https://vestigios.vercel.app. **Não crie outro projeto, não troque de host e não altere configurações da Vercel.**
+- Deploy: integração Git já existente com a Vercel, projeto `brenorevs-projects/vestigios`, produção em https://vestigios-2jqhu9vgh-brenorevs-projects.vercel.app. **Não crie outro projeto, não troque de host e não altere configurações da Vercel.**
 - **Fonte única de verdade visual: o protótipo no Figma.** https://www.figma.com/design/haaMnXS0jhXZjXyBKugccp/Vestigio-%E2%80%94-Deteriora%C3%A7%C3%A3o-do-Recife?node-id=2-2&t=UzVMO4knOonmD3pv-1. Layout, paleta, tipografia, espaçamentos, efeitos, animações, estrutura das seções e fluxo de navegação seguem o protótipo à risca. **O que não está no Figma não existe.**
 - **Sem suíte de testes** (fora de escopo). A verificação é a Definição de pronto, abaixo.
 
@@ -116,6 +116,7 @@ Depois da resposta, registre a decisão em `.memory/decisions.md`.
 
 - Commits em português, formato `tipo: descrição no imperativo` (ex.: `feat: adiciona seção de abertura`). Tipos: `feat`, `fix`, `docs`, `style`, `refactor`, `perf`, `chore`, `content`.
 - Um commit por unidade lógica. `main` sempre publicável: a Vercel publica a partir dela.
+- **Nunca inclua `Co-Authored-By` nem qualquer atribuição de agente de IA** (trailers, "Generated with", assinaturas) em mensagens de commit, descrições de PR ou comentários. Vale para todo agente, mesmo que a ferramenta sugira o contrário.
 - Mudança chega à `main` por PR. O workflow `.github/workflows/validacao.yml` roda os jobs **Build** (tipos, lint, formatação, `vite build`) e **Conteúdo** (`check-conteudo`) em toda PR. PR com job vermelho não é mergeada. Rode `npm run verificar` e `npm run format:check` antes de abrir a PR.
 - **Push, force push e mudanças nas configurações do repositório ou da Vercel só com autorização explícita do responsável.**
 
