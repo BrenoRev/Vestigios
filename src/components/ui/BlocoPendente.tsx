@@ -5,10 +5,6 @@ interface BlocoPendenteProps {
   pendencia: Pendente;
 }
 
-/**
- * Bloco tarjado de conteúdo pendente. Ferramenta de desenvolvimento,
- * fora do design system: o estilo vive em .bloco-pendente (global.css).
- */
 export function BlocoPendente({ pendencia }: BlocoPendenteProps) {
   return (
     <div className="bloco-pendente" data-pendente>
