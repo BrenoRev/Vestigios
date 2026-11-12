@@ -85,7 +85,10 @@ O site é editado por gente de Jornalismo e Design. **Todo conteúdo editorial v
 
 ## Orçamento de performance
 
-- Metas: 60 fps de scroll; LCP abaixo de 2,5 s em 4G (meta a validar com a equipe). O Speed Insights da Vercel mede os Core Web Vitals reais de quem visita o site.
+- **Metas (ADR-012):**
+  - scroll a 60 fps;
+  - **LCP ≤ 2,5 s**, **INP ≤ 200 ms** e **CLS ≤ 0,1**, no percentil 75 de visitas em celular, medidos pelo Vercel Speed Insights (dados reais);
+  - antes de publicar uma seção pesada, conferir no Lighthouse do Chrome em modo celular, com a limitação de rede padrão: LCP ≤ 2,5 s.
 - Animar **apenas `transform` e `opacity`**. Nunca `filter`, `mix-blend-mode`, `box-shadow`, `width`, `height`, `top`, `left`.
 - Texturas e fundos complexos como WebP ou AVIF exportados do Figma (`src/assets/textures/`), nunca `feTurbulence` ao vivo em áreas grandes ou durante o scroll. Filtro SVG ao vivo só em elementos pequenos e estáticos.
 - `mix-blend-mode` só em camadas que não se movem no scroll. Sem `backdrop-filter` em áreas grandes.

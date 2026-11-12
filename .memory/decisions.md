@@ -99,3 +99,11 @@ Formato: data, contexto, decisão, alternativas descartadas, consequência. ADR 
 - **Decisão:** o nome do produto é **Vestígios**, com acento, em todo texto visível (título da página, `src/content/site.ts`, documentação). Identificadores técnicos continuam sem acento: repositório `BrenoRev/Vestigios`, pacote `vestigios`, URLs e nomes de branch.
 - **Alternativas descartadas:** manter "Vestigios" sem acento em tudo (grafia incorreta em português).
 - **Consequência:** o `BASE.MD` segue com a grafia antiga por ser o documento de origem; o `CLAUDE.md` prevalece.
+
+## ADR-012: Metas de performance
+
+- **Data:** 2026-11-11
+- **Contexto:** o BASE.MD deixava a meta de LCP (2,5 s em 4G) para validar com a equipe. O responsável pediu que ela fosse definida. O Speed Insights já está ativo e mede os Core Web Vitals de visitantes reais.
+- **Decisão:** adotar os limites "bom" dos Core Web Vitals: **LCP ≤ 2,5 s**, **INP ≤ 200 ms** e **CLS ≤ 0,1**, no percentil 75 das visitas em celular, como mostra o Speed Insights. Em laboratório, antes de publicar seção pesada, o Lighthouse do Chrome em modo celular (limitação de rede padrão) precisa dar LCP ≤ 2,5 s. Scroll a 60 fps continua como meta.
+- **Alternativas descartadas:** só a meta de LCP (deixaria sem meta a resposta a interação e a estabilidade do layout, que o site com animações e imagens pesadas pode piorar); meta mais agressiva, como LCP ≤ 1,8 s (difícil com fotos e texturas de primeira dobra sem saber o protótipo).
+- **Consequência:** a Fase 5 confere as três métricas no Speed Insights. Seção que estoure a meta volta para ajuste ou vira Stop & Ask, sem cortar efeito do protótipo por conta própria.
