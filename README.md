@@ -8,7 +8,7 @@
 
 Reportagem multimídia e interativa (data storytelling) sobre a deterioração do Centro do Recife.
 
-- **Site:** https://vestigios.vercel.app
+- **Site:** https://vestigios-2jqhu9vgh-brenorevs-projects.vercel.app
 - **Protótipo (Figma):** https://www.figma.com/design/haaMnXS0jhXZjXyBKugccp/Vestigio-%E2%80%94-Deteriora%C3%A7%C3%A3o-do-Recife?node-id=2-2&t=UzVMO4knOonmD3pv-1
 
 ## Contexto acadêmico
@@ -47,7 +47,7 @@ npm run format         # formata com Prettier
 
 ## Deploy
 
-Integração Git com a [Vercel](https://vercel.com). A branch de produção é a `main` deste repositório (https://github.com/BrenoRev/Vestigios): cada push nela publica em https://vestigios.vercel.app, e outras branches geram previews.
+Integração Git com a [Vercel](https://vercel.com). A branch de produção é a `main` deste repositório (https://github.com/BrenoRev/Vestigios): cada push nela publica em https://vestigios-2jqhu9vgh-brenorevs-projects.vercel.app, e outras branches geram previews.
 
 A build de produção é bloqueada enquanto houver conteúdo marcado como pendente. Nos previews, as pendências aparecem como blocos tarjados, para revisão da equipe.
 
@@ -98,22 +98,22 @@ Todo número, nome, citação e imagem publicado é rastreável até o registro 
 
 ## Créditos
 
-| Nome                                         | Curso                 | Função     |
-| -------------------------------------------- | --------------------- | ---------- |
-| Arthur Jorge Barros Costa                    | Ciência da Computação | [pendente] |
-| Breno Silva Xavier de Souza                  | Ciência da Computação | [pendente] |
-| Carolina Gabriela de Arruda Brito dos Santos | Ciência da Computação | [pendente] |
-| Elena Pimentel de Andrade Oliveira           | Ciência da Computação | [pendente] |
-| Isaac Dias Marques da Silva                  | Ciência da Computação | [pendente] |
-| João Henrique Portela de Brito Sousa         | Ciência da Computação | [pendente] |
-| Raissa Machado Figueiredo                    | Ciência da Computação | [pendente] |
-| Alex Viriato Souza                           | Design                | [pendente] |
-| Annah Marcelly Silva e Souza Paixão          | Design                | [pendente] |
-| Débora Lemos de Barros Lima                  | Design                | [pendente] |
-| Raphaella Vitoria da Silva Ferreira          | Design                | [pendente] |
-| Isabelle Arruda Annes e Silva                | Jornalismo            | [pendente] |
-| Jessica Oliveira da Silva                    | Jornalismo            | [pendente] |
-| Sofia de Souza Rodrigues                     | Jornalismo            | [pendente] |
-| Witória Maria Ribeiro de Souza               | Jornalismo            | [pendente] |
+| Nome                                         | Curso                 |
+| -------------------------------------------- | --------------------- |
+| Arthur Jorge Barros Costa                    | Ciência da Computação |
+| Breno Silva Xavier de Souza                  | Ciência da Computação |
+| Carolina Gabriela de Arruda Brito dos Santos | Ciência da Computação |
+| Elena Pimentel de Andrade Oliveira           | Ciência da Computação |
+| Isaac Dias Marques da Silva                  | Ciência da Computação |
+| João Henrique Portela de Brito Sousa         | Ciência da Computação |
+| Raissa Machado Figueiredo                    | Ciência da Computação |
+| Alex Viriato Souza                           | Design                |
+| Annah Marcelly Silva e Souza Paixão          | Design                |
+| Débora Lemos de Barros Lima                  | Design                |
+| Raphaella Vitoria da Silva Ferreira          | Design                |
+| Isabelle Arruda Annes e Silva                | Jornalismo            |
+| Jessica Oliveira da Silva                    | Jornalismo            |
+| Sofia de Souza Rodrigues                     | Jornalismo            |
+| Witória Maria Ribeiro de Souza               | Jornalismo            |
 
-Equipe de 15 estudantes de Ciência da Computação, Design e Jornalismo, agrupados por curso. As funções de cada integrante ainda serão definidas.
+Equipe de 15 estudantes de Ciência da Computação, Design e Jornalismo, agrupados por curso.
