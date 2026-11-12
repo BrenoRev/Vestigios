@@ -41,4 +41,4 @@ Acrescente ao fim de `.memory/decisions.md`, com o próximo número livre:
 
 ## Decisões já sabidamente pendentes
 
-Antes de abrir uma nova, confira a lista em `agent_state.md` (mapas e gráficos, fontes tipográficas, página 404, tema padrão do Tailwind, meta de LCP, URL estável de produção, entre outras).
+Antes de abrir uma nova, confira a lista em `agent_state.md` (mapas e gráficos, fontes tipográficas, imagens responsivas, página 404, tema padrão do Tailwind, URL estável de produção, entre outras).
