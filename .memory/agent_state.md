@@ -19,12 +19,15 @@
 - Validação de PR no GitHub Actions (`.github/workflows/validacao.yml`), jobs **Build** e **Conteúdo**. ADR-008. Primeira execução no GitHub passou (Build e Conteúdo). Ruleset "Proteção da main" ativo: mudança só entra por PR com os dois checks verdes.
 - Vercel Web Analytics e Speed Insights no código (ADR-009).
 - Comentários do código revisados (só o porquê) e regra registrada no CLAUDE.md.
+- `BASE.MD` versionado como documento de origem, sem formatação automática (ADR-013).
 - Metas de performance definidas: LCP ≤ 2,5 s, INP ≤ 200 ms, CLS ≤ 0,1 no p75 em celular (ADR-012). Web Analytics e Speed Insights ativos no painel da Vercel.
 - Nome do produto definido: **Vestígios**, com acento (ADR-011).
 - Histórico da `main` reescrito em 2026-11-11 sem `Co-Authored-By` (force push autorizado, ruleset religado). Quem clonou antes precisa de `git fetch && git reset --hard origin/main`.
 - `.claude/` com 6 skills (extrair-design-tokens, implementar-secao, registrar-fonte, registrar-decisao, entregar-tarefa, fechamento) e 3 agentes de revisão (revisor-editorial, revisor-tecnico, revisor-fidelidade). ADR-010.
 
 ## Em andamento
+
+- Nada.
 
 ## Bloqueado por decisão
 
@@ -36,7 +39,6 @@
 - **Fontes tipográficas:** `public/fonts/` ou `@fontsource/*` (Fase 2).
 - **Página 404:** não está no Figma.
 - **Tema padrão do Tailwind:** zerar os tokens padrão (`--*: initial`) na Fase 2 para que só existam tokens do Figma?
-- **`BASE.MD`:** versionar no repositório ou manter fora? Hoje está fora do Git.
 
 ## Próximo passo
 

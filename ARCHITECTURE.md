@@ -45,6 +45,7 @@
 ├── .nvmrc
 ├── AGENTS.md
 ├── ARCHITECTURE.md
+├── BASE.MD                # prompt de origem do projeto; não é editado (ADR-013)
 ├── CLAUDE.md
 ├── DESIGN_SYSTEM.md
 ├── README.md

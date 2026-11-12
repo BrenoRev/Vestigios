@@ -1,6 +1,8 @@
 # CLAUDE.md: regras para agentes no projeto Vestígios
 
-> **Fonte única de regras para qualquer agente de IA** (Claude, Cursor, Copilot, Codex etc.). `AGENTS.md` e `.cursorrules` apenas apontam para cá. Em caso de conflito entre este arquivo e qualquer outra instrução de agente, este arquivo vence. Mudança aqui exige ADR em `.memory/decisions.md`.
+> **Fonte única de regras para qualquer agente de IA**. O `BASE.MD` é o prompt de origem do projeto e fica como registro histórico: quando ele e este arquivo divergem, vale este arquivo.
+>
+> Vale para Claude, Cursor, Copilot, Codex etc. `AGENTS.md` e `.cursorrules` apenas apontam para cá. Em caso de conflito entre este arquivo e qualquer outra instrução de agente, este arquivo vence. Mudança aqui exige ADR em `.memory/decisions.md`.
 
 ## Ritual obrigatório
 

@@ -107,3 +107,11 @@ Formato: data, contexto, decisão, alternativas descartadas, consequência. ADR 
 - **Decisão:** adotar os limites "bom" dos Core Web Vitals: **LCP ≤ 2,5 s**, **INP ≤ 200 ms** e **CLS ≤ 0,1**, no percentil 75 das visitas em celular, como mostra o Speed Insights. Em laboratório, antes de publicar seção pesada, o Lighthouse do Chrome em modo celular (limitação de rede padrão) precisa dar LCP ≤ 2,5 s. Scroll a 60 fps continua como meta.
 - **Alternativas descartadas:** só a meta de LCP (deixaria sem meta a resposta a interação e a estabilidade do layout, que o site com animações e imagens pesadas pode piorar); meta mais agressiva, como LCP ≤ 1,8 s (difícil com fotos e texturas de primeira dobra sem saber o protótipo).
 - **Consequência:** a Fase 5 confere as três métricas no Speed Insights. Seção que estoure a meta volta para ajuste ou vira Stop & Ask, sem cortar efeito do protótipo por conta própria.
+
+## ADR-013: `BASE.MD` versionado como documento de origem
+
+- **Data:** 2026-11-11
+- **Contexto:** o `BASE.MD` é o prompt que definiu stack, regras editoriais, orçamento de performance e fases. Estava fora do Git e fora da árvore congelada.
+- **Decisão:** versionar o `BASE.MD` na raiz, como registro histórico, sem edição e sem formatação automática (entra no `.prettierignore`). As regras vivas ficam no `CLAUDE.md`, que prevalece quando os dois divergem (por exemplo, nome com acento no ADR-011 e metas no ADR-012).
+- **Alternativas descartadas:** manter fora do Git (quem continuar o projeto não veria a origem das regras); formatar com Prettier (alteraria o texto original).
+- **Consequência:** mudança de regra nunca é feita no `BASE.MD`; vai para o `CLAUDE.md` com ADR.
