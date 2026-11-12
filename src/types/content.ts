@@ -1,3 +1,5 @@
+import type { Picture } from "vite-imagetools";
+
 /**
  * Campos obrigatórios de propósito: um dado sem fonte ou uma imagem sem
  * crédito não compila.
@@ -49,14 +51,12 @@ export interface Dado {
 }
 
 export interface Imagem {
-  src: string;
+  /** Import com `?responsiva`: variantes, largura e altura reais saem da build (ADR-016). */
+  arquivo: Picture;
   alt: string;
   credito: string;
   licenca: string;
   acervo: string;
-  /** Dimensões intrínsecas em px, obrigatórias para evitar layout shift. */
-  largura: number;
-  altura: number;
 }
 
 /** Marcador de conteúdo que ainda não chegou. Bloqueia a build de produção. */
