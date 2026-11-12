@@ -1,15 +1,6 @@
 /*
- * Design tokens do Vestigios (Tailwind v4, bloco @theme).
- *
- * Fase 1: vazio de propósito. Os valores serão extraídos do protótipo
- * no Figma na Fase 2 e espelhados em DESIGN_SYSTEM.md.
- * Nenhum valor inventado. Nada de tailwind.config.js.
+ * Só valores extraídos do Figma, espelhados em DESIGN_SYSTEM.md.
+ * A v4 é configurada aqui: não crie tailwind.config.js.
  */
 @theme {
-  /* cores: a extrair do Figma */
-  /* tipografia: a extrair do Figma */
-  /* espaçamento: a extrair do Figma */
-  /* raios: a extrair do Figma */
-  /* breakpoints: a extrair do Figma */
-  /* movimento (durações e curvas): a extrair do Figma */
 }

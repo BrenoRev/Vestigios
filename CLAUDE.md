@@ -8,6 +8,21 @@
 2. **Antes de criar pasta, dependência, tipo de conteúdo ou padrão novo:** aplique o Stop & Ask (abaixo).
 3. **No fim de toda tarefa:** atualize `.memory/agent_state.md` (feito, em andamento, bloqueado por decisão, próximo passo) e registre decisões em `.memory/decisions.md`.
 
+## Skills e agentes do Claude Code
+
+Em `.claude/` (ADR-010). Use a skill da etapa em vez de improvisar o fluxo:
+
+| Skill                   | Quando usar                                                                          |
+| ----------------------- | ------------------------------------------------------------------------------------ |
+| `extrair-design-tokens` | Fase 2: ler o Figma e preencher `DESIGN_SYSTEM.md`, `tokens.css` e `figma_specs.md`. |
+| `implementar-secao`     | Fases 3 e 4: construir layout, componente ou seção a partir de um frame do Figma.    |
+| `registrar-fonte`       | Entrada de fonte, dado, citação ou imagem vindos da equipe de Jornalismo.            |
+| `registrar-decisao`     | Stop & Ask: montar a `DECISÃO NECESSÁRIA` e, depois da resposta, gravar o ADR.       |
+| `entregar-tarefa`       | Fechar qualquer tarefa: Definição de pronto, `agent_state.md`, commit, PR e checks.  |
+| `fechamento`            | Fase 5: checklist final antes da publicação.                                         |
+
+Agentes de revisão (só leem e apontam; não editam): `revisor-editorial` (proibições editoriais e rastreabilidade), `revisor-tecnico` (stack, tokens, performance, acessibilidade, comentários) e `revisor-fidelidade` (tela implementada contra o frame do Figma).
+
 ## Contexto do produto
 
 - **Vestigios** é uma reportagem multimídia e interativa (data storytelling) sobre a deterioração do Centro do Recife. **É jornalismo: cada número, nome e imagem publicado tem consequência.**
@@ -96,6 +111,14 @@ O site é editado por gente de Jornalismo e Design. **Todo conteúdo editorial v
 - Vocabulário de domínio em português (`Fonte`, `Dado`, `Imagem`, `recorte`); APIs de bibliotecas mantêm seus nomes.
 - Dados leves servidos ao site em `public/data/` (JSON, GeoJSON). Dados brutos pesados não entram no Git; script de tratamento fica em `scripts/` e registra a origem do arquivo bruto.
 
+### Comentários no código
+
+- **Comente só o porquê:** uma restrição que o código não mostra, uma decisão não óbvia, uma armadilha, ou a referência ao ADR que explica a escolha.
+- **Não comente o quê:** nada que repita o nome da função, o tipo ou a linha seguinte.
+- Sem comentário temporal ("Fase 1", "por enquanto", "será substituído"): isso vai em `.memory/agent_state.md`. Sem código comentado: o Git guarda o histórico. Sem `TODO` solto: pendência de conteúdo usa `pendente(...)`, pendência técnica vai para `agent_state.md`.
+- Regra de processo (Stop & Ask, fases, proibições editoriais) mora neste arquivo, não em comentário.
+- Comentário que ficou falso é bug: corrija ou remova na mesma mudança.
+
 ## Protocolo Stop & Ask
 
 - **Fidelidade ao protótipo:** nada de reinterpretar, "melhorar" ou completar o design com gosto próprio.
@@ -129,6 +152,7 @@ Uma tarefa só está concluída quando:
 - [ ] a tela foi conferida com `prefers-reduced-motion` ativado;
 - [ ] nenhum texto editorial foi escrito dentro de componente;
 - [ ] nenhum valor arbitrário fora dos tokens foi usado;
+- [ ] nenhum comentário desnecessário foi adicionado (seção Comentários no código);
 - [ ] `.memory/agent_state.md` foi atualizado.
 
 Na build de produção, `scripts/check-conteudo.mjs` também precisa passar, e o preview da Vercel precisa abrir sem erro.

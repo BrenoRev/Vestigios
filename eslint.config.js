@@ -4,7 +4,7 @@ import jsxA11y from "eslint-plugin-jsx-a11y";
 import reactHooks from "eslint-plugin-react-hooks";
 import tseslint from "typescript-eslint";
 
-// Globais de Node usados pelos scripts .mjs e por este arquivo.
+// Declarados à mão para não depender do pacote globals (ADR-002).
 const globaisNode = {
   console: "readonly",
   process: "readonly",
@@ -41,7 +41,6 @@ export default defineConfig(
     },
   },
 
-  // Guarda editorial e de design system em todo JSX do site.
   {
     files: ["src/**/*.tsx"],
     rules: {

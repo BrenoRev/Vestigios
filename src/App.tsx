@@ -6,12 +6,10 @@ import { router } from "./routes";
 
 export function App() {
   return (
-    // reducedMotion="user": o Motion respeita prefers-reduced-motion.
+    // "user" faz o Motion seguir o prefers-reduced-motion do sistema.
     <MotionConfig reducedMotion="user">
       <RouterProvider router={router} />
-      {/* Vercel Web Analytics (ADR-009): sem cookies; em dev só registra no console. */}
       <Analytics mode={import.meta.env.DEV ? "development" : "production"} />
-      {/* Vercel Speed Insights (ADR-009): Core Web Vitals reais; em dev só registra no console. */}
       <SpeedInsights />
     </MotionConfig>
   );

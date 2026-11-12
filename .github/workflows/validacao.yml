@@ -1,10 +1,5 @@
-# Validação de PR: roda a Definição de pronto automatizável (CLAUDE.md)
-# em toda PR para a main e em todo push na main.
-#
-# Dois jobs separados, para o problema aparecer com o nome certo na PR:
-# - "Build": tipos, lint, formatação e vite build.
-# - "Conteúdo": scripts/check-conteudo.mjs, que bloqueia pendente(...),
-#   "em breve" e "lorem ipsum" (mesma regra da build de produção na Vercel).
+# Jobs separados para que conteúdo pendente apareça na PR como "Conteúdo",
+# e não como código quebrado (ADR-008).
 
 name: Validação
 

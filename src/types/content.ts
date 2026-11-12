@@ -1,9 +1,6 @@
 /**
- * Tipos mínimos do conteúdo editorial.
- *
- * Desenhados para que o erro apareça na compilação: um dado sem fonte
- * ou uma imagem sem crédito não compila. Tipos novos de conteúdo só
- * entram na Fase 3, a partir do protótipo, sob Stop & Ask (CLAUDE.md).
+ * Campos obrigatórios de propósito: um dado sem fonte ou uma imagem sem
+ * crédito não compila.
  */
 
 /** Data no formato AAAA-MM-DD, AAAA-MM ou AAAA. */
@@ -28,13 +25,12 @@ interface FonteBase {
   dataAcesso: DataISO;
 }
 
-/** Fonte documental: sempre tem URL. */
 export interface FonteDocumental extends FonteBase {
   estatuto: Exclude<EstatutoFonte, "fonte-humana">;
   url: string;
 }
 
-/** Fonte humana (entrevista): não tem URL. */
+/** Entrevista feita pela equipe: não tem URL. */
 export interface FonteHumana extends FonteBase {
   estatuto: "fonte-humana";
   url: null;
@@ -45,7 +41,6 @@ export type Fonte = FonteDocumental | FonteHumana;
 export interface Dado {
   valor: number;
   unidade: string;
-  /** Ano a que o dado se refere. Obrigatório em toda cifra monetária. */
   anoReferencia: number;
   /** Recorte territorial e/ou temporal do dado. */
   recorte: string;
@@ -71,5 +66,4 @@ export interface Pendente {
   readonly descricao: string;
 }
 
-/** Use em src/content onde o conteúdo pode ainda estar pendente. */
 export type OuPendente<T> = T | Pendente;
