@@ -36,30 +36,12 @@ Atualize `.memory/agent_state.md`: mova o que terminou para **Feito**, ajuste **
 
 ## 4. PR
 
+Monte o corpo a partir de `.github/pull_request_template.md`: preencha cada seção, apague as que não se aplicam e marque só os itens da Definição de pronto que foram de fato conferidos. Em português e sem rodapé de atribuição.
+
 ```bash
 git push -u origin <branch>
-gh pr create --base main --title "<tipo>: <resumo>" --body "<corpo>"
+gh pr create --base main --title "<tipo>: <resumo>" --body-file <corpo-preenchido.md>
 gh pr checks --watch
-```
-
-Corpo da PR, em português e sem rodapé de atribuição:
-
-```markdown
-## O que muda
-
-- …
-
-## Frames do Figma
-
-- <nome do frame> (`node-id`)
-
-## Como verificar
-
-- …
-
-## Pendências
-
-- conteúdo ainda `pendente(...)`, decisões em aberto, ou "nenhuma".
 ```
 
 ## 5. Merge
