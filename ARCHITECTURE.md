@@ -3,6 +3,9 @@
 > **Árvore congelada.** Pasta nova só com autorização registrada em `.memory/decisions.md`. Regras de uso de cada pasta em `CLAUDE.md`.
 
 ```text
+├── .claude/
+│   ├── agents/            # agentes de revisão: editorial, técnico e fidelidade (ADR-010)
+│   └── skills/            # uma skill por etapa do plano (ADR-010)
 ├── .github/
 │   └── workflows/
 │       └── validacao.yml  # validação de PR: tipos, lint, formatação, build e conteúdo (ADR-008)

@@ -8,6 +8,21 @@
 2. **Antes de criar pasta, dependência, tipo de conteúdo ou padrão novo:** aplique o Stop & Ask (abaixo).
 3. **No fim de toda tarefa:** atualize `.memory/agent_state.md` (feito, em andamento, bloqueado por decisão, próximo passo) e registre decisões em `.memory/decisions.md`.
 
+## Skills e agentes do Claude Code
+
+Em `.claude/` (ADR-010). Use a skill da etapa em vez de improvisar o fluxo:
+
+| Skill                   | Quando usar                                                                          |
+| ----------------------- | ------------------------------------------------------------------------------------ |
+| `extrair-design-tokens` | Fase 2: ler o Figma e preencher `DESIGN_SYSTEM.md`, `tokens.css` e `figma_specs.md`. |
+| `implementar-secao`     | Fases 3 e 4: construir layout, componente ou seção a partir de um frame do Figma.    |
+| `registrar-fonte`       | Entrada de fonte, dado, citação ou imagem vindos da equipe de Jornalismo.            |
+| `registrar-decisao`     | Stop & Ask: montar a `DECISÃO NECESSÁRIA` e, depois da resposta, gravar o ADR.       |
+| `entregar-tarefa`       | Fechar qualquer tarefa: Definição de pronto, `agent_state.md`, commit, PR e checks.  |
+| `fechamento`            | Fase 5: checklist final antes da publicação.                                         |
+
+Agentes de revisão (só leem e apontam; não editam): `revisor-editorial` (proibições editoriais e rastreabilidade), `revisor-tecnico` (stack, tokens, performance, acessibilidade, comentários) e `revisor-fidelidade` (tela implementada contra o frame do Figma).
+
 ## Contexto do produto
 
 - **Vestigios** é uma reportagem multimídia e interativa (data storytelling) sobre a deterioração do Centro do Recife. **É jornalismo: cada número, nome e imagem publicado tem consequência.**
