@@ -96,6 +96,14 @@ O site é editado por gente de Jornalismo e Design. **Todo conteúdo editorial v
 - Vocabulário de domínio em português (`Fonte`, `Dado`, `Imagem`, `recorte`); APIs de bibliotecas mantêm seus nomes.
 - Dados leves servidos ao site em `public/data/` (JSON, GeoJSON). Dados brutos pesados não entram no Git; script de tratamento fica em `scripts/` e registra a origem do arquivo bruto.
 
+### Comentários no código
+
+- **Comente só o porquê:** uma restrição que o código não mostra, uma decisão não óbvia, uma armadilha, ou a referência ao ADR que explica a escolha.
+- **Não comente o quê:** nada que repita o nome da função, o tipo ou a linha seguinte.
+- Sem comentário temporal ("Fase 1", "por enquanto", "será substituído"): isso vai em `.memory/agent_state.md`. Sem código comentado: o Git guarda o histórico. Sem `TODO` solto: pendência de conteúdo usa `pendente(...)`, pendência técnica vai para `agent_state.md`.
+- Regra de processo (Stop & Ask, fases, proibições editoriais) mora neste arquivo, não em comentário.
+- Comentário que ficou falso é bug: corrija ou remova na mesma mudança.
+
 ## Protocolo Stop & Ask
 
 - **Fidelidade ao protótipo:** nada de reinterpretar, "melhorar" ou completar o design com gosto próprio.
@@ -129,6 +137,7 @@ Uma tarefa só está concluída quando:
 - [ ] a tela foi conferida com `prefers-reduced-motion` ativado;
 - [ ] nenhum texto editorial foi escrito dentro de componente;
 - [ ] nenhum valor arbitrário fora dos tokens foi usado;
+- [ ] nenhum comentário desnecessário foi adicionado (seção Comentários no código);
 - [ ] `.memory/agent_state.md` foi atualizado.
 
 Na build de produção, `scripts/check-conteudo.mjs` também precisa passar, e o preview da Vercel precisa abrir sem erro.
