@@ -97,6 +97,7 @@ Todo número, nome, citação e imagem publicado é rastreável até o registro 
 - Conteúdo editorial fica em `src/content/`, nunca dentro de componentes.
 - Visual segue o protótipo no Figma. Tokens em [`DESIGN_SYSTEM.md`](./DESIGN_SYSTEM.md).
 - Regras completas (também para agentes de IA) em [`CLAUDE.md`](./CLAUDE.md).
+- Quem usa Claude Code tem skills por etapa e agentes de revisão em [`.claude/`](./.claude/).
 
 ## Créditos
 
