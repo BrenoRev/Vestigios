@@ -51,7 +51,7 @@
 ├── CONTRIBUTING.md        # guia para quem continua o desenvolvimento (ADR-014)
 ├── DESIGN_SYSTEM.md
 ├── README.md
-└── vercel.json            # fallback de rotas da SPA
+└── vercel.json            # fallback de rotas da SPA e headers de cache e segurança
 ```
 
 ## Arquivos que existem na Fase 1 além da árvore

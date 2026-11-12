@@ -19,6 +19,7 @@
 - Validação de PR no GitHub Actions (`.github/workflows/validacao.yml`), jobs **Build** e **Conteúdo**. ADR-008. Primeira execução no GitHub passou (Build e Conteúdo). Ruleset "Proteção da main" ativo: mudança só entra por PR com os dois checks verdes.
 - Vercel Web Analytics e Speed Insights no código (ADR-009).
 - Comentários do código revisados (só o porquê) e regra registrada no CLAUDE.md.
+- Headers no `vercel.json`: cache imutável para `/assets/` e cabeçalhos básicos de segurança (ADR-015).
 - `CONTRIBUTING.md` com papéis, fluxo de Git, entrada de conteúdo e dados, mapas e Definição de pronto; template de PR em `.github/` (ADR-014).
 - `BASE.MD` versionado como documento de origem, sem formatação automática (ADR-013).
 - Metas de performance definidas: LCP ≤ 2,5 s, INP ≤ 200 ms, CLS ≤ 0,1 no p75 em celular (ADR-012). Web Analytics e Speed Insights ativos no painel da Vercel.
@@ -34,11 +35,11 @@
 
 - **Acesso ao Figma** (Fase 2 inteira depende disso).
 - **Configuração do projeto na Vercel:** confirmar que o Framework Preset é Vite, o Build Command é `npm run build`, o Output é `dist` e a versão de Node é compatível com `.nvmrc` (22). Não foi possível conferir daqui (CLI da Vercel deslogado).
-- **Proteção da `main` (ruleset):** exigir PR e os checks **Build** e **Conteúdo** antes do merge. Mudança de configuração do repositório: aguardando autorização. Decidir também se **Conteúdo** é obrigatório desde já (ADR-008).
 - **URL de produção:** o subdomínio `vestigios.vercel.app` pertence a outro projeto da Vercel (outro site). O responsável indicou `vestigios-2jqhu9vgh-brenorevs-projects.vercel.app`, agora usado nas docs e no About. Esse é um endereço de deploy específico (não acompanha deploys novos) e está atrás do login da Vercel (Deployment Protection). Falta definir um domínio de produção estável e público em Settings → Domains, e depois atualizar README, CLAUDE.md e o About.
 - **Mapas e gráficos:** técnica ou biblioteca, decidida por quem for implementar os mapas, depois de ver o protótipo.
 - **Fontes tipográficas:** `public/fonts/` ou `@fontsource/*` (Fase 2).
 - **Página 404:** não está no Figma.
+- **Imagens responsivas (`srcset`):** como gerar as variantes. Opções: exportação manual do Figma em várias larguras; `vite-imagetools` na build (dependência nova); Vercel Image Optimization. Recomendação registrada: `vite-imagetools`. Decidir antes das primeiras fotos.
 - **Tema padrão do Tailwind:** zerar os tokens padrão (`--*: initial`) na Fase 2 para que só existam tokens do Figma?
 
 ## Próximo passo

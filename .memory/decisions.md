@@ -127,3 +127,13 @@ Formato: data, contexto, decisão, alternativas descartadas, consequência. ADR 
   - mapas e gráficos ficam com a pessoa que for implementá-los, que abre a decisão de técnica.
 - **Alternativas descartadas:** formulário de fonte no GitHub (o Jornalismo não usa o repositório); guia dentro do README (ficaria longo demais para quem só quer conhecer o projeto).
 - **Consequência:** o `CLAUDE.md` deixa de dizer que o Jornalismo edita o site. Mudança de regra continua no `CLAUDE.md`; o `CONTRIBUTING.md` é atualizado na mesma PR quando o fluxo mudar.
+
+## ADR-015: Headers de cache e segurança na Vercel
+
+- **Data:** 2026-11-11
+- **Contexto:** o responsável pediu cache longo para os arquivos versionados e cabeçalhos básicos de segurança, configurados no repositório (não no painel da Vercel).
+- **Decisão:** em `vercel.json`:
+  - `/assets/*` (arquivos que o Vite gera com hash no nome): `Cache-Control: public, max-age=31536000, immutable`;
+  - todas as rotas: `X-Content-Type-Options: nosniff`, `Referrer-Policy: strict-origin-when-cross-origin` e `Permissions-Policy` desligando câmera, microfone, geolocalização, pagamento e USB, que o site não usa.
+- **Alternativas descartadas:** Content-Security-Policy (exige mapear cada origem de script, fonte, imagem e mapa ainda não definidas; reavaliar na Fase 5); `X-Frame-Options` (impediria que outros veículos incorporassem a reportagem, decisão editorial que não foi tomada); cache longo em `public/fonts/` e `public/data/` (não têm hash: uma atualização ficaria presa no cache dos visitantes).
+- **Consequência:** se a geolocalização ou outro recurso bloqueado entrar no protótipo (um mapa "perto de você", por exemplo), a `Permissions-Policy` precisa ser ajustada com ADR. Arquivos em `public/` que mudem de conteúdo continuam com o cache padrão da Vercel.

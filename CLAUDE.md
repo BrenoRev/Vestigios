@@ -96,7 +96,8 @@ O Jornalismo fornece o conteúdo e **não edita o repositório**; um dev respons
 - `mix-blend-mode` só em camadas que não se movem no scroll. Sem `backdrop-filter` em áreas grandes.
 - **Scroll nativo.** Gatilhos com `useScroll` / `useInView` do Motion ou `IntersectionObserver`.
 - `prefers-reduced-motion`: desliga animações não essenciais e mantém 100% do conteúdo legível. O `<MotionConfig reducedMotion="user">` em `App.tsx` e a regra em `global.css` já fazem a base; confira cada tela.
-- Imagens com `width` e `height` declarados (campos `largura`/`altura` do tipo `Imagem`), `srcset` e `loading="lazy"` fora da primeira dobra.
+- Imagens com `width` e `height` declarados (campos `largura`/`altura` do tipo `Imagem`), `srcset` e `loading="lazy"` fora da primeira dobra. A forma de gerar as variantes do `srcset` está pendente de decisão (`agent_state.md`).
+- Arquivos com hash em `/assets/` têm cache imutável de um ano (`vercel.json`). Nunca sirva arquivo que muda de conteúdo sem mudar de nome por esse caminho; `public/fonts/` e `public/data/` não têm hash e ficam com o cache padrão.
 - Seções pesadas com `React.lazy`.
 - Se um efeito do protótipo não couber no orçamento, **não simplifique**: Stop & Ask.
 
