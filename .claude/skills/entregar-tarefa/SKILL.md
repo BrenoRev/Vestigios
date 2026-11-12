@@ -1,6 +1,6 @@
 ---
 name: entregar-tarefa
-description: Fecha qualquer tarefa no Vestigios. Confere a Definição de pronto, atualiza .memory/agent_state.md, faz commits em português sem co-autoria, abre a PR para a main e acompanha os checks Build e Conteúdo. Use ao terminar uma implementação, ou quando pedirem "fecha a tarefa", "abre a PR", "sobe isso", "commita".
+description: Fecha qualquer tarefa no Vestígios. Confere a Definição de pronto, atualiza .memory/agent_state.md, faz commits em português sem co-autoria, abre a PR para a main e acompanha os checks Build e Conteúdo. Use ao terminar uma implementação, ou quando pedirem "fecha a tarefa", "abre a PR", "sobe isso", "commita".
 ---
 
 # Entregar tarefa

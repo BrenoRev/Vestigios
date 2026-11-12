@@ -19,6 +19,7 @@
 - Validação de PR no GitHub Actions (`.github/workflows/validacao.yml`), jobs **Build** e **Conteúdo**. ADR-008. Primeira execução no GitHub passou (Build e Conteúdo). Ruleset "Proteção da main" ativo: mudança só entra por PR com os dois checks verdes.
 - Vercel Web Analytics e Speed Insights no código (ADR-009).
 - Comentários do código revisados (só o porquê) e regra registrada no CLAUDE.md.
+- Nome do produto definido: **Vestígios**, com acento (ADR-011).
 - Histórico da `main` reescrito em 2026-11-11 sem `Co-Authored-By` (force push autorizado, ruleset religado). Quem clonou antes precisa de `git fetch && git reset --hard origin/main`.
 - `.claude/` com 6 skills (extrair-design-tokens, implementar-secao, registrar-fonte, registrar-decisao, entregar-tarefa, fechamento) e 3 agentes de revisão (revisor-editorial, revisor-tecnico, revisor-fidelidade). ADR-010.
 
@@ -32,7 +33,6 @@
 - **Configuração do projeto na Vercel:** confirmar que o Framework Preset é Vite, o Build Command é `npm run build`, o Output é `dist` e a versão de Node é compatível com `.nvmrc` (22). Não foi possível conferir daqui (CLI da Vercel deslogado).
 - **Proteção da `main` (ruleset):** exigir PR e os checks **Build** e **Conteúdo** antes do merge. Mudança de configuração do repositório: aguardando autorização. Decidir também se **Conteúdo** é obrigatório desde já (ADR-008).
 - **URL de produção:** o subdomínio `vestigios.vercel.app` pertence a outro projeto da Vercel (outro site). O responsável indicou `vestigios-2jqhu9vgh-brenorevs-projects.vercel.app`, agora usado nas docs e no About. Esse é um endereço de deploy específico (não acompanha deploys novos) e está atrás do login da Vercel (Deployment Protection). Falta definir um domínio de produção estável e público em Settings → Domains, e depois atualizar README, CLAUDE.md e o About.
-- **Nome com ou sem acento:** "Vestigios" (BASE.MD) ou "Vestígios"? O arquivo do Figma se chama "Vestigio — Deterioração do Recife".
 - **Mapas e gráficos:** técnica ou biblioteca (só depois de ver o protótipo).
 - **Fontes tipográficas:** `public/fonts/` ou `@fontsource/*` (Fase 2).
 - **Página 404:** não está no Figma.

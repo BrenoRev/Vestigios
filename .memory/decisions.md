@@ -91,3 +91,11 @@ Formato: data, contexto, decisão, alternativas descartadas, consequência. ADR 
 - **Decisão:** criar `.claude/skills/` com uma skill por etapa (`extrair-design-tokens`, `implementar-secao`, `registrar-fonte`, `registrar-decisao`, `entregar-tarefa`, `fechamento`) e `.claude/agents/` com três agentes de revisão que só leem e apontam (`revisor-editorial`, `revisor-tecnico`, `revisor-fidelidade`). As skills repetem o mínimo das regras e remetem ao `CLAUDE.md`, que continua sendo a fonte única. Sem `.claude/settings.json` de projeto: permissões ficam a cargo de cada pessoa.
 - **Alternativas descartadas:** um agente implementador por fase (concentraria decisões que são da equipe); duplicar as regras inteiras dentro de cada skill (divergiria do `CLAUDE.md`).
 - **Consequência:** quem usa Claude Code segue o mesmo fluxo por etapa. Mudança de regra continua sendo feita no `CLAUDE.md`; a skill afetada é ajustada na mesma PR. As skills dependem do MCP do Figma para ler o protótipo e têm caminho alternativo por exportações.
+
+## ADR-011: Nome do produto com acento
+
+- **Data:** 2026-11-11
+- **Contexto:** o BASE.MD escreve "Vestigios" e o arquivo do Figma "Vestigio". O responsável definiu a grafia.
+- **Decisão:** o nome do produto é **Vestígios**, com acento, em todo texto visível (título da página, `src/content/site.ts`, documentação). Identificadores técnicos continuam sem acento: repositório `BrenoRev/Vestigios`, pacote `vestigios`, URLs e nomes de branch.
+- **Alternativas descartadas:** manter "Vestigios" sem acento em tudo (grafia incorreta em português).
+- **Consequência:** o `BASE.MD` segue com a grafia antiga por ser o documento de origem; o `CLAUDE.md` prevalece.

@@ -1,3 +1,3 @@
 export const site = {
-  nome: "Vestigios",
+  nome: "Vestígios",
 } as const;

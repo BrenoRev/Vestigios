@@ -1,6 +1,6 @@
 ---
 name: implementar-secao
-description: Fases 3 e 4 do Vestigios. Constrói layout base, componente de interface ou seção da reportagem a partir de um frame do Figma, fiel ao protótipo, com conteúdo vindo de src/content e dentro do orçamento de performance e acessibilidade. Use quando pedirem "implementa a seção X", "monta o header/footer/grid", "constrói o componente do frame", "fase 3", "fase 4" ou passarem um link ou node-id do Figma para virar código.
+description: Fases 3 e 4 do Vestígios. Constrói layout base, componente de interface ou seção da reportagem a partir de um frame do Figma, fiel ao protótipo, com conteúdo vindo de src/content e dentro do orçamento de performance e acessibilidade. Use quando pedirem "implementa a seção X", "monta o header/footer/grid", "constrói o componente do frame", "fase 3", "fase 4" ou passarem um link ou node-id do Figma para virar código.
 ---
 
 # Implementar seção ou componente a partir do Figma
