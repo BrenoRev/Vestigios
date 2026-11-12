@@ -58,20 +58,22 @@
 
 Não são pastas novas; são arquivos de configuração das ferramentas da stack ou o mínimo da Fase 1.
 
-| Arquivo                               | Papel                                                            |
-| ------------------------------------- | ---------------------------------------------------------------- |
-| `package.json`, `package-lock.json`   | Dependências e scripts.                                          |
-| `tsconfig.json`                       | TypeScript (configuração única: ver ADR-002).                    |
-| `vite.config.ts`                      | Vite com os plugins de React e Tailwind v4.                      |
-| `eslint.config.js`                    | ESLint flat config, com as travas editoriais e de design system. |
-| `.prettierrc.json`, `.prettierignore` | Prettier.                                                        |
-| `.gitignore`                          | Git.                                                             |
-| `index.html`                          | Ponto de entrada do Vite.                                        |
-| `src/content/pendente.ts`             | Função `pendente()` e guarda `ehPendente()`.                     |
-| `src/content/site.ts`                 | Nome do produto.                                                 |
-| `src/components/ui/BlocoPendente.tsx` | Bloco tarjado que renderiza uma pendência.                       |
-| `src/pages/Inicio.tsx`                | Rota mínima da Fase 1.                                           |
-| `src/routes/index.tsx`                | Definição das rotas (React Router v7, `createBrowserRouter`).    |
+| Arquivo                                  | Papel                                                                          |
+| ---------------------------------------- | ------------------------------------------------------------------------------ |
+| `package.json`, `package-lock.json`      | Dependências e scripts.                                                        |
+| `tsconfig.json`                          | TypeScript (configuração única: ver ADR-002).                                  |
+| `vite.config.ts`                         | Vite com os plugins de React e Tailwind v4.                                    |
+| `eslint.config.js`                       | ESLint flat config, com as travas editoriais e de design system.               |
+| `.prettierrc.json`, `.prettierignore`    | Prettier.                                                                      |
+| `.gitignore`                             | Git.                                                                           |
+| `index.html`                             | Ponto de entrada do Vite.                                                      |
+| `src/content/pendente.ts`                | Função `pendente()` e guarda `ehPendente()`.                                   |
+| `src/content/site.ts`                    | Nome do produto.                                                               |
+| `src/components/ui/ImagemResponsiva.tsx` | Renderiza uma `Imagem` como `<picture>` com `srcset` em AVIF e WebP (ADR-016). |
+| `src/types/imagens.d.ts`                 | Tipo dos imports de imagem com `?responsiva`.                                  |
+| `src/components/ui/BlocoPendente.tsx`    | Bloco tarjado que renderiza uma pendência.                                     |
+| `src/pages/Inicio.tsx`                   | Rota mínima da Fase 1.                                                         |
+| `src/routes/index.tsx`                   | Definição das rotas (React Router v7, `createBrowserRouter`).                  |
 
 ## Fluxo de dados
 

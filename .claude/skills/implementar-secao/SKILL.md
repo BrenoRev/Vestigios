@@ -44,7 +44,7 @@ Componente recebe tudo por props. Pasta nova, dependência nova ou tipo de conte
 - **Estados:** hover, foco, ativo como no Figma. Estado ausente é Stop & Ask. Foco visível sempre.
 - **Animação:** Motion (`motion/react`), só `transform` e `opacity`. Gatilho com `useInView`/`useScroll` ou `IntersectionObserver`. Scroll nativo, sem scroll-jacking. Conteúdo legível com `prefers-reduced-motion`.
 - **Efeitos:** `mix-blend-mode` só em camada parada; sem `backdrop-filter` em área grande; textura como WebP/AVIF exportado, não filtro ao vivo.
-- **Imagens:** tipo `Imagem` (crédito, licença, acervo obrigatórios), `width`/`height` a partir de `largura`/`altura`, `srcset`, `loading="lazy"` fora da primeira dobra.
+- **Imagens:** tipo `Imagem` (crédito, licença, acervo obrigatórios) com o arquivo importado via `?responsiva`, renderizado com `ImagemResponsiva`. Passe `sizes` conforme a largura da imagem em cada breakpoint do frame e `primeiraDobra` só para a imagem principal da primeira tela.
 - **Seção pesada:** `React.lazy` + `Suspense`.
 - **Mapas e gráficos:** a técnica ainda não foi decidida. Pare e use `registrar-decisao` com as opções do CLAUDE.md. Todo gráfico precisa de alternativa em texto ou tabela.
 - **Acessibilidade:** HTML semântico, ordem de títulos, `alt` descritivo vindo de `src/content`, navegação por teclado.

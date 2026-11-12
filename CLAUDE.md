@@ -54,7 +54,7 @@ Node: versão em `.nvmrc`.
 Qualquer dependência fora desta lista exige Stop & Ask.
 
 - **Runtime:** Vite + React + TypeScript (`strict`, `noUncheckedIndexedAccess`); Tailwind CSS **v4** via `@tailwindcss/vite`, com tokens no `@theme` de `src/styles/tokens.css`; React Router **v7** (imports de `react-router`), SPA, fallback em `vercel.json`; Motion (imports de `motion/react`); `@phosphor-icons/react` para ícones; `@vercel/analytics` e `@vercel/speed-insights` (Vercel Web Analytics e Speed Insights, componentes `<Analytics />` e `<SpeedInsights />` em `App.tsx`, ADR-009); CSS nativo (`mix-blend-mode`, máscaras, filtros SVG pontuais) dentro do orçamento de performance.
-- **Desenvolvimento:** ESLint (flat config) com `typescript-eslint`, `eslint-plugin-react-hooks`, `eslint-plugin-jsx-a11y`; Prettier com `prettier-plugin-tailwindcss`.
+- **Desenvolvimento:** ESLint (flat config) com `typescript-eslint`, `eslint-plugin-react-hooks`, `eslint-plugin-jsx-a11y`; Prettier com `prettier-plugin-tailwindcss`; `vite-imagetools` para gerar as variantes de imagem na build (ADR-016).
 - **Nunca crie `tailwind.config.js`.** A v4 é configurada em CSS.
 - **Não atualize o React Router para a v8** nem o TypeScript para 6.1+ ou 7 sem ADR (o `typescript-eslint` exige TS < 6.1).
 - **Proibido:** kits de UI, CSS-in-JS, outras ferramentas de analytics, rastreamento ou monitoramento além do Vercel Web Analytics e do Speed Insights, eventos customizados (`track`) sem ADR, bibliotecas de estado global, bibliotecas de animação além do Motion, bibliotecas de scroll (Lenis, GSAP ScrollTrigger e similares), scroll-jacking.
@@ -96,7 +96,7 @@ O Jornalismo fornece o conteúdo e **não edita o repositório**; um dev respons
 - `mix-blend-mode` só em camadas que não se movem no scroll. Sem `backdrop-filter` em áreas grandes.
 - **Scroll nativo.** Gatilhos com `useScroll` / `useInView` do Motion ou `IntersectionObserver`.
 - `prefers-reduced-motion`: desliga animações não essenciais e mantém 100% do conteúdo legível. O `<MotionConfig reducedMotion="user">` em `App.tsx` e a regra em `global.css` já fazem a base; confira cada tela.
-- Imagens com `width` e `height` declarados (campos `largura`/`altura` do tipo `Imagem`), `srcset` e `loading="lazy"` fora da primeira dobra. A forma de gerar as variantes do `srcset` está pendente de decisão (`agent_state.md`).
+- **Imagens (ADR-016):** original em alta resolução em `src/assets/images/`, importado com `?responsiva` (a build gera larguras em AVIF e WebP, com largura e altura reais) e renderizado com `ImagemResponsiva`, que já põe `srcset`, `width`, `height` e `loading="lazy"`. Na primeira dobra, use `primeiraDobra`. O `sizes` vem do layout do protótipo em cada breakpoint.
 - Arquivos com hash em `/assets/` têm cache imutável de um ano (`vercel.json`). Nunca sirva arquivo que muda de conteúdo sem mudar de nome por esse caminho; `public/fonts/` e `public/data/` não têm hash e ficam com o cache padrão.
 - Seções pesadas com `React.lazy`.
 - Se um efeito do protótipo não couber no orçamento, **não simplifique**: Stop & Ask.

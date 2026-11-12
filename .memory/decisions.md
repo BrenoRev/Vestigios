@@ -137,3 +137,16 @@ Formato: data, contexto, decisão, alternativas descartadas, consequência. ADR 
   - todas as rotas: `X-Content-Type-Options: nosniff`, `Referrer-Policy: strict-origin-when-cross-origin` e `Permissions-Policy` desligando câmera, microfone, geolocalização, pagamento e USB, que o site não usa.
 - **Alternativas descartadas:** Content-Security-Policy (exige mapear cada origem de script, fonte, imagem e mapa ainda não definidas; reavaliar na Fase 5); `X-Frame-Options` (impediria que outros veículos incorporassem a reportagem, decisão editorial que não foi tomada); cache longo em `public/fonts/` e `public/data/` (não têm hash: uma atualização ficaria presa no cache dos visitantes).
 - **Consequência:** se a geolocalização ou outro recurso bloqueado entrar no protótipo (um mapa "perto de você", por exemplo), a `Permissions-Policy` precisa ser ajustada com ADR. Arquivos em `public/` que mudem de conteúdo continuam com o cache padrão da Vercel.
+
+## ADR-016: Imagens responsivas com `vite-imagetools`
+
+- **Data:** 2026-11-11
+- **Contexto:** o orçamento de performance exige `srcset`, mas não definia quem gera as variantes. Decisão aberta com três opções; o responsável escolheu a opção B, recomendada.
+- **Decisão:**
+  - `vite-imagetools` ^12.0.2 como dependência de desenvolvimento (usa `sharp`; nada vai para o navegador).
+  - Import com `?responsiva` aplica o preset de `vite.config.ts`: larguras 640, 960, 1280 e 1920 px, formatos AVIF e WebP, saída `picture`. O plugin não amplia imagem menor que a largura pedida.
+  - O tipo `Imagem` troca `src`, `largura` e `altura` por `arquivo` (o resultado do import), de onde saem `srcset`, largura e altura reais. Substitui a parte do ADR-005 que acrescentava `largura` e `altura` manuais.
+  - Componente `ImagemResponsiva` em `src/components/ui/` monta o `<picture>` (fontes AVIF e WebP, fallback WebP, `width`, `height`, `loading="lazy"`, `decoding="async"`, `fetchPriority` alto só com `primeiraDobra`). Crédito e legenda ficam com a seção, conforme o protótipo.
+  - Testado com uma imagem de 2400 px: 4 larguras em cada formato e `<picture>` renderizado corretamente.
+- **Alternativas descartadas:** exportação manual do Figma em várias larguras (trabalho repetitivo e sujeito a erro); Vercel Image Optimization (não funciona no `npm run dev` e consome cota do plano).
+- **Consequência:** as larguras são genéricas até haver breakpoints do Figma; revisar na Fase 2 contra os breakpoints e a largura máxima do layout. As variantes vão para `/assets/` com hash e herdam o cache imutável do ADR-015. Texturas usadas como fundo em CSS são definidas na Fase 2, quando se souber como o protótipo as aplica.

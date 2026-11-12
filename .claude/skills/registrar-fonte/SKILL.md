@@ -34,7 +34,7 @@ Para **nomear**, `docs/fontes.md` precisa de três registros: fonte primária do
 
 ## Imagem
 
-- Arquivo em `src/assets/images/`, objeto `Imagem` com `credito`, `licenca`, `acervo`, `alt` descritivo, `largura` e `altura` reais.
+- Original em alta resolução em `src/assets/images/`, importado com `?responsiva` (exemplo: `import foto from "../assets/images/fachada.jpg?responsiva"`). Objeto `Imagem` com `arquivo`, `alt` descritivo, `credito`, `licenca` e `acervo`. Largura, altura e variantes saem da build.
 - Registro na tabela "Imagens" de `docs/fontes.md`. Sem crédito e licença, a imagem não entra, inclusive de acervo.
 
 ## Texto
