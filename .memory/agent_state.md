@@ -19,6 +19,7 @@
 - Validação de PR no GitHub Actions (`.github/workflows/validacao.yml`), jobs **Build** e **Conteúdo**. ADR-008. Primeira execução no GitHub passou (Build e Conteúdo). Ruleset "Proteção da main" ativo: mudança só entra por PR com os dois checks verdes.
 - Vercel Web Analytics e Speed Insights no código (ADR-009).
 - Comentários do código revisados (só o porquê) e regra registrada no CLAUDE.md.
+- Imagens responsivas: `vite-imagetools` gera AVIF e WebP em 640, 960, 1280 e 1920 px na build; componente `ImagemResponsiva` (ADR-016). Larguras a revisar na Fase 2 com os breakpoints do Figma.
 - Headers no `vercel.json`: cache imutável para `/assets/` e cabeçalhos básicos de segurança (ADR-015).
 - `CONTRIBUTING.md` com papéis, fluxo de Git, entrada de conteúdo e dados, mapas e Definição de pronto; template de PR em `.github/` (ADR-014).
 - `BASE.MD` versionado como documento de origem, sem formatação automática (ADR-013).
@@ -39,7 +40,6 @@
 - **Mapas e gráficos:** técnica ou biblioteca, decidida por quem for implementar os mapas, depois de ver o protótipo.
 - **Fontes tipográficas:** `public/fonts/` ou `@fontsource/*` (Fase 2).
 - **Página 404:** não está no Figma.
-- **Imagens responsivas (`srcset`):** como gerar as variantes. Opções: exportação manual do Figma em várias larguras; `vite-imagetools` na build (dependência nova); Vercel Image Optimization. Recomendação registrada: `vite-imagetools`. Decidir antes das primeiras fotos.
 - **Tema padrão do Tailwind:** zerar os tokens padrão (`--*: initial`) na Fase 2 para que só existam tokens do Figma?
 
 ## Próximo passo

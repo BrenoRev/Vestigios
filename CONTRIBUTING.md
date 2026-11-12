@@ -49,6 +49,8 @@ Regras que bloqueiam publicação (detalhes no `CLAUDE.md`):
 - toda cifra monetária mostra o ano de referência;
 - foto só com crédito e licença registrados.
 
+Fotos: coloque o original em alta resolução em `src/assets/images/` e importe com `?responsiva`. A build gera as larguras em AVIF e WebP, e o componente `ImagemResponsiva` monta o `<picture>`. Não exporte tamanhos à mão.
+
 Enquanto o conteúdo não chega, use `pendente("o que falta, quem fornece")`. Ele aparece como bloco tarjado no desenvolvimento e no preview, e **bloqueia a produção** até ser resolvido.
 
 ## Como as telas são feitas

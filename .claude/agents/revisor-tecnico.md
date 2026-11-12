@@ -24,7 +24,7 @@ git diff --stat origin/main...HEAD
 5. **Performance:**
    - animação de `filter`, `mix-blend-mode`, `box-shadow`, `width`, `height`, `top`, `left` (em `animate`, `initial`, `whileInView`, `transition`, keyframes CSS);
    - `mix-blend-mode` em camada que se move no scroll; `backdrop-filter` em área grande; `feTurbulence` ao vivo em área grande;
-   - imagem sem `width`/`height`, sem `srcset`, ou sem `loading="lazy"` fora da primeira dobra;
+   - imagem que não passa por `?responsiva` + `ImagemResponsiva` (sem `srcset`, `width`/`height` ou `loading="lazy"`), `sizes` que não corresponde ao layout, ou `primeiraDobra` em imagem fora da primeira tela;
    - seção pesada sem `React.lazy`; scroll-jacking ou listener de scroll no lugar de `useScroll`/`useInView`/`IntersectionObserver`.
 6. **Movimento reduzido:** animação não essencial que não respeita `prefers-reduced-motion`.
 7. **Acessibilidade:** HTML não semântico, títulos fora de ordem, elemento clicável sem teclado, foco invisível, gráfico ou mapa sem alternativa em texto.
