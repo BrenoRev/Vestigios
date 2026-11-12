@@ -1,10 +1,7 @@
 @import "tailwindcss";
 @import "./tokens.css";
 
-/*
- * prefers-reduced-motion: desliga animações e transições CSS não
- * essenciais. As animações do Motion seguem <MotionConfig reducedMotion="user">.
- */
+/* Cobre só animações CSS; as do Motion são reduzidas pelo MotionConfig em App.tsx. */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -16,10 +13,7 @@
   }
 }
 
-/*
- * Ferramenta de desenvolvimento (BlocoPendente), fora do design system.
- * Usa cores de sistema do navegador para não inventar paleta.
- */
+/* BlocoPendente é ferramenta de desenvolvimento: cores de sistema para não inventar paleta. */
 @layer components {
   .bloco-pendente {
     padding: 1rem;

@@ -1,14 +1,7 @@
 #!/usr/bin/env node
 /**
- * Bloqueia a build de produção com pendências editoriais.
- *
- * Varre src/ atrás de chamadas pendente(...), "em breve" e "lorem ipsum".
- * Node puro, sem dependência.
- *
- * - Build local e build de produção na Vercel (VERCEL_ENV=production):
- *   qualquer ocorrência encerra com código 1 e a build falha.
- * - Preview da Vercel (VERCEL_ENV=preview): lista as ocorrências como
- *   aviso e deixa a build seguir, para a equipe revisar em andamento.
+ * Falha na build local e na produção da Vercel; no preview (VERCEL_ENV=preview)
+ * só avisa, para a equipe revisar trabalho em andamento (ADR-004).
  */
 import { readdir, readFile } from "node:fs/promises";
 import { extname, join, relative } from "node:path";

@@ -1,14 +1,9 @@
 import type { Pendente } from "../types/content";
 
 /**
- * Placeholder honesto. Use onde faltar conteúdo, sempre dizendo o que
- * falta e quem deve fornecer:
- *
- *   pendente("legenda da foto 3, equipe de Jornalismo")
- *
- * Em desenvolvimento o componente BlocoPendente mostra um bloco tarjado.
- * scripts/check-conteudo.mjs falha a build de produção enquanto houver
- * qualquer chamada restante em src/. Este arquivo é a única exceção.
+ * Diga o que falta e quem deve fornecer: pendente("legenda da foto 3, Jornalismo").
+ * scripts/check-conteudo.mjs bloqueia a produção enquanto houver chamadas em
+ * src/; este arquivo é a única exceção.
  */
 export function pendente(descricao: string): Pendente {
   return { tipo: "pendente", descricao };
@@ -23,5 +18,5 @@ export function ehPendente(valor: unknown): valor is Pendente {
   );
 }
 
-/** Rótulo da ferramenta de desenvolvimento. Não é texto editorial. */
+/** Fica aqui, e não no componente, por causa da trava de texto em JSX do ESLint. */
 export const ROTULO_PENDENTE = "PENDENTE";
