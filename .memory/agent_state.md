@@ -19,6 +19,7 @@
 - Validação de PR no GitHub Actions (`.github/workflows/validacao.yml`), jobs **Build** e **Conteúdo**. ADR-008. Primeira execução no GitHub passou (Build e Conteúdo). Ruleset "Proteção da main" ativo: mudança só entra por PR com os dois checks verdes.
 - Vercel Web Analytics e Speed Insights no código (ADR-009).
 - Comentários do código revisados (só o porquê) e regra registrada no CLAUDE.md.
+- Histórico da `main` reescrito em 2026-11-11 sem `Co-Authored-By` (force push autorizado, ruleset religado). Quem clonou antes precisa de `git fetch && git reset --hard origin/main`.
 - `.claude/` com 6 skills (extrair-design-tokens, implementar-secao, registrar-fonte, registrar-decisao, entregar-tarefa, fechamento) e 3 agentes de revisão (revisor-editorial, revisor-tecnico, revisor-fidelidade). ADR-010.
 
 ## Em andamento
@@ -42,4 +43,3 @@
 ## Próximo passo
 
 1. Com acesso ao Figma, iniciar a Fase 2 com a skill `extrair-design-tokens`.
-2. Reescrita do histórico da `main` para tirar `Co-Authored-By` dos 10 primeiros commits: depende de o responsável desligar o ruleset para o force push.
