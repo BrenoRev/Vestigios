@@ -29,7 +29,6 @@
 - **Proteção da `main` (ruleset):** exigir PR e os checks **Build** e **Conteúdo** antes do merge. Mudança de configuração do repositório: aguardando autorização. Decidir também se **Conteúdo** é obrigatório desde já (ADR-008).
 - **URL de produção:** o subdomínio `vestigios.vercel.app` pertence a outro projeto da Vercel (outro site). O responsável indicou `vestigios-2jqhu9vgh-brenorevs-projects.vercel.app`, agora usado nas docs e no About. Esse é um endereço de deploy específico (não acompanha deploys novos) e está atrás do login da Vercel (Deployment Protection). Falta definir um domínio de produção estável e público em Settings → Domains, e depois atualizar README, CLAUDE.md e o About.
 - **Nome com ou sem acento:** "Vestigios" (BASE.MD) ou "Vestígios"? O arquivo do Figma se chama "Vestigio — Deterioração do Recife".
-- **Créditos:** nomes e cursos dos 15 integrantes registrados no README; falta a **função** de cada um.
 - **Mapas e gráficos:** técnica ou biblioteca (só depois de ver o protótipo).
 - **Fontes tipográficas:** `public/fonts/` ou `@fontsource/*` (Fase 2).
 - **Página 404:** não está no Figma.
