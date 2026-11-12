@@ -36,11 +36,11 @@ Node: versão em `.nvmrc`.
 
 Qualquer dependência fora desta lista exige Stop & Ask.
 
-- **Runtime:** Vite + React + TypeScript (`strict`, `noUncheckedIndexedAccess`); Tailwind CSS **v4** via `@tailwindcss/vite`, com tokens no `@theme` de `src/styles/tokens.css`; React Router **v7** (imports de `react-router`), SPA, fallback em `vercel.json`; Motion (imports de `motion/react`); `@phosphor-icons/react` para ícones; `@vercel/analytics` (Vercel Web Analytics, componente `<Analytics />` em `App.tsx`, ADR-009); CSS nativo (`mix-blend-mode`, máscaras, filtros SVG pontuais) dentro do orçamento de performance.
+- **Runtime:** Vite + React + TypeScript (`strict`, `noUncheckedIndexedAccess`); Tailwind CSS **v4** via `@tailwindcss/vite`, com tokens no `@theme` de `src/styles/tokens.css`; React Router **v7** (imports de `react-router`), SPA, fallback em `vercel.json`; Motion (imports de `motion/react`); `@phosphor-icons/react` para ícones; `@vercel/analytics` e `@vercel/speed-insights` (Vercel Web Analytics e Speed Insights, componentes `<Analytics />` e `<SpeedInsights />` em `App.tsx`, ADR-009); CSS nativo (`mix-blend-mode`, máscaras, filtros SVG pontuais) dentro do orçamento de performance.
 - **Desenvolvimento:** ESLint (flat config) com `typescript-eslint`, `eslint-plugin-react-hooks`, `eslint-plugin-jsx-a11y`; Prettier com `prettier-plugin-tailwindcss`.
 - **Nunca crie `tailwind.config.js`.** A v4 é configurada em CSS.
 - **Não atualize o React Router para a v8** nem o TypeScript para 6.1+ ou 7 sem ADR (o `typescript-eslint` exige TS < 6.1).
-- **Proibido:** kits de UI, CSS-in-JS, outras ferramentas de analytics ou rastreamento além do Vercel Web Analytics, eventos customizados (`track`) sem ADR, bibliotecas de estado global, bibliotecas de animação além do Motion, bibliotecas de scroll (Lenis, GSAP ScrollTrigger e similares), scroll-jacking.
+- **Proibido:** kits de UI, CSS-in-JS, outras ferramentas de analytics, rastreamento ou monitoramento além do Vercel Web Analytics e do Speed Insights, eventos customizados (`track`) sem ADR, bibliotecas de estado global, bibliotecas de animação além do Motion, bibliotecas de scroll (Lenis, GSAP ScrollTrigger e similares), scroll-jacking.
 - **Decisões pendentes (não tome sozinho):** biblioteca ou técnica de mapas e gráficos (SVG estático pré-processado, `d3-geo` + `d3-scale` ou MapLibre); forma de servir as fontes (`public/fonts/` ou `@fontsource/*`). Nada é instalado antes da decisão.
 
 ## Conteúdo editorial: regra central
@@ -70,7 +70,7 @@ O site é editado por gente de Jornalismo e Design. **Todo conteúdo editorial v
 
 ## Orçamento de performance
 
-- Metas: 60 fps de scroll; LCP abaixo de 2,5 s em 4G (meta a validar com a equipe).
+- Metas: 60 fps de scroll; LCP abaixo de 2,5 s em 4G (meta a validar com a equipe). O Speed Insights da Vercel mede os Core Web Vitals reais de quem visita o site.
 - Animar **apenas `transform` e `opacity`**. Nunca `filter`, `mix-blend-mode`, `box-shadow`, `width`, `height`, `top`, `left`.
 - Texturas e fundos complexos como WebP ou AVIF exportados do Figma (`src/assets/textures/`), nunca `feTurbulence` ao vivo em áreas grandes ou durante o scroll. Filtro SVG ao vivo só em elementos pequenos e estáticos.
 - `mix-blend-mode` só em camadas que não se movem no scroll. Sem `backdrop-filter` em áreas grandes.
