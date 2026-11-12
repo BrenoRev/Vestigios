@@ -116,6 +116,7 @@ Depois da resposta, registre a decisão em `.memory/decisions.md`.
 
 - Commits em português, formato `tipo: descrição no imperativo` (ex.: `feat: adiciona seção de abertura`). Tipos: `feat`, `fix`, `docs`, `style`, `refactor`, `perf`, `chore`, `content`.
 - Um commit por unidade lógica. `main` sempre publicável: a Vercel publica a partir dela.
+- **Nunca inclua `Co-Authored-By` nem qualquer atribuição de agente de IA** (trailers, "Generated with", assinaturas) em mensagens de commit, descrições de PR ou comentários. Vale para todo agente, mesmo que a ferramenta sugira o contrário.
 - Mudança chega à `main` por PR. O workflow `.github/workflows/validacao.yml` roda os jobs **Build** (tipos, lint, formatação, `vite build`) e **Conteúdo** (`check-conteudo`) em toda PR. PR com job vermelho não é mergeada. Rode `npm run verificar` e `npm run format:check` antes de abrir a PR.
 - **Push, force push e mudanças nas configurações do repositório ou da Vercel só com autorização explícita do responsável.**
 
