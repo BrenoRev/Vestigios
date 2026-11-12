@@ -74,3 +74,11 @@ Formato: data, contexto, decisão, alternativas descartadas, consequência. ADR 
   - Node a partir do `.nvmrc`, cache do npm, `permissions: contents: read`, `persist-credentials: false`, e cancelamento de execuções antigas da mesma branch. Actions oficiais na v7 (`actions/checkout`, `actions/setup-node`).
 - **Alternativas descartadas:** um job único (a PR com conteúdo pendente apareceria como erro de código); hook local de pre-push com husky (dependência fora da lista); depender só do check de deploy da Vercel (ele não roda lint nem formatação, e o preview ignora pendências).
 - **Consequência:** PR com `pendente(...)` fica com o job **Conteúdo** vermelho, coerente com o ADR-004 (produção não recebe pendência). Tornar os jobs obrigatórios para o merge exige ruleset na `main`, que é configuração do repositório e depende de autorização.
+
+## ADR-009: Vercel Web Analytics
+
+- **Data:** 2026-11-11
+- **Contexto:** o responsável pediu a instalação do Vercel Web Analytics. A dependência está fora da stack travada do BASE.MD; o pedido explícito do responsável é a autorização (Stop & Ask respondido).
+- **Decisão:** instalar `@vercel/analytics` ^2.0.1 e renderizar `<Analytics />` (de `@vercel/analytics/react`) uma única vez em `App.tsx`, ao lado do `RouterProvider`. Modo explícito: `development` no `vite dev` (só registra no console, nada é enviado) e `production` na build. As navegações da SPA são contadas pelo próprio script, que acompanha o histórico do navegador; não há `track()` de eventos customizados.
+- **Alternativas descartadas:** `inject()` em `main.tsx` (mesmo efeito, mas fora da árvore React); `mode="auto"` (depende de `process.env.NODE_ENV` dentro da dependência; o modo explícito é mais claro); outras ferramentas de analytics (fora da plataforma de deploy já em uso).
+- **Consequência:** a coleta só começa depois que o Web Analytics for ativado no painel do projeto na Vercel. A ferramenta não usa cookies e não guarda identificadores pessoais, então não exige banner de consentimento; se a equipe quiser, a página de metodologia pode mencionar a medição de audiência (texto a cargo do Jornalismo). Evento customizado novo exige ADR. O script é servido em `/_vercel/insights/*`, rota reservada da Vercel que o rewrite da SPA não intercepta.

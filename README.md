@@ -24,6 +24,7 @@ Professores: **Nivan Ferreira**, **Guilherme Ranoya** e **Rodrigo Cunha**.
 - [React Router v7](https://reactrouter.com), em modo SPA
 - [Motion](https://motion.dev) para animações
 - [Phosphor Icons](https://phosphoricons.com)
+- [Vercel Web Analytics](https://vercel.com/docs/analytics) para métricas de audiência, sem cookies
 - ESLint e Prettier
 
 Detalhes e versões em [`.memory/decisions.md`](./.memory/decisions.md).

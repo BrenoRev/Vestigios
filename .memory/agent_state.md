@@ -20,7 +20,7 @@
 
 ## Em andamento
 
-- Nada.
+- Vercel Web Analytics instalado no código (ADR-009). Falta **ativar Web Analytics no painel da Vercel** (aba Analytics → Enable), que é ação do responsável.
 
 ## Bloqueado por decisão
 
