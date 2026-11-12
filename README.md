@@ -94,6 +94,8 @@ Todo número, nome, citação e imagem publicado é rastreável até o registro 
 
 ## Para quem contribui
 
+Comece pelo [`CONTRIBUTING.md`](./CONTRIBUTING.md): papéis, fluxo de Git, como o conteúdo e os dados entram, mapas e Definição de pronto.
+
 - Conteúdo editorial fica em `src/content/`, nunca dentro de componentes.
 - Visual segue o protótipo no Figma. Tokens em [`DESIGN_SYSTEM.md`](./DESIGN_SYSTEM.md).
 - Regras completas (também para agentes de IA) em [`CLAUDE.md`](./CLAUDE.md).

@@ -62,7 +62,7 @@ Qualquer dependência fora desta lista exige Stop & Ask.
 
 ## Conteúdo editorial: regra central
 
-O site é editado por gente de Jornalismo e Design. **Todo conteúdo editorial vive em `src/content/`**, em TypeScript tipado (sem MDX, sem CMS).
+O Jornalismo fornece o conteúdo e **não edita o repositório**; um dev responsável registra o que foi fornecido (passo a passo em `CONTRIBUTING.md`). **Todo conteúdo editorial vive em `src/content/`**, em TypeScript tipado (sem MDX, sem CMS).
 
 - Componentes recebem conteúdo por props. **Nenhum texto editorial hard-coded em componente.** O ESLint bloqueia texto solto em JSX e strings literais em `alt`, `title`, `placeholder` e `aria-*`.
 - Tipos em `src/types/content.ts`: `Fonte`, `Dado`, `Imagem`, `Pendente`. Um dado sem `fonteId` não compila; uma imagem sem `credito`, `licenca` ou `acervo` não compila.

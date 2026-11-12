@@ -48,6 +48,7 @@
 ├── ARCHITECTURE.md
 ├── BASE.MD                # prompt de origem do projeto; não é editado (ADR-013)
 ├── CLAUDE.md
+├── CONTRIBUTING.md        # guia para quem continua o desenvolvimento (ADR-014)
 ├── DESIGN_SYSTEM.md
 ├── README.md
 └── vercel.json            # fallback de rotas da SPA

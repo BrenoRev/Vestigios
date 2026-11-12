@@ -115,3 +115,15 @@ Formato: data, contexto, decisão, alternativas descartadas, consequência. ADR 
 - **Decisão:** versionar o `BASE.MD` na raiz, como registro histórico, sem edição e sem formatação automática (entra no `.prettierignore`). As regras vivas ficam no `CLAUDE.md`, que prevalece quando os dois divergem (por exemplo, nome com acento no ADR-011 e metas no ADR-012).
 - **Alternativas descartadas:** manter fora do Git (quem continuar o projeto não veria a origem das regras); formatar com Prettier (alteraria o texto original).
 - **Consequência:** mudança de regra nunca é feita no `BASE.MD`; vai para o `CLAUDE.md` com ADR.
+
+## ADR-014: Fluxo de conteúdo, `CONTRIBUTING.md` e template de PR
+
+- **Data:** 2026-11-11
+- **Contexto:** o responsável informou que ninguém do Jornalismo vai mexer no repositório: a equipe fornece o material e um dev responsável registra. Conteúdo, dados e mapas serão construídos depois, por outras pessoas, então o projeto precisa estar documentado para essa passagem.
+- **Decisão:**
+  - o Jornalismo fornece; o dev responsável registra, sempre em `docs/fontes.md` antes de `src/content/`, e anota na PR quem confirmou o texto final e quando;
+  - `CONTRIBUTING.md` na raiz com papéis, fluxo de Git, entrada de conteúdo e de dados, requisitos de mapas e Definição de pronto, remetendo ao `CLAUDE.md` para as regras completas;
+  - `.github/pull_request_template.md` com a Definição de pronto e a seção de conteúdo; a skill `entregar-tarefa` monta o corpo da PR a partir dele;
+  - mapas e gráficos ficam com a pessoa que for implementá-los, que abre a decisão de técnica.
+- **Alternativas descartadas:** formulário de fonte no GitHub (o Jornalismo não usa o repositório); guia dentro do README (ficaria longo demais para quem só quer conhecer o projeto).
+- **Consequência:** o `CLAUDE.md` deixa de dizer que o Jornalismo edita o site. Mudança de regra continua no `CLAUDE.md`; o `CONTRIBUTING.md` é atualizado na mesma PR quando o fluxo mudar.
