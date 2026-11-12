@@ -1,6 +1,6 @@
 ---
 name: registrar-decisao
-description: Protocolo Stop & Ask do Vestigios. Quando faltar definição (estado, breakpoint, ícone, animação, conteúdo, efeito fora do orçamento, dependência, pasta ou tipo novo), monta a DECISÃO NECESSÁRIA para a equipe e, depois da resposta, grava o ADR em .memory/decisions.md e atualiza o agent_state. Use sempre que for tentado a improvisar, ou quando pedirem "registra a decisão", "abre um ADR", "o que precisamos decidir".
+description: Protocolo Stop & Ask do Vestígios. Quando faltar definição (estado, breakpoint, ícone, animação, conteúdo, efeito fora do orçamento, dependência, pasta ou tipo novo), monta a DECISÃO NECESSÁRIA para a equipe e, depois da resposta, grava o ADR em .memory/decisions.md e atualiza o agent_state. Use sempre que for tentado a improvisar, ou quando pedirem "registra a decisão", "abre um ADR", "o que precisamos decidir".
 ---
 
 # Registrar decisão (Stop & Ask)

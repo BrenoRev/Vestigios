@@ -1,4 +1,4 @@
-# Design system: Vestigios
+# Design system: Vestígios
 
 > **Fonte única de verdade:** o protótipo no Figma.
 > https://www.figma.com/design/haaMnXS0jhXZjXyBKugccp/Vestigio-%E2%80%94-Deteriora%C3%A7%C3%A3o-do-Recife?node-id=2-2&t=UzVMO4knOonmD3pv-1

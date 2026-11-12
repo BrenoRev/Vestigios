@@ -1,6 +1,6 @@
 ---
 name: extrair-design-tokens
-description: Fase 2 do Vestigios. Extrai do protótipo no Figma a paleta, tipografia, espaçamentos, raios, breakpoints, texturas, estados e movimento, e preenche DESIGN_SYSTEM.md, src/styles/tokens.css e .memory/figma_specs.md sem inventar nenhum valor. Use quando pedirem "fase 2", "extrair tokens", "ler o Figma", "montar o design system", "atualizar tokens" ou trouxerem exportações e capturas do Figma.
+description: Fase 2 do Vestígios. Extrai do protótipo no Figma a paleta, tipografia, espaçamentos, raios, breakpoints, texturas, estados e movimento, e preenche DESIGN_SYSTEM.md, src/styles/tokens.css e .memory/figma_specs.md sem inventar nenhum valor. Use quando pedirem "fase 2", "extrair tokens", "ler o Figma", "montar o design system", "atualizar tokens" ou trouxerem exportações e capturas do Figma.
 ---
 
 # Extrair design tokens do Figma

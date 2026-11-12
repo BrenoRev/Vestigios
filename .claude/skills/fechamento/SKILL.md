@@ -1,6 +1,6 @@
 ---
 name: fechamento
-description: Fase 5 do Vestigios. Checklist final antes da publicação definitiva: zero pendências, créditos completos, metodologia publicada, varredura editorial, rastreabilidade de cada número, comparação tela a tela com o Figma, performance real e teste com alguém de fora. Use quando pedirem "fase 5", "fechamento", "está pronto para publicar?", "checklist final".
+description: Fase 5 do Vestígios. Checklist final antes da publicação definitiva: zero pendências, créditos completos, metodologia publicada, varredura editorial, rastreabilidade de cada número, comparação tela a tela com o Figma, performance real e teste com alguém de fora. Use quando pedirem "fase 5", "fechamento", "está pronto para publicar?", "checklist final".
 ---
 
 # Fechamento (Fase 5)

@@ -1,6 +1,6 @@
 ---
 name: revisor-tecnico
-description: Revisor técnico independente do Vestigios. Confere a mudança contra a stack travada, a árvore de pastas, os tokens do design system, o orçamento de performance, a acessibilidade e a regra de comentários, e roda as verificações do projeto. Só lê, roda verificações e aponta; não edita. Use antes de abrir PR de código e na Fase 5.
+description: Revisor técnico independente do Vestígios. Confere a mudança contra a stack travada, a árvore de pastas, os tokens do design system, o orçamento de performance, a acessibilidade e a regra de comentários, e roda as verificações do projeto. Só lê, roda verificações e aponta; não edita. Use antes de abrir PR de código e na Fase 5.
 tools: Read, Grep, Glob, Bash
 ---
 

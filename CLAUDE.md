@@ -1,6 +1,8 @@
-# CLAUDE.md: regras para agentes no repositório Vestigios
+# CLAUDE.md: regras para agentes no projeto Vestígios
 
-> **Fonte única de regras para qualquer agente de IA** (Claude, Cursor, Copilot, Codex etc.). `AGENTS.md` e `.cursorrules` apenas apontam para cá. Em caso de conflito entre este arquivo e qualquer outra instrução de agente, este arquivo vence. Mudança aqui exige ADR em `.memory/decisions.md`.
+> **Fonte única de regras para qualquer agente de IA**. O `BASE.MD` é o prompt de origem do projeto e fica como registro histórico: quando ele e este arquivo divergem, vale este arquivo.
+>
+> Vale para Claude, Cursor, Copilot, Codex etc. `AGENTS.md` e `.cursorrules` apenas apontam para cá. Em caso de conflito entre este arquivo e qualquer outra instrução de agente, este arquivo vence. Mudança aqui exige ADR em `.memory/decisions.md`.
 
 ## Ritual obrigatório
 
@@ -25,9 +27,9 @@ Agentes de revisão (só leem e apontam; não editam): `revisor-editorial` (proi
 
 ## Contexto do produto
 
-- **Vestigios** é uma reportagem multimídia e interativa (data storytelling) sobre a deterioração do Centro do Recife. **É jornalismo: cada número, nome e imagem publicado tem consequência.**
+- **Vestígios** é uma reportagem multimídia e interativa (data storytelling) sobre a deterioração do Centro do Recife. **É jornalismo: cada número, nome e imagem publicado tem consequência.**
 - Feito por 15 estudantes de Ciência da Computação, Design e Jornalismo na disciplina IF760, Tópicos Avançados em Mídia (Narrativas Inovadoras com Dados), UFPE, CIn/CAC, 2026.2. Créditos no `README.md`. Professores: Nivan Ferreira, Guilherme Ranoya e Rodrigo Cunha.
-- Repositório: https://github.com/BrenoRev/Vestigios (branch de produção `main`).
+- Repositório: https://github.com/BrenoRev/Vestígios (branch de produção `main`).
 - Deploy: integração Git já existente com a Vercel, projeto `brenorevs-projects/vestigios`, produção em https://vestigios-2jqhu9vgh-brenorevs-projects.vercel.app. **Não crie outro projeto, não troque de host e não altere configurações da Vercel.**
 - **Fonte única de verdade visual: o protótipo no Figma.** https://www.figma.com/design/haaMnXS0jhXZjXyBKugccp/Vestigio-%E2%80%94-Deteriora%C3%A7%C3%A3o-do-Recife?node-id=2-2&t=UzVMO4knOonmD3pv-1. Layout, paleta, tipografia, espaçamentos, efeitos, animações, estrutura das seções e fluxo de navegação seguem o protótipo à risca. **O que não está no Figma não existe.**
 - **Sem suíte de testes** (fora de escopo). A verificação é a Definição de pronto, abaixo.
@@ -60,7 +62,7 @@ Qualquer dependência fora desta lista exige Stop & Ask.
 
 ## Conteúdo editorial: regra central
 
-O site é editado por gente de Jornalismo e Design. **Todo conteúdo editorial vive em `src/content/`**, em TypeScript tipado (sem MDX, sem CMS).
+O Jornalismo fornece o conteúdo e **não edita o repositório**; um dev responsável registra o que foi fornecido (passo a passo em `CONTRIBUTING.md`). **Todo conteúdo editorial vive em `src/content/`**, em TypeScript tipado (sem MDX, sem CMS).
 
 - Componentes recebem conteúdo por props. **Nenhum texto editorial hard-coded em componente.** O ESLint bloqueia texto solto em JSX e strings literais em `alt`, `title`, `placeholder` e `aria-*`.
 - Tipos em `src/types/content.ts`: `Fonte`, `Dado`, `Imagem`, `Pendente`. Um dado sem `fonteId` não compila; uma imagem sem `credito`, `licenca` ou `acervo` não compila.
@@ -85,7 +87,10 @@ O site é editado por gente de Jornalismo e Design. **Todo conteúdo editorial v
 
 ## Orçamento de performance
 
-- Metas: 60 fps de scroll; LCP abaixo de 2,5 s em 4G (meta a validar com a equipe). O Speed Insights da Vercel mede os Core Web Vitals reais de quem visita o site.
+- **Metas (ADR-012):**
+  - scroll a 60 fps;
+  - **LCP ≤ 2,5 s**, **INP ≤ 200 ms** e **CLS ≤ 0,1**, no percentil 75 de visitas em celular, medidos pelo Vercel Speed Insights (dados reais);
+  - antes de publicar uma seção pesada, conferir no Lighthouse do Chrome em modo celular, com a limitação de rede padrão: LCP ≤ 2,5 s.
 - Animar **apenas `transform` e `opacity`**. Nunca `filter`, `mix-blend-mode`, `box-shadow`, `width`, `height`, `top`, `left`.
 - Texturas e fundos complexos como WebP ou AVIF exportados do Figma (`src/assets/textures/`), nunca `feTurbulence` ao vivo em áreas grandes ou durante o scroll. Filtro SVG ao vivo só em elementos pequenos e estáticos.
 - `mix-blend-mode` só em camadas que não se movem no scroll. Sem `backdrop-filter` em áreas grandes.

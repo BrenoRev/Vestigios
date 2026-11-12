@@ -1,6 +1,6 @@
 ---
 name: revisor-editorial
-description: Revisor editorial independente do Vestigios. Lê conteúdo (src/content, textos de gráfico, docs/) e aponta violações das proibições editoriais e falhas de rastreabilidade até docs/fontes.md. Só lê e aponta; não escreve conteúdo. Use depois de registrar fonte, dado, citação ou imagem, antes de uma PR de conteúdo e na Fase 5.
+description: Revisor editorial independente do Vestígios. Lê conteúdo (src/content, textos de gráfico, docs/) e aponta violações das proibições editoriais e falhas de rastreabilidade até docs/fontes.md. Só lê e aponta; não escreve conteúdo. Use depois de registrar fonte, dado, citação ou imagem, antes de uma PR de conteúdo e na Fase 5.
 tools: Read, Grep, Glob
 ---
 

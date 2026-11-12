@@ -1,4 +1,4 @@
-# Vestigios
+# Vestígios
 
 ![React](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=black)
 ![Vite](https://img.shields.io/badge/Vite-8-646CFF?logo=vite&logoColor=white)
@@ -49,7 +49,7 @@ npm run format         # formata com Prettier
 
 ## Deploy
 
-Integração Git com a [Vercel](https://vercel.com). A branch de produção é a `main` deste repositório (https://github.com/BrenoRev/Vestigios): cada push nela publica em https://vestigios-2jqhu9vgh-brenorevs-projects.vercel.app, e outras branches geram previews.
+Integração Git com a [Vercel](https://vercel.com). A branch de produção é a `main` deste repositório (https://github.com/BrenoRev/Vestígios): cada push nela publica em https://vestigios-2jqhu9vgh-brenorevs-projects.vercel.app, e outras branches geram previews.
 
 A build de produção é bloqueada enquanto houver conteúdo marcado como pendente. Nos previews, as pendências aparecem como blocos tarjados, para revisão da equipe.
 
@@ -93,6 +93,8 @@ src/types/      tipos do conteúdo
 Todo número, nome, citação e imagem publicado é rastreável até o registro de fontes, em [`docs/fontes.md`](./docs/fontes.md). Definições, recortes e limitações estão em [`docs/metodologia.md`](./docs/metodologia.md), que será publicada como página de metodologia do site.
 
 ## Para quem contribui
+
+Comece pelo [`CONTRIBUTING.md`](./CONTRIBUTING.md): papéis, fluxo de Git, como o conteúdo e os dados entram, mapas e Definição de pronto.
 
 - Conteúdo editorial fica em `src/content/`, nunca dentro de componentes.
 - Visual segue o protótipo no Figma. Tokens em [`DESIGN_SYSTEM.md`](./DESIGN_SYSTEM.md).

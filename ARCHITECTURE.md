@@ -7,6 +7,7 @@
 │   ├── agents/            # agentes de revisão: editorial, técnico e fidelidade (ADR-010)
 │   └── skills/            # uma skill por etapa do plano (ADR-010)
 ├── .github/
+│   ├── pull_request_template.md  # corpo padrão de PR com a Definição de pronto
 │   └── workflows/
 │       └── validacao.yml  # validação de PR: tipos, lint, formatação, build e conteúdo (ADR-008)
 ├── .memory/
@@ -45,7 +46,9 @@
 ├── .nvmrc
 ├── AGENTS.md
 ├── ARCHITECTURE.md
+├── BASE.MD                # prompt de origem do projeto; não é editado (ADR-013)
 ├── CLAUDE.md
+├── CONTRIBUTING.md        # guia para quem continua o desenvolvimento (ADR-014)
 ├── DESIGN_SYSTEM.md
 ├── README.md
 └── vercel.json            # fallback de rotas da SPA

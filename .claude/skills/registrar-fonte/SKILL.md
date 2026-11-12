@@ -1,11 +1,11 @@
 ---
 name: registrar-fonte
-description: Registra no Vestigios uma fonte, um dado, uma citação ou uma imagem vindos da equipe de Jornalismo, primeiro em docs/fontes.md e depois em src/content tipado, aplicando as proibições editoriais. Use quando a equipe mandar conteúdo, número, entrevista, foto, crédito ou link para entrar no site, ou pedir "registra essa fonte", "adiciona esse dado", "troca o pendente por".
+description: Registra no Vestígios uma fonte, um dado, uma citação ou uma imagem vindos da equipe de Jornalismo, primeiro em docs/fontes.md e depois em src/content tipado, aplicando as proibições editoriais. Use quando a equipe mandar conteúdo, número, entrevista, foto, crédito ou link para entrar no site, ou pedir "registra essa fonte", "adiciona esse dado", "troca o pendente por".
 ---
 
 # Registrar fonte, dado ou imagem
 
-O site é jornalismo: cada número, nome e imagem tem consequência. Esta skill só registra o que a equipe forneceu. **Se a informação não veio da equipe (mensagem, documento, planilha), não registre: peça a origem.**
+O site é jornalismo: cada número, nome e imagem tem consequência. O Jornalismo não edita o repositório: entrega o material, e o dev responsável registra. Esta skill só registra o que a equipe forneceu. **Se a informação não veio da equipe (mensagem, documento, planilha), não registre: peça a origem.** Na PR, anote quem do Jornalismo confirmou o texto final e quando (seção Conteúdo do template).
 
 ## Ordem obrigatória
 
