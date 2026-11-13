@@ -15,3 +15,6 @@ dist/
 .DS_Store
 *.log
 *.local
+
+# export local do protótipo: 63 MB e imagens sem crédito (ADR-017)
+figma/
