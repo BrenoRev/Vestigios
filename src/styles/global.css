@@ -26,26 +26,8 @@
   }
 }
 
-/* BlocoPendente é ferramenta de desenvolvimento: cores de sistema para não inventar paleta. */
+/* Espaço reservado é ferramenta de desenvolvimento: cores de sistema para não inventar paleta. */
 @layer components {
-  .bloco-pendente {
-    padding: 1rem;
-    border: 4px solid CanvasText;
-    background: repeating-linear-gradient(
-      -45deg,
-      Mark 0 12px,
-      Canvas 12px 24px
-    );
-    font-family: ui-monospace, monospace;
-  }
-
-  .bloco-pendente > span {
-    display: inline-block;
-    padding: 0.25rem 0.5rem;
-    background: Canvas;
-    color: CanvasText;
-  }
-
   .espaco-reservado {
     background: repeating-linear-gradient(-45deg, Mark 0 6px, Canvas 6px 12px);
     outline: 2px solid CanvasText;

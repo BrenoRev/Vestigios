@@ -25,4 +25,4 @@ O frame (nome e `node-id`) e a rota da tela. Se faltar, procure em `.memory/figm
 
 ## Saída
 
-Por breakpoint, uma lista de diferenças com: elemento, o que o Figma mostra (com valor e token), o que a tela mostra, e o arquivo provável. Separe **diferença real** de **conteúdo pendente** (blocos `BlocoPendente` são esperados até o conteúdo chegar). Aponte também o que o Figma não define e precisaria de Stop & Ask. Termine dizendo quais breakpoints e estados foram conferidos.
+Por breakpoint, uma lista de diferenças com: elemento, o que o Figma mostra (com valor e token), o que a tela mostra, e o arquivo provável. Separe **diferença real** de **conteúdo pendente** (blocos `EspacoReservado` e `PendenciaApuracao` são esperados até o conteúdo chegar). Aponte também o que o Figma não define e precisaria de Stop & Ask. Termine dizendo quais breakpoints e estados foram conferidos.

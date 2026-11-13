@@ -33,7 +33,7 @@ Componente recebe tudo por props. Pasta nova, dependência nova ou tipo de conte
 
 ## Conteúdo
 
-- Texto do Figma é **referência de layout**, não conteúdo final. Enquanto o Jornalismo não confirmar, use `pendente("o que falta, quem fornece")` e renderize com `BlocoPendente` (use `ehPendente` para decidir).
+- Texto do Figma é **referência de layout**, não conteúdo final. Enquanto o Jornalismo não confirmar, use `pendente("o que falta, quem fornece")` e renderize com `EspacoReservado` ou `PendenciaApuracao` (use `ehPendente` para decidir).
 - Conteúdo confirmado entra pela skill `registrar-fonte`.
 - Nunca invente número, nome, data, citação, legenda, crédito ou URL, nem como exemplo.
 
