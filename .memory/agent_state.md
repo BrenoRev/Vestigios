@@ -2,8 +2,8 @@
 
 > Todo agente lê este arquivo no início e o atualiza ao fim de cada tarefa. Manter curto e atual; histórico fica no Git e em `decisions.md`.
 
-**Fase atual:** 1, estrutura e governança (concluída e publicada na `main`; aguardando acesso ao Figma para a Fase 2).
-**Última atualização:** 2026-11-11
+**Fase atual:** 2, Figma e design tokens (extração parcial feita a partir do `.fig`; aguardando respostas do Design para tipografia, raios, breakpoints e movimento).
+**Última atualização:** 2026-11-13
 
 ## Feito
 
@@ -26,6 +26,7 @@
 - Metas de performance definidas: LCP ≤ 2,5 s, INP ≤ 200 ms, CLS ≤ 0,1 no p75 em celular (ADR-012). Web Analytics e Speed Insights ativos no painel da Vercel.
 - Nome do produto definido: **Vestígios**, com acento (ADR-011).
 - Histórico da `main` reescrito em 2026-11-11 sem `Co-Authored-By` (force push autorizado, ruleset religado). Quem clonou antes precisa de `git fetch && git reset --hard origin/main`.
+- Fase 2 (parcial): `.fig` exportado pelo Design lido sem o MCP; `DESIGN_SYSTEM.md` e `.memory/figma_specs.md` preenchidos; tokens de cor (40 primitivas, 6 temas, 5 de dado) e espaço (10) em `tokens.css`; contraste WCAG calculado. ADR-017.
 - `.claude/` com 6 skills (extrair-design-tokens, implementar-secao, registrar-fonte, registrar-decisao, entregar-tarefa, fechamento) e 3 agentes de revisão (revisor-editorial, revisor-tecnico, revisor-fidelidade). ADR-010.
 
 ## Em andamento
@@ -34,14 +35,15 @@
 
 ## Bloqueado por decisão
 
-- **Acesso ao Figma** (Fase 2 inteira depende disso).
+- **Fase 2: 12 decisões abertas**, todas com opções e recomendação em `.memory/figma_specs.md` (seção "Decisões abertas da Fase 2"): tipografia, breakpoints e grid, escalas de espaço e raio, troca de tema por capítulo, tema padrão do Tailwind, hover dos botões, estados e componentes ausentes, contraste do tema A1, imagens e logo, fontes tipográficas, acesso do MCP e cores das telas fora das variáveis.
 - **Configuração do projeto na Vercel:** confirmar que o Framework Preset é Vite, o Build Command é `npm run build`, o Output é `dist` e a versão de Node é compatível com `.nvmrc` (22). Não foi possível conferir daqui (CLI da Vercel deslogado).
 - **URL de produção:** o subdomínio `vestigios.vercel.app` pertence a outro projeto da Vercel (outro site). O responsável indicou `vestigios-2jqhu9vgh-brenorevs-projects.vercel.app`, agora usado nas docs e no About. Esse é um endereço de deploy específico (não acompanha deploys novos) e está atrás do login da Vercel (Deployment Protection). Falta definir um domínio de produção estável e público em Settings → Domains, e depois atualizar README, CLAUDE.md e o About.
 - **Mapas e gráficos:** técnica ou biblioteca, decidida por quem for implementar os mapas, depois de ver o protótipo.
-- **Fontes tipográficas:** `public/fonts/` ou `@fontsource/*` (Fase 2).
 - **Página 404:** não está no Figma.
-- **Tema padrão do Tailwind:** zerar os tokens padrão (`--*: initial`) na Fase 2 para que só existam tokens do Figma?
+- **Varredura de `.md` pelo Tailwind:** o v4 lê os `.md` do projeto e emite tokens citados neles; avaliar `@source not` (ver ADR-017).
 
 ## Próximo passo
 
-1. Com acesso ao Figma, iniciar a Fase 2 com a skill `extrair-design-tokens`.
+1. Levar as 12 decisões de `.memory/figma_specs.md` ao Design e ao responsável; cada resposta vira ADR (skill `registrar-decisao`).
+2. Com tipografia, breakpoints e raios definidos, completar `tokens.css` e `DESIGN_SYSTEM.md`.
+3. Depois, Fase 3 (layout base), com a skill `implementar-secao`. Pedir ao responsável que confirme o avanço de fase.
