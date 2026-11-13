@@ -150,3 +150,17 @@ Formato: data, contexto, decisão, alternativas descartadas, consequência. ADR 
   - Testado com uma imagem de 2400 px: 4 larguras em cada formato e `<picture>` renderizado corretamente.
 - **Alternativas descartadas:** exportação manual do Figma em várias larguras (trabalho repetitivo e sujeito a erro); Vercel Image Optimization (não funciona no `npm run dev` e consome cota do plano).
 - **Consequência:** as larguras são genéricas até haver breakpoints do Figma; revisar na Fase 2 contra os breakpoints e a largura máxima do layout. As variantes vão para `/assets/` com hash e herdam o cache imutável do ADR-015. Texturas usadas como fundo em CSS são definidas na Fase 2, quando se souber como o protótipo as aplica.
+
+## ADR-017: Extração da Fase 2 pelo arquivo `.fig` e tokens iniciais
+
+- **Data:** 2026-11-13
+- **Contexto:** o MCP do Figma recusou a leitura do protótipo (a conta conectada não tem acesso de edição ao arquivo). O Design exportou o arquivo (`.fig`, 63 MB). A leitura revelou variáveis, estilos e telas, e também divergências entre o que o Design documentou ("Fundamentos") e o que as telas usam.
+- **Decisão:**
+  - ler o `.fig` decodificando o formato `fig-kiwi` com `kiwi-schema` numa pasta temporária fora do projeto (não vira dependência), e registrar o método em `.memory/figma_specs.md`;
+  - guardar o export em `figma/`, ignorada pelo Git (dado bruto pesado, sem crédito de imagens);
+  - criar tokens em `src/styles/tokens.css` só para o que é variável do Figma e sem ambiguidade: 40 cores primitivas e 10 espaçamentos em `@theme`; os 6 temas e as 5 cores de dado em `:root`, com os nomes do `codeSyntax` que o Design definiu (`--a1-cor-texto`);
+  - **não** criar tokens de tipografia, raio, breakpoint nem movimento até o Design responder as decisões 1, 2, 3 e 6 de `figma_specs.md`;
+  - não importar nenhuma imagem do arquivo (sem crédito e licença, regra editorial 7);
+  - registrar as divergências e as 12 decisões abertas em `.memory/figma_specs.md`, no formato do Stop & Ask.
+- **Alternativas descartadas:** esperar o acesso do MCP (travaria a fase inteira); adicionar `kiwi-schema` ao projeto (dependência fora da stack e sem necessidade em produção); criar tokens de tipografia com os valores observados nas telas (os nomes seriam inventados por nós e o Figma continuaria incoerente); zerar o tema padrão do Tailwind agora (decisão 5, ainda aberta).
+- **Consequência:** os utilitários de espaço são `p-espaco-5`, `gap-espaco-4` etc.; as cores primitivas viram `bg-terra-900` etc. Os temas ainda não têm utilitários (decisão 4). O Tailwind v4 varre todos os arquivos do projeto, inclusive os `.md`: hoje as 40 cores e os 10 espaçamentos saem no CSS final porque o `DESIGN_SYSTEM.md` cita seus nomes (sem ele, `azul/700` e `papel/200` não seriam emitidas, pois nenhum tema as usa). É inofensivo, mas é um efeito colateral a conhecer; avaliar `@source not` para tirar os `.md` da varredura. A skill `extrair-design-tokens` ganhou o caminho de leitura pelo `.fig`. O MCP continua necessário para capturas de tela (`revisor-fidelidade`).

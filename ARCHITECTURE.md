@@ -75,6 +75,8 @@ Não são pastas novas; são arquivos de configuração das ferramentas da stack
 | `src/pages/Inicio.tsx`                   | Rota mínima da Fase 1.                                                         |
 | `src/routes/index.tsx`                   | Definição das rotas (React Router v7, `createBrowserRouter`).                  |
 
+A pasta `figma/` (export local do protótipo, 63 MB) não é versionada: está no `.gitignore` e não faz parte da árvore acima (ADR-017).
+
 ## Fluxo de dados
 
 ```text

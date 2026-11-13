@@ -23,6 +23,8 @@ Objetivo: transformar o protótipo em tokens do Tailwind v4 rastreáveis até o 
 4. Por frame: `get_screenshot` (referência visual) e `get_design_context` (medidas). Se existir a skill `figma-design-to-code`, carregue-a antes de `get_design_context`. A saída é referência de medida, não código para colar.
 5. Texturas e imagens de fundo: `download_assets`, depois converta para WebP ou AVIF em `src/assets/textures/`.
 
+**MCP sem acesso, mas com `.fig` exportado em `figma/`:** o arquivo é um zip com `canvas.fig` em formato `fig-kiwi`; o método de leitura está em "Como foi extraído", em `.memory/figma_specs.md`. Ele dá estrutura, variáveis, estilos e medidas, mas não dá capturas de tela.
+
 **Sem acesso ao Figma:** pare e peça à equipe de Design as exportações (Dev Mode/inspect com medidas, lista de estilos e variáveis, capturas de cada frame em cada breakpoint, arquivos de textura). Nunca suponha medidas a partir de captura sem escala.
 
 ## Passos

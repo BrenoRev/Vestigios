@@ -1,6 +1,115 @@
 /*
  * Só valores extraídos do Figma, espelhados em DESIGN_SYSTEM.md.
  * A v4 é configurada aqui: não crie tailwind.config.js.
+ * Os nomes dos temas e das cores de dado repetem o codeSyntax do Figma
+ * (por exemplo var(--a1-cor-texto)), e ficam em :root, fora do @theme, porque
+ * o tema ativo muda por capítulo.
  */
 @theme {
+  --color-terra-700: #6b5a43;
+  --color-terra-900: #2a2118;
+  --color-ferrugem-600: #7a3b12;
+  --color-ferrugem-700: #a33b17;
+  --color-areia-100: #e9dfcc;
+  --color-areia-200: #d5c4a3;
+  --color-areia-300: #c9b99c;
+  --color-cimento-200: #cfcac0;
+  --color-cimento-300: #b9b4aa;
+  --color-cimento-800: #3e3a33;
+  --color-cimento-900: #2b2823;
+  --color-ruina-100: #e6e2da;
+  --color-ruina-400: #a8a298;
+  --color-ruina-600: #3a3835;
+  --color-ruina-700: #363330;
+  --color-ruina-800: #2a2826;
+  --color-ruina-900: #1e1d1c;
+  --color-cobre-300: #e0a877;
+  --color-verde-50: #eef3ec;
+  --color-verde-100: #dce6da;
+  --color-verde-600: #3e5442;
+  --color-verde-700: #2f5a3a;
+  --color-verde-900: #1f2b21;
+  --color-noite-100: #e4e8ee;
+  --color-noite-300: #b7c0cc;
+  --color-noite-400: #9aa4b2;
+  --color-noite-700: #2a313b;
+  --color-noite-800: #1a2129;
+  --color-noite-900: #12161c;
+  --color-laranja-400: #f0a35e;
+  --color-salmao-300: #f0a07e;
+  --color-azul-400: #7fb2f0;
+  --color-azul-700: #2c5d8f;
+  --color-rio-700: #1f3a52;
+  --color-tinta-300: #b9c0c8;
+  --color-tinta-600: #3b424b;
+  --color-tinta-900: #1b1f24;
+  --color-papel-100: #eef0f1;
+  --color-papel-200: #dde3ea;
+  --color-branco: #ffffff;
+
+  --spacing-espaco-1: 0.25rem;
+  --spacing-espaco-2: 0.5rem;
+  --spacing-espaco-3: 0.75rem;
+  --spacing-espaco-4: 1rem;
+  --spacing-espaco-5: 1.5rem;
+  --spacing-espaco-6: 2rem;
+  --spacing-espaco-7: 3rem;
+  --spacing-espaco-8: 4.5rem;
+  --spacing-espaco-9: 6rem;
+  --spacing-espaco-10: 7.5rem;
+}
+
+:root {
+  --a1-cor-fundo: var(--color-areia-100);
+  --a1-cor-superficie: var(--color-areia-200);
+  --a1-cor-texto: var(--color-terra-900);
+  --a1-cor-texto-suave: var(--color-terra-700);
+  --a1-cor-destaque: var(--color-ferrugem-600);
+  --a1-cor-sobre-destaque: var(--color-areia-100);
+  --a1-cor-borda: var(--color-areia-300);
+
+  --a2-cor-fundo: var(--color-cimento-300);
+  --a2-cor-superficie: var(--color-cimento-200);
+  --a2-cor-texto: var(--color-cimento-900);
+  --a2-cor-texto-suave: var(--color-cimento-800);
+  --a2-cor-destaque: var(--color-cimento-900);
+  --a2-cor-sobre-destaque: var(--color-cimento-300);
+
+  --a3-cor-fundo: var(--color-ruina-800);
+  --a3-cor-superficie: var(--color-ruina-700);
+  --a3-cor-texto: var(--color-ruina-100);
+  --a3-cor-texto-suave: var(--color-ruina-400);
+  --a3-cor-destaque: var(--color-cobre-300);
+  --a3-cor-sobre-destaque: var(--color-ruina-900);
+  --a3-cor-borda: var(--color-ruina-600);
+
+  --a4-cor-fundo: var(--color-verde-100);
+  --a4-cor-superficie: var(--color-verde-50);
+  --a4-cor-texto: var(--color-verde-900);
+  --a4-cor-texto-suave: var(--color-verde-600);
+  --a4-cor-destaque: var(--color-verde-700);
+  --a4-cor-sobre-destaque: var(--color-verde-50);
+  --a4-cor-borda: var(--color-verde-700);
+
+  --b-cor-fundo: var(--color-noite-900);
+  --b-cor-superficie: var(--color-noite-800);
+  --b-cor-texto: var(--color-noite-100);
+  --b-cor-texto-suave: var(--color-noite-300);
+  --b-cor-destaque: var(--color-laranja-400);
+  --b-cor-sobre-destaque: var(--color-noite-900);
+  --b-cor-borda: var(--color-noite-700);
+
+  --c-cor-fundo: var(--color-papel-100);
+  --c-cor-superficie: var(--color-branco);
+  --c-cor-texto: var(--color-tinta-900);
+  --c-cor-texto-suave: var(--color-tinta-600);
+  --c-cor-destaque: var(--color-ferrugem-700);
+  --c-cor-sobre-destaque: var(--color-branco);
+  --c-cor-borda: var(--color-tinta-300);
+
+  --dado-abandonado: var(--color-laranja-400);
+  --dado-reversao: var(--color-azul-400);
+  --dado-a-confirmar: var(--color-noite-400);
+  --dado-a-apurar: var(--color-salmao-300);
+  --dado-agua: var(--color-rio-700);
 }
