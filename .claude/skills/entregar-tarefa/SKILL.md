@@ -12,7 +12,7 @@ Rode e confira, nesta ordem:
 ```bash
 npm run verificar        # tsc --noEmit + eslint . + vite build
 npm run format:check     # prettier
-npm run check:conteudo   # pendências editoriais (precisa zerar antes de ir para produção)
+npm run check:conteudo   # pendências e texto provisório (avisa; zerar antes do fechamento, ADR-019)
 ```
 
 - [ ] A tela bate com o frame do Figma em todos os breakpoints do protótipo (agente `revisor-fidelidade`).

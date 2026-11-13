@@ -42,7 +42,7 @@ Agentes de revisão (só leem e apontam; não editam): `revisor-editorial` (proi
 | `npm run typecheck`      | `tsc --noEmit`.                                                                               |
 | `npm run lint`           | `eslint .` (inclui as travas editoriais e de design system).                                  |
 | `npm run verificar`      | `tsc --noEmit && eslint . && vite build`. Rode antes de dar qualquer tarefa por concluída.    |
-| `npm run check:conteudo` | Varre `src/` atrás de `pendente(...)`, "em breve" e "lorem ipsum".                            |
+| `npm run check:conteudo` | Varre `src/` atrás de `pendente(...)`, `provisorio(...)`, "em breve" e "lorem ipsum".         |
 | `npm run build`          | Build de produção: `check:conteudo` + `tsc` + `vite build`. É o comando que a Vercel executa. |
 | `npm run preview`        | Serve o `dist/` localmente.                                                                   |
 | `npm run format`         | Prettier (com ordenação de classes Tailwind).                                                 |
@@ -68,7 +68,8 @@ O Jornalismo fornece o conteúdo e **não edita o repositório**; um dev respons
 - Tipos em `src/types/content.ts`: `Fonte`, `Dado`, `Imagem`, `Pendente`. Um dado sem `fonteId` não compila; uma imagem sem `credito`, `licenca` ou `acervo` não compila.
 - `docs/fontes.md` é a **única fonte de verdade** para o que entra em `src/content/`.
 - Texto que aparece no Figma é **referência de layout**. Só vira conteúdo depois de confirmado pela equipe de Jornalismo.
-- **Placeholder honesto:** onde faltar conteúdo, use `pendente("o que falta e quem deve fornecer")`, importado de `src/content/pendente.ts`, e renderize com `BlocoPendente`. `scripts/check-conteudo.mjs` falha a build de produção enquanto houver pendência (no preview da Vercel ele só avisa).
+- **Placeholder honesto:** onde faltar conteúdo, use `pendente("o que falta e quem deve fornecer")`, importado de `src/content/pendente.ts`, e renderize com `BlocoPendente`. `scripts/check-conteudo.mjs` lista as pendências; ele falha a build de produção quando `BLOQUEIA_PRODUCAO` estiver ligado (hoje desligado, ADR-019).
+- **Texto do protótipo ainda não confirmado:** `provisorio(conteudo, "o que falta, quem confirma")`, também de `src/content/pendente.ts`. Aparece marcado na tela e entra no aviso do `check-conteudo`. Enquanto `BLOQUEIA_PRODUCAO` estiver `false` em `scripts/check-conteudo.mjs` (ADR-019), pendência e texto provisório só avisam, em qualquer ambiente; o fechamento (Fase 5) liga a chave e zera ambos.
 
 ### Proibições editoriais absolutas
 
@@ -84,6 +85,7 @@ O Jornalismo fornece o conteúdo e **não edita o repositório**; um dev respons
 
 - A partir da Fase 2, **só tokens extraídos do Figma** (`src/styles/tokens.css`, documentados em `DESIGN_SYSTEM.md`). **Proibido valor arbitrário** (`w-[327px]`, `text-[#123456]`); o ESLint bloqueia `[` em `className`.
 - Não "melhore", não complete e não reinterprete o protótipo.
+- **Escala tipográfica e efeitos:** `text-22`, `leading-texto`, `tracking-texto`, `shadow-cartao`, `ease-out-cubic` etc., definidos em `tokens.css` e listados em `DESIGN_SYSTEM.md`. Valor novo entra junto do componente que o usa, lido do frame.
 - **Cor:** utilitários semânticos de tema (`bg-fundo`, `text-texto`, `text-texto-suave`, `bg-superficie`, `bg-destaque`, `text-sobre-destaque`, `border-borda`) e as cores primitivas (`bg-terra-900`). Troque o tema com `data-tema="a1"` a `"c"` na seção (A1 é o padrão; o A2 não tem `border-borda`). As cores padrão do Tailwind foram removidas.
 - **Espaço e raio:** `p-espaco-5` quando o valor estiver na escala do Figma; senão o múltiplo de 4px do Tailwind (`p-2.5`). Raios: `rounded-raio-12` etc.
 - **Tipografia:** use `font-public-sans` e as demais famílias; a escala é criada junto de cada componente, lida do frame (`DESIGN_SYSTEM.md`, seção Tipografia). Só existem os breakpoints `md` (768) e `lg` (1024); a base é o Mobile (360).

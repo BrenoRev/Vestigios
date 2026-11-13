@@ -51,7 +51,7 @@ Regras que bloqueiam publicação (detalhes no `CLAUDE.md`):
 
 Fotos: coloque o original em alta resolução em `src/assets/images/` e importe com `?responsiva`. A build gera as larguras em AVIF e WebP, e o componente `ImagemResponsiva` monta o `<picture>`. Não exporte tamanhos à mão.
 
-Enquanto o conteúdo não chega, use `pendente("o que falta, quem fornece")`. Ele aparece como bloco tarjado no desenvolvimento e no preview, e **bloqueia a produção** até ser resolvido.
+Enquanto o conteúdo não chega, use `pendente("o que falta, quem fornece")`. Ele aparece como bloco tarjado no desenvolvimento e no preview, e entra no aviso do `check-conteudo` (a produção só é bloqueada depois que o fechamento ligar a chave, ADR-019) até ser resolvido.
 
 ## Como as telas são feitas
 

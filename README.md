@@ -43,7 +43,7 @@ npm install            # instala as dependências
 npm run dev            # servidor de desenvolvimento
 npm run verificar      # tsc --noEmit + eslint + vite build (rode antes de abrir PR)
 npm run check:conteudo # procura conteúdo pendente em src/
-npm run build          # build de produção (falha se houver conteúdo pendente)
+npm run build          # build de produção (avisa de conteúdo pendente ou provisório)
 npm run preview        # serve a build localmente
 npm run format         # formata com Prettier
 ```
@@ -52,16 +52,16 @@ npm run format         # formata com Prettier
 
 Integração Git com a [Vercel](https://vercel.com). A branch de produção é a `main` deste repositório (https://github.com/BrenoRev/Vestigios): cada push nela publica em https://vestigios-2jqhu9vgh-brenorevs-projects.vercel.app, e outras branches geram previews.
 
-A build de produção é bloqueada enquanto houver conteúdo marcado como pendente. Nos previews, as pendências aparecem como blocos tarjados, para revisão da equipe.
+Conteúdo pendente aparece como bloco tarjado e texto do protótipo ainda não confirmado, destacado. A build avisa em qualquer ambiente; o fechamento do projeto liga o bloqueio da produção (ADR-019).
 
 ## Validação de PR
 
 Toda PR para a `main` passa pelo workflow [`Validação`](./.github/workflows/validacao.yml), no GitHub Actions:
 
-| Job          | O que confere                                                          |
-| ------------ | ---------------------------------------------------------------------- |
-| **Build**    | `tsc --noEmit`, `eslint .`, `prettier --check .` e `vite build`.       |
-| **Conteúdo** | `check-conteudo`: nenhum `pendente(...)`, "em breve" ou "lorem ipsum". |
+| Job          | O que confere                                                                                                                                     |
+| ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Build**    | `tsc --noEmit`, `eslint .`, `prettier --check .` e `vite build`.                                                                                  |
+| **Conteúdo** | `check-conteudo`: lista `pendente(...)`, `provisorio(...)`, "em breve" e "lorem ipsum"; só avisa enquanto o bloqueio estiver desligado (ADR-019). |
 
 Para adiantar o resultado antes de abrir a PR:
 

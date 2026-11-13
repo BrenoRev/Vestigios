@@ -28,16 +28,17 @@
 - Histórico da `main` reescrito em 2026-11-11 sem `Co-Authored-By` (force push autorizado, ruleset religado). Quem clonou antes precisa de `git fetch && git reset --hard origin/main`.
 - Fase 2 (parcial): `.fig` exportado pelo Design lido sem o MCP; `DESIGN_SYSTEM.md` e `.memory/figma_specs.md` preenchidos; tokens de cor (40 primitivas, 6 temas, 5 de dado) e espaço (10) em `tokens.css`; contraste WCAG calculado. ADR-017.
 - Fase 2 (decisões): as 12 decisões foram tomadas por delegação do responsável (ADR-018). `tokens.css` com famílias, raios, breakpoints `md`/`lg`, cores padrão removidas e troca de tema por `data-tema`; `fonts.css` com 16 pesos em 5 famílias; MCP lendo a cópia de trabalho do Figma. Verificado em página de teste.
+- Fases 3 e 4 (página inicial): Container, Navbar, Botão (temas A a F), Logo, Texto, marcadores de pendência e as quatro seções, com tokens de tipografia e efeitos (ADR-019). Medidas de Tablet e Mobile do Guia lidas do `.fig` porque o MCP do Figma bateu no limite de chamadas.
 - `.claude/` com 6 skills (extrair-design-tokens, implementar-secao, registrar-fonte, registrar-decisao, entregar-tarefa, fechamento) e 3 agentes de revisão (revisor-editorial, revisor-tecnico, revisor-fidelidade). ADR-010.
 
 ## Em andamento
 
-- Nada.
+- Página inicial completa (Navbar, Hero, 1ª Matéria, Quebra, Guia de Leitura) nos três tamanhos, com o texto do Figma como provisório (ADR-019), na branch `feat/pagina-inicial`.
 
 ## Bloqueado por decisão
 
 - **Design (confirmar, não bloqueia):** lista de exceções de tipografia e de espaço em `DESIGN_SYSTEM.md`; Selo de estatuto para `imprensa`; Space Grotesk em 2 textos de componentes; destino do botão "Explorar o Mapa"; correspondência entre capítulos e temas; as 6 cores fora das variáveis.
-- **Jornalismo (bloqueia a Fase 4):** a frase do Hero afirma que o esvaziamento "não é acidente" (regra editorial 2); todas as cifras das telas precisam de fonte e ano em `docs/fontes.md`; rótulos da Navbar e textos das telas são só referência de layout. Detalhes em `figma_specs.md`, seção Alertas editoriais.
+- **Jornalismo (bloqueia o fechamento):** a frase do Hero afirma que o esvaziamento "não é acidente" (regra editorial 2); todas as cifras das telas precisam de fonte e ano em `docs/fontes.md`; rótulos da Navbar e textos das telas são só referência de layout. Detalhes em `figma_specs.md`, seção Alertas editoriais.
 - **Configuração do projeto na Vercel:** confirmar que o Framework Preset é Vite, o Build Command é `npm run build`, o Output é `dist` e a versão de Node é compatível com `.nvmrc` (22). Não foi possível conferir daqui (CLI da Vercel deslogado).
 - **URL de produção:** o subdomínio `vestigios.vercel.app` pertence a outro projeto da Vercel (outro site). O responsável indicou `vestigios-2jqhu9vgh-brenorevs-projects.vercel.app`, agora usado nas docs e no About. Esse é um endereço de deploy específico (não acompanha deploys novos) e está atrás do login da Vercel (Deployment Protection). Falta definir um domínio de produção estável e público em Settings → Domains, e depois atualizar README, CLAUDE.md e o About.
 - **Mapas e gráficos:** técnica ou biblioteca, decidida por quem for implementar os mapas, depois de ver o protótipo.
@@ -46,6 +47,7 @@
 
 ## Próximo passo
 
-1. Responsável confirma o avanço para a Fase 3 (layout base): Navbar, Container, Botão e Hero, com a skill `implementar-secao`, lendo cada frame no MCP.
-2. Criar os tokens de tipografia e as cores literais junto de cada componente (`DESIGN_SYSTEM.md`).
-3. Levar a lista de exceções ao Design e os alertas editoriais ao Jornalismo.
+0. Revisar a PR da página inicial. Depois: Design confirma os pontos do ADR-019 (capítulos 4 a 6 no Mobile, ícones, Navbar fixa, foco); Jornalismo troca cada `provisorio(...)` por texto confirmado e registra as fontes (`docs/fontes.md`); o fechamento liga `BLOQUEIA_PRODUCAO`.
+
+1. Fase 5 (fechamento) depois que Jornalismo e Design resolverem os pontos acima.
+2. Levar a lista de exceções ao Design e os alertas editoriais ao Jornalismo.

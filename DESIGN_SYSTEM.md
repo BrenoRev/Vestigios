@@ -17,10 +17,10 @@
 | Espaçamento            | **Token** + base do Tailwind | `p-espaco-5` quando o valor está na escala; senão o múltiplo de 4px do Tailwind (`p-2.5` = 10px). Nunca `[...]`.                                                                                                                                                                                            |
 | Raios                  | **Token**                    | `rounded-raio-12` etc. Os utilitários padrão de raio, tipografia e sombra do Tailwind (`rounded-lg`, `text-lg`, `shadow-*`) continuam existindo, mas não são do Figma e não devem ser usados.                                                                                                               |
 | Famílias de fonte (5)  | **Token** e carregadas       | `font-public-sans` etc. Fontes servidas por `@fontsource`.                                                                                                                                                                                                                                                  |
-| Escala tipográfica     | **Por componente**           | Tokens criados junto de cada componente, a partir do frame (ADR-018).                                                                                                                                                                                                                                       |
+| Escala tipográfica     | **Token**                    | `text-22`, `leading-texto`, `tracking-texto`: valores lidos dos frames da página inicial (ADR-019). Tamanho novo entra junto do componente que o usa.                                                                                                                                                       |
 | Breakpoints            | **Token**                    | `md` (768) e `lg` (1024); a base é o Mobile (360).                                                                                                                                                                                                                                                          |
-| Bordas                 | **Sem token**                | Utilitário criado quando o primeiro componente precisar (1,5px não existe no Tailwind).                                                                                                                                                                                                                     |
-| Movimento              | **Sem token**                | Definido junto do componente Botão (ADR-018).                                                                                                                                                                                                                                                               |
+| Bordas                 | **Utilitário**               | `borda-1-5` (1,5px, que o Tailwind não tem) em `global.css`.                                                                                                                                                                                                                                                |
+| Movimento              | **Token**                    | `ease-out-cubic` (curva `OUT_CUBIC`); hover do botão com `duration-300` e camada animando `opacity` (ADR-018, ADR-019).                                                                                                                                                                                     |
 
 ## Cores
 
@@ -105,7 +105,21 @@ Fundamentos diz que laranja e azul diferem também em luminosidade, então a lei
 
 ### Cores literais nas telas
 
-Nas telas (Desktop, Tablet, Mobile e Navbar), 0 de 140 preenchimentos sólidos estão ligados a variáveis; os componentes (Botões, Filtro, Marcador, Selo) estão ligados na maior parte. Das 13 cores sólidas distintas das telas, 7 existem nos primitivos (`tinta/600`, `ferrugem/600`, `ruina/900`, `branco`, `terra/900`, `papel/100`, `areia/100`) e **6 não existem**: `#f8f8f8` (32 usos), `#474a4e` (24), `#6e695f` (9), `#6f3713` (8), `#f9f0e2` (3) e `#000000` (3). Nenhuma foi transformada em token.
+Nas telas (Desktop, Tablet, Mobile e Navbar), 0 de 140 preenchimentos sólidos estão ligados a variáveis; os componentes (Botões, Filtro, Marcador, Selo) estão ligados na maior parte. Das 13 cores sólidas distintas das telas, 7 existem nos primitivos (`tinta/600`, `ferrugem/600`, `ruina/900`, `branco`, `terra/900`, `papel/100`, `areia/100`) e **6 não existem**: `#f8f8f8` (32 usos), `#474a4e` (24), `#6e695f` (9), `#6f3713` (8), `#f9f0e2` (3) e `#000000` (3). Todas viraram token em ADR-019, com nome pelo papel: ver a seção seguinte.
+
+### Tokens criados com a página inicial (ADR-019)
+
+| Grupo                    | Tokens                                                                                                                                                  | Origem no Figma                                                                                 |
+| ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
+| Cores literais por papel | `pagina` `#f8f8f8`, `marcador-guia` `#474a4e`, `texto-materia` `#6e695f`, `faixa-destaque` `#6f3713`, `texto-hero` `#f9f0e2`, `preto` `#000000`         | As 6 cores que as telas usam fora das variáveis.                                                |
+| Cores de hover do botão  | `botao-b-hover` `#53290e`, `botao-c-hover` `#0a0d11`, `botao-d-hover` `#7b290d`, `botao-e-hover` `#df9450`                                              | Hover do componente Botões (`7:235`).                                                           |
+| Tamanhos de texto        | `text-14`, `15`, `16`, `18`, `22`, `24`, `25`, `28`, `32`, `34`, `36`, `40`, `44`, `48`, `64` (px ÷ 16 em rem)                                          | Os tamanhos que os frames usam; o tamanho de cada elemento por breakpoint está nos componentes. |
+| Entrelinha               | `leading-subtitulo` 1,2, `leading-citacao` 1,3, `leading-texto` 1,45, `leading-apuracao` 1,4; 1 e 1,5 são `leading-none` e `leading-normal` do Tailwind | Altura de linha dos textos.                                                                     |
+| Espaçamento entre letras | `tracking-titulo` −0,02em (−2%), `tracking-texto` −0,005em (−0,5%)                                                                                      | Letter spacing dos textos.                                                                      |
+| Efeitos                  | `backdrop-blur-navbar` 7px, `backdrop-blur-botao` 2px, `shadow-cartao` (0 4 2,7 10%), `drop-shadow-etapa` (0 1 2 25%)                                   | Navbar, Botões, estilo "Drop Shadow - Cards", círculo das etapas.                               |
+| Curva                    | `ease-out-cubic` = `cubic-bezier(0.215, 0.61, 0.355, 1)`                                                                                                | `OUT_CUBIC` do hover do botão.                                                                  |
+
+O desfoque de fundo de 4 do estilo "Drop Shadow - Cards" não foi aplicado: os cartões não ficam sobre imagem e o desfoque não aparece. Medidas fora da escala `espaco-N` saem em múltiplos de 0,25 do Tailwind (1px), por exemplo `pt-18.5` (74px) e `w-160.75` (643px); o Tailwind não gera múltiplos menores, então o traço de 2,5px das réguas do Guia virou `w-0.5` (2px).
 
 ### Contraste (WCAG 2.x)
 
@@ -124,10 +138,10 @@ Razão calculada a partir dos valores hexadecimais, para cada par de cada tema. 
 
 ## Tipografia
 
-**Decisão (ADR-018):** as telas são a verdade visual, e nelas a tipografia não segue os 17 estilos documentados (215 de 216 textos fogem deles) e varia de forma diferente por contexto entre Desktop e Tablet. Por isso **não há escala tipográfica congelada**. As cinco famílias estão carregadas e viraram token; a escala nasce junto de cada componente, assim:
+**Decisão (ADR-018):** as telas são a verdade visual, e nelas a tipografia não segue os 17 estilos documentados (215 de 216 textos fogem deles) e varia de forma diferente por contexto entre Desktop e Tablet. Por isso **não há escala tipográfica congelada**; no ADR-019 os tokens saíram por valor (`text-22`) e os tamanhos por breakpoint ficam em cada componente. As cinco famílias estão carregadas e viraram token; a escala nasce junto de cada componente, assim:
 
 1. ler o frame com o MCP (`get_design_context`), nos três tamanhos;
-2. criar o token pela função do texto (por exemplo `titulo-secao`), com o tamanho de cada breakpoint e a altura de linha e o espaçamento entre letras do frame;
+2. criar o token do tamanho (por exemplo `text-22`) e reaproveitar a entrelinha (`leading-texto`) e o espaçamento entre letras (`tracking-texto`) do frame; a função do texto aparece no componente que o usa (ADR-019);
 3. reaproveitar um token só quando o valor for idêntico em todos os usos; valor diferente vira outro token;
 4. registrar aqui cada token com o frame de origem, e as divergências para o Design revisar.
 
@@ -237,7 +251,7 @@ O texto de "Fundamentos" (seção Espaço, raio e grid) documenta `raio/0` = 0, 
 | `--radius-raio-16`    | 16px (1rem)     | observado: 6 camadas das telas             |
 | `--radius-raio-20`    | 20px (1,25rem)  | observado: 2 camadas das telas             |
 
-`raio/0` é `rounded-none`. Bordas documentadas: 1, 1,5 e 3 (observadas também 0,75, 2 e 2,5). O Tailwind só tem 1px pronto, então a borda de 1,5px vira utilitário próprio quando o primeiro componente precisar.
+`raio/0` é `rounded-none`. Bordas documentadas: 1, 1,5 e 3 (observadas também 0,75, 2 e 2,5). O Tailwind só tem 1px pronto, então a borda de 1,5px virou o utilitário `borda-1-5` com o primeiro componente precisar.
 
 ## Grid e breakpoints
 
@@ -255,13 +269,13 @@ Alvo de toque mínimo documentado: **44px**. Os botões têm 44 de altura em Tab
 
 ## Texturas e efeitos
 
-| Efeito                                | Onde aparece                                                                                                       | Situação                                                                                                                      |
-| ------------------------------------- | ------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------- |
-| `NOISE`, `GRAIN` e `FOREGROUND_BLUR`  | Só na página "Logo": vetores de até 76px                                                                           | Fora das telas; o logo deve vir do Design como arquivo exportado.                                                             |
-| `BACKGROUND_BLUR`                     | Variantes da Navbar (página "Componentes") e suas instâncias (página "Prototipação"); 1024×55 e 768×55             | Área pequena, dentro da regra de `backdrop-filter`.                                                                           |
-| `DROP_SHADOW`                         | 38 camadas da página "Prototipação"                                                                                | Estático, sem animação. Estilo de efeito "Drop Shadow - Cards": deslocamento y=4, desfoque 2,7, preto a 10%. Uso a confirmar. |
-| Preenchimento com imagem              | 33 imagens usadas (fotos, ilustrações, moodboard, logo e o quadriculado abaixo)                                    | Sem crédito nem licença: **nenhuma importada** (regra editorial 7).                                                           |
-| Quadriculado de 256×256, quase branco | 38 camadas da página "Prototipação" (frames "Frame 3", "Frame 4", "Frame 5", "Frame 14", "Icon" e "Icon-quebrado") | Finalidade a confirmar com o Design: textura ou preenchimento de espaço reservado. Não importado.                             |
+| Efeito                                | Onde aparece                                                                                                       | Situação                                                                                                                                                                 |
+| ------------------------------------- | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `NOISE`, `GRAIN` e `FOREGROUND_BLUR`  | Só na página "Logo": vetores de até 76px                                                                           | Fora das telas. O logo usado na página é o PNG do arquivo (1548 × 553), exportado como `src/assets/images/logo.webp` e usado como máscara; o Design deve entregar o SVG. |
+| `BACKGROUND_BLUR`                     | Variantes da Navbar (página "Componentes") e suas instâncias (página "Prototipação"); 1024×55 e 768×55             | Área pequena, dentro da regra de `backdrop-filter`.                                                                                                                      |
+| `DROP_SHADOW`                         | 38 camadas da página "Prototipação"                                                                                | Estático, sem animação. Estilo de efeito "Drop Shadow - Cards": deslocamento y=4, desfoque 2,7, preto a 10%. Uso a confirmar.                                            |
+| Preenchimento com imagem              | 33 imagens usadas (fotos, ilustrações, moodboard, logo e o quadriculado abaixo)                                    | Sem crédito nem licença, nenhuma foto foi importada (regra editorial 7); só o logo, que é arte do projeto.                                                               |
+| Quadriculado de 256×256, quase branco | 38 camadas da página "Prototipação" (frames "Frame 3", "Frame 4", "Frame 5", "Frame 14", "Icon" e "Icon-quebrado") | Finalidade a confirmar com o Design: textura ou preenchimento de espaço reservado. Não importado.                                                                        |
 
 ## Movimento
 

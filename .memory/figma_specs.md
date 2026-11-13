@@ -60,13 +60,13 @@ O leitor não está no repositório (exigiria uma dependência fora da stack). P
 
 | Ordem | Seção           | Frame (Desktop) | Dimensões (Desktop) | Componente em `src/components/sections/` |
 | ----- | --------------- | --------------- | ------------------- | ---------------------------------------- |
-| 1     | Hero Section    | dentro de `7:5` | 1024 × 542          | a criar na Fase 4                        |
-| 2     | 1ª Matéria      | dentro de `7:5` | 1024 × 924          | a criar na Fase 4                        |
-| 3     | Quebra          | dentro de `7:5` | 1024 × 1376         | a criar na Fase 4                        |
-| 4     | Guia de Leitura | dentro de `7:5` | 1024 × 5440         | a criar na Fase 4                        |
-| n/d   | Navbar          | instância       | 1024 × 55           | a criar na Fase 3 (layout)               |
+| 1     | Hero Section    | dentro de `7:5` | 1024 × 542          | `HeroSection.tsx`                        |
+| 2     | 1ª Matéria      | dentro de `7:5` | 1024 × 924          | `PrimeiraMateria.tsx`                    |
+| 3     | Quebra          | dentro de `7:5` | 1024 × 1376         | `Quebra.tsx`                             |
+| 4     | Guia de Leitura | dentro de `7:5` | 1024 × 5440         | `GuiaDeLeitura.tsx` e seis `Guia*.tsx`   |
+| n/d   | Navbar          | instância       | 1024 × 55           | `layout/Navbar.tsx`                      |
 
-O conteúdo textual dessas telas é referência de layout e não foi copiado para o repositório; só entra em `src/content/` depois de confirmado pelo Jornalismo.
+O texto dessas telas foi copiado para `src/content/pagina-inicial.ts` como **conteúdo provisório** (ADR-019): marcado na tela e listado em `docs/fontes.md`, até o Jornalismo confirmar.
 
 ## Componentes (página "Componentes", `2:3`)
 
@@ -349,3 +349,19 @@ C) Usar as cores como hexadecimal solto.
 Recomendação: A.
 Parado: implementação das telas com cor; só os tokens atuais estão disponíveis.
 ```
+
+## Página inicial implementada (ADR-019)
+
+| Elemento do Figma                        | `node-id`                              | Componente                                                |
+| ---------------------------------------- | -------------------------------------- | --------------------------------------------------------- |
+| Navbar (Desktop, Tablet, Mobile)         | `15:782`, `15:766`, `15:616`           | `layout/Navbar.tsx`                                       |
+| Hero                                     | `2:57`, `15:575`, `15:610`             | `sections/HeroSection.tsx`, `ui/Logo.tsx`, `ui/Botao.tsx` |
+| 1ª Matéria                               | `15:936`, `18:1083`, `18:1182`         | `sections/PrimeiraMateria.tsx`                            |
+| Quebra                                   | `20:1298`, `20:1311`, `20:1318`        | `sections/Quebra.tsx`                                     |
+| Guia de Leitura                          | `35:612`, `35:878`, `35:1376`          | `sections/GuiaDeLeitura.tsx` e `Guia*.tsx`                |
+| Pendência de apuração                    | `2:1120`                               | `ui/PendenciaApuracao.tsx`                                |
+| Quadriculado de espaço de imagem e ícone | "Frame 3/4/5", "Icon", "Icon-quebrado" | `ui/EspacoReservado.tsx` (bloco tarjado)                  |
+
+Medidas de cada breakpoint (margens 52, 48 e 22; larguras de coluna; tamanhos de texto) estão nos próprios componentes; os tamanhos e as entrelinhas, em `DESIGN_SYSTEM.md`.
+
+Pontos que o Figma não define e ficaram com a escolha do ADR-019: Navbar fixa ou não ao rolar; destino de cada item da Navbar e do botão do Hero; estado de foco; capítulos 4 a 6 do Guia no Mobile; ícones (os "Icon-quebrado" são espaços reservados).
