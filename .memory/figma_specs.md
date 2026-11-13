@@ -66,7 +66,7 @@ O leitor não está no repositório (exigiria uma dependência fora da stack). P
 | 4     | Guia de Leitura | dentro de `7:5` | 1024 × 5440         | `GuiaDeLeitura.tsx` e seis `Guia*.tsx`   |
 | n/d   | Navbar          | instância       | 1024 × 55           | `layout/Navbar.tsx`                      |
 
-O texto dessas telas foi copiado para `src/content/pagina-inicial.ts` como **conteúdo provisório** (ADR-019): marcado na tela e listado em `docs/fontes.md`, até o Jornalismo confirmar.
+O texto dessas telas foi copiado para `src/content/pagina-inicial.ts` como **conteúdo provisório** (ADR-019): marcado no código com `provisorio(...)` e listado em `docs/fontes.md`, até o Jornalismo confirmar.
 
 ## Componentes (página "Componentes", `2:3`)
 

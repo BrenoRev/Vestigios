@@ -18,13 +18,7 @@ export function Quebra({ conteudo }: QuebraProps) {
       <Container>
         <figure className="mx-auto w-58 md:w-83.75 lg:w-108">
           <p className="font-newsreader text-22 leading-citacao font-normal tracking-titulo whitespace-pre-line text-preto md:text-28 lg:text-34">
-            {marcado ? (
-              <mark className="texto-provisorio" title={estrofes.motivo}>
-                {texto}
-              </mark>
-            ) : (
-              texto
-            )}
+            {texto}
           </p>
         </figure>
       </Container>
