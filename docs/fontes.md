@@ -34,7 +34,7 @@
 
 ## Conteúdo provisório do protótipo
 
-> Texto copiado do Figma que o Jornalismo ainda não confirmou (ADR-019). Fica em `src/content/pagina-inicial.ts`. Trechos marcados com `provisorio(...)` aparecem destacados na tela; o restante é texto de explicação do protótipo que também aguarda confirmação. Nada disso entra como dado: cada número e fato precisa de uma linha na tabela de fontes acima antes de a marca sair.
+> Texto copiado do Figma que o Jornalismo ainda não confirmou (ADR-019). Fica em `src/content/pagina-inicial.ts`. Trechos marcados com `provisorio(...)` no código não têm destaque na tela; o restante é texto de explicação do protótipo que também aguarda confirmação. Nada disso entra como dado: cada número e fato precisa de uma linha na tabela de fontes acima antes de a marca sair.
 
 | O que está provisório                                                                                                                                                                                                               | O que o Jornalismo precisa fazer                                                                                                                         |
 | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |

@@ -51,11 +51,6 @@
     outline: 2px solid CanvasText;
     outline-offset: -2px;
   }
-
-  .texto-provisorio {
-    background: color-mix(in srgb, Mark 25%, transparent);
-    color: inherit;
-  }
 }
 
 /* O logo é só alfa: a máscara deixa a cor vir de bg-*, como no Figma. */

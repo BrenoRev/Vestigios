@@ -21,9 +21,5 @@ function Rico({ valor }: { valor: TextoRico }) {
 
 export function Texto({ valor }: { valor: TextoConteudo }) {
   if (!ehProvisorio(valor)) return <Rico valor={valor} />;
-  return (
-    <mark className="texto-provisorio" title={valor.motivo}>
-      <Rico valor={valor.conteudo} />
-    </mark>
-  );
+  return <Rico valor={valor.conteudo} />;
 }
