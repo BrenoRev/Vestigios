@@ -14,6 +14,18 @@
   }
 }
 
+@utility borda-1-5 {
+  border-width: 1.5px;
+}
+
+@utility rolagem-oculta {
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
 /* BlocoPendente é ferramenta de desenvolvimento: cores de sistema para não inventar paleta. */
 @layer components {
   .bloco-pendente {
@@ -32,5 +44,26 @@
     padding: 0.25rem 0.5rem;
     background: Canvas;
     color: CanvasText;
+  }
+
+  .espaco-reservado {
+    background: repeating-linear-gradient(-45deg, Mark 0 6px, Canvas 6px 12px);
+    outline: 2px solid CanvasText;
+    outline-offset: -2px;
+  }
+
+  .texto-provisorio {
+    background: color-mix(in srgb, Mark 25%, transparent);
+    color: inherit;
+  }
+}
+
+/* O logo é só alfa: a máscara deixa a cor vir de bg-*, como no Figma. */
+@layer components {
+  .logo {
+    aspect-ratio: 1548 / 553;
+    mask-image: url("../assets/images/logo.webp");
+    mask-size: 100% 100%;
+    mask-repeat: no-repeat;
   }
 }
