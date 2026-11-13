@@ -59,7 +59,7 @@ export interface Imagem {
   acervo: string;
 }
 
-/** Marcador de conteúdo que ainda não chegou. Bloqueia a build de produção. */
+/** Marcador de conteúdo que ainda não chegou. Entra no aviso do check-conteudo. */
 export interface Pendente {
   readonly tipo: "pendente";
   /** O que falta e quem deve fornecer. */
@@ -67,3 +67,28 @@ export interface Pendente {
 }
 
 export type OuPendente<T> = T | Pendente;
+
+/**
+ * Conteúdo copiado do protótipo do Figma que ainda não foi confirmado pelo
+ * Jornalismo. Aparece marcado na tela e, como `Pendente`, entra no aviso do
+ * check-conteudo (ADR-019).
+ */
+export interface Provisorio<T = TextoRico> {
+  readonly tipo: "provisorio";
+  readonly conteudo: T;
+  /** Por que não está confirmado e quem deve confirmar. */
+  readonly motivo: string;
+}
+
+export interface TrechoFormatado {
+  readonly texto: string;
+  readonly negrito?: boolean;
+  readonly sublinhado?: boolean;
+}
+
+export type Trecho = string | TrechoFormatado;
+
+/** Texto corrido com trechos em negrito ou sublinhados, como no protótipo. */
+export type TextoRico = string | readonly Trecho[];
+
+export type Texto = TextoRico | Provisorio;

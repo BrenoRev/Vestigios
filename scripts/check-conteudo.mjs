@@ -1,11 +1,14 @@
 #!/usr/bin/env node
 /**
- * Falha na build local e na produção da Vercel; no preview (VERCEL_ENV=preview)
- * só avisa, para a equipe revisar trabalho em andamento (ADR-004).
+ * Com BLOQUEIA_PRODUCAO, falha na build local e na produção da Vercel; no
+ * preview (VERCEL_ENV=preview) só avisa, para a equipe revisar trabalho em
+ * andamento (ADR-004). Desligada, só avisa em qualquer ambiente (ADR-019).
  */
 import { readdir, readFile } from "node:fs/promises";
 import { extname, join, relative } from "node:path";
 import { fileURLToPath } from "node:url";
+
+const BLOQUEIA_PRODUCAO = false;
 
 const RAIZ = fileURLToPath(new URL("..", import.meta.url));
 const PASTA_SRC = join(RAIZ, "src");
@@ -17,6 +20,10 @@ const EXCECOES = new Set(["src/content/pendente.ts"]);
 
 const PADROES = [
   { regex: /(?<![\w.-])pendente\s*\(/, motivo: "pendente() restante" },
+  {
+    regex: /(?<![\w.-])provisorio\s*\(/,
+    motivo: "texto provisório do protótipo",
+  },
   { regex: /em breve/i, motivo: 'texto "em breve"' },
   { regex: /lorem ipsum/i, motivo: 'texto "lorem ipsum"' },
 ];
@@ -55,12 +62,15 @@ if (ocorrencias.length === 0) {
 }
 
 const ehPreview = process.env.VERCEL_ENV === "preview";
+const apenasAvisa = ehPreview || !BLOQUEIA_PRODUCAO;
 const cabecalho = `check-conteudo: ${ocorrencias.length} pendência(s) editorial(is) em src/:`;
 
-if (ehPreview) {
+if (apenasAvisa) {
   console.warn(`${cabecalho}\n${ocorrencias.join("\n")}`);
   console.warn(
-    "\nPreview da Vercel: a build segue. Produção ficará bloqueada.",
+    BLOQUEIA_PRODUCAO
+      ? "\nPreview da Vercel: a build segue. Produção ficará bloqueada."
+      : "\nO bloqueio da produção está desligado (ADR-019): a build segue.",
   );
   process.exit(0);
 }
