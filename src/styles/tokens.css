@@ -3,9 +3,12 @@
  * A v4 é configurada aqui: não crie tailwind.config.js.
  * Os nomes dos temas e das cores de dado repetem o codeSyntax do Figma
  * (por exemplo var(--a1-cor-texto)), e ficam em :root, fora do @theme, porque
- * o tema ativo muda por capítulo.
+ * o tema ativo muda por capítulo: data-tema redefine --cor-*, que alimenta
+ * os utilitários bg-fundo, text-texto etc.
  */
 @theme {
+  --color-*: initial;
+
   --color-terra-700: #6b5a43;
   --color-terra-900: #2a2118;
   --color-ferrugem-600: #7a3b12;
@@ -57,6 +60,34 @@
   --spacing-espaco-8: 4.5rem;
   --spacing-espaco-9: 6rem;
   --spacing-espaco-10: 7.5rem;
+
+  --font-dm-serif-display: "DM Serif Display", serif;
+  --font-ibm-plex-mono: "IBM Plex Mono", ui-monospace, monospace;
+  --font-newsreader: "Newsreader", serif;
+  --font-public-sans: "Public Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-work-sans: "Work Sans", ui-sans-serif, system-ui, sans-serif;
+
+  --radius-raio-1: 0.125rem;
+  --radius-raio-2: 0.5rem;
+  --radius-raio-3: 1.875rem;
+  --radius-raio-cheio: 9999px;
+  --radius-raio-12: 0.75rem;
+  --radius-raio-16: 1rem;
+  --radius-raio-20: 1.25rem;
+
+  --breakpoint-*: initial;
+  --breakpoint-md: 48rem;
+  --breakpoint-lg: 64rem;
+}
+
+@theme inline {
+  --color-fundo: var(--cor-fundo);
+  --color-superficie: var(--cor-superficie);
+  --color-texto: var(--cor-texto);
+  --color-texto-suave: var(--cor-texto-suave);
+  --color-destaque: var(--cor-destaque);
+  --color-sobre-destaque: var(--cor-sobre-destaque);
+  --color-borda: var(--cor-borda);
 }
 
 :root {
@@ -112,4 +143,64 @@
   --dado-a-confirmar: var(--color-noite-400);
   --dado-a-apurar: var(--color-salmao-300);
   --dado-agua: var(--color-rio-700);
+}
+
+:root,
+[data-tema="a1"] {
+  --cor-fundo: var(--a1-cor-fundo);
+  --cor-superficie: var(--a1-cor-superficie);
+  --cor-texto: var(--a1-cor-texto);
+  --cor-texto-suave: var(--a1-cor-texto-suave);
+  --cor-destaque: var(--a1-cor-destaque);
+  --cor-sobre-destaque: var(--a1-cor-sobre-destaque);
+  --cor-borda: var(--a1-cor-borda);
+}
+
+[data-tema="a2"] {
+  --cor-fundo: var(--a2-cor-fundo);
+  --cor-superficie: var(--a2-cor-superficie);
+  --cor-texto: var(--a2-cor-texto);
+  --cor-texto-suave: var(--a2-cor-texto-suave);
+  --cor-destaque: var(--a2-cor-destaque);
+  --cor-sobre-destaque: var(--a2-cor-sobre-destaque);
+}
+
+[data-tema="a3"] {
+  --cor-fundo: var(--a3-cor-fundo);
+  --cor-superficie: var(--a3-cor-superficie);
+  --cor-texto: var(--a3-cor-texto);
+  --cor-texto-suave: var(--a3-cor-texto-suave);
+  --cor-destaque: var(--a3-cor-destaque);
+  --cor-sobre-destaque: var(--a3-cor-sobre-destaque);
+  --cor-borda: var(--a3-cor-borda);
+}
+
+[data-tema="a4"] {
+  --cor-fundo: var(--a4-cor-fundo);
+  --cor-superficie: var(--a4-cor-superficie);
+  --cor-texto: var(--a4-cor-texto);
+  --cor-texto-suave: var(--a4-cor-texto-suave);
+  --cor-destaque: var(--a4-cor-destaque);
+  --cor-sobre-destaque: var(--a4-cor-sobre-destaque);
+  --cor-borda: var(--a4-cor-borda);
+}
+
+[data-tema="b"] {
+  --cor-fundo: var(--b-cor-fundo);
+  --cor-superficie: var(--b-cor-superficie);
+  --cor-texto: var(--b-cor-texto);
+  --cor-texto-suave: var(--b-cor-texto-suave);
+  --cor-destaque: var(--b-cor-destaque);
+  --cor-sobre-destaque: var(--b-cor-sobre-destaque);
+  --cor-borda: var(--b-cor-borda);
+}
+
+[data-tema="c"] {
+  --cor-fundo: var(--c-cor-fundo);
+  --cor-superficie: var(--c-cor-superficie);
+  --cor-texto: var(--c-cor-texto);
+  --cor-texto-suave: var(--c-cor-texto-suave);
+  --cor-destaque: var(--c-cor-destaque);
+  --cor-sobre-destaque: var(--c-cor-sobre-destaque);
+  --cor-borda: var(--c-cor-borda);
 }
