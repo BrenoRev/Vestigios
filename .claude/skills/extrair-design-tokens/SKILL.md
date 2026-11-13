@@ -10,7 +10,7 @@ Objetivo: transformar o protótipo em tokens do Tailwind v4 rastreáveis até o 
 ## Antes de começar
 
 1. Leia `CLAUDE.md`, `.memory/agent_state.md`, `DESIGN_SYSTEM.md` e `.memory/figma_specs.md`.
-2. Protótipo: `fileKey` **haaMnXS0jhXZjXyBKugccp**, nó raiz **2:2** (https://www.figma.com/design/haaMnXS0jhXZjXyBKugccp/Vestigio-%E2%80%94-Deteriora%C3%A7%C3%A3o-do-Recife?node-id=2-2).
+2. Protótipo: `fileKey` **deTyWOTv6xMUkI0jWhaJPP** (cópia de trabalho com acesso do MCP), nó raiz **2:2**; o original do Design é **haaMnXS0jhXZjXyBKugccp**, sem acesso do MCP. Antes de cada fase, confira com o Design se o original mudou. Link do original: (https://www.figma.com/design/haaMnXS0jhXZjXyBKugccp/Vestigio-%E2%80%94-Deteriora%C3%A7%C3%A3o-do-Recife?node-id=2-2).
 3. Crie uma branch: `feat/design-tokens` (ou `feat/tokens-<grupo>` se for por partes).
 
 ## Como ler o Figma
@@ -36,8 +36,8 @@ Objetivo: transformar o protótipo em tokens do Tailwind v4 rastreáveis até o 
    - espaçamento `--spacing` (base) ou `--spacing-*`; raios `--radius-*`; breakpoints `--breakpoint-*`; larguras `--container-*`;
    - curvas `--ease-*`; animações `--animate-*` (com `@keyframes` no próprio `@theme`).
    - Nome do token = nome do estilo no Figma em kebab-case. Sem tradução livre.
-4. **Tema padrão do Tailwind:** a decisão de zerar os tokens padrão (por exemplo `--color-*: initial`) está pendente em `agent_state.md`. Use a skill `registrar-decisao` antes de aplicar.
-5. **Fontes tipográficas:** forma de servir (`public/fonts/` ou `@fontsource/*`) é decisão pendente. Use `registrar-decisao`, com a licença de cada família.
+4. **Tema padrão do Tailwind:** `tokens.css` já zera as cores e os breakpoints padrão (`--color-*: initial`, `--breakpoint-*: initial`, ADR-018). Espaço, raio e tipografia padrão do Tailwind continuam existindo; não os use. Mudar isso exige `registrar-decisao`.
+5. **Fontes tipográficas:** servidas por `@fontsource/*` em `src/styles/fonts.css` (ADR-018). Família ou peso novo exige `registrar-decisao`, com a licença.
 6. **Contraste:** calcule a razão WCAG de cada par texto/fundo e registre em `DESIGN_SYSTEM.md`. Par abaixo de AA: aponte o frame e pergunte. **Não altere cor.**
 7. **Movimento:** registre duração, curva, gatilho e propriedades. Efeito que anime algo além de `transform`/`opacity`, ou que dependa de filtro ao vivo em área grande, vai para `registrar-decisao`, sem simplificar por conta própria.
 8. **Estados** (hover, foco, ativo, desabilitado) na tabela de estados de `figma_specs.md`. Estado ausente no Figma é Stop & Ask.

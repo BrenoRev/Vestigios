@@ -19,8 +19,7 @@
 │   ├── fontes.md          # única fonte de verdade para src/content/
 │   └── metodologia.md     # vira a página de metodologia do site
 ├── public/
-│   ├── data/              # dados tratados e leves servidos ao site (JSON, GeoJSON)
-│   └── fonts/
+│   └── data/              # dados tratados e leves servidos ao site (JSON, GeoJSON)
 ├── scripts/
 │   └── check-conteudo.mjs # bloqueia a build de produção com pendências editoriais
 ├── src/
@@ -36,6 +35,7 @@
 │   ├── pages/             # páginas conforme o protótipo
 │   ├── routes/
 │   ├── styles/
+│   │   ├── fonts.css      # @fontsource: famílias e pesos usados (ADR-018)
 │   │   ├── global.css
 │   │   └── tokens.css     # @theme do Tailwind v4
 │   ├── types/

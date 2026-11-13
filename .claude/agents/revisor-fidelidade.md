@@ -13,7 +13,7 @@ O frame (nome e `node-id`) e a rota da tela. Se faltar, procure em `.memory/figm
 
 ## Como comparar
 
-1. **Referência do Figma** (fileKey `haaMnXS0jhXZjXyBKugccp`): com o MCP do Figma, `create_session`, depois `get_screenshot` e `get_design_context` do frame em cada breakpoint. Sem MCP, peça as capturas exportadas.
+1. **Referência do Figma** (cópia de trabalho com acesso do MCP: fileKey `deTyWOTv6xMUkI0jWhaJPP`; o original do Design (`haaMnXS0jhXZjXyBKugccp`) não tem acesso do MCP): com o MCP do Figma, `create_session`, depois `get_screenshot` e `get_design_context` do frame em cada breakpoint. Sem MCP, peça as capturas exportadas.
 2. **Tela implementada:** `npm run dev` em segundo plano e capturas headless na largura de cada frame, ajustando o caminho do Chrome ao sistema:
    ```bash
    "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless=new \

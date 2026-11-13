@@ -53,12 +53,12 @@ Node: versão em `.nvmrc`.
 
 Qualquer dependência fora desta lista exige Stop & Ask.
 
-- **Runtime:** Vite + React + TypeScript (`strict`, `noUncheckedIndexedAccess`); Tailwind CSS **v4** via `@tailwindcss/vite`, com tokens no `@theme` de `src/styles/tokens.css`; React Router **v7** (imports de `react-router`), SPA, fallback em `vercel.json`; Motion (imports de `motion/react`); `@phosphor-icons/react` para ícones; `@vercel/analytics` e `@vercel/speed-insights` (Vercel Web Analytics e Speed Insights, componentes `<Analytics />` e `<SpeedInsights />` em `App.tsx`, ADR-009); CSS nativo (`mix-blend-mode`, máscaras, filtros SVG pontuais) dentro do orçamento de performance.
+- **Runtime:** Vite + React + TypeScript (`strict`, `noUncheckedIndexedAccess`); Tailwind CSS **v4** via `@tailwindcss/vite`, com tokens no `@theme` de `src/styles/tokens.css`; React Router **v7** (imports de `react-router`), SPA, fallback em `vercel.json`; Motion (imports de `motion/react`); `@phosphor-icons/react` para ícones; `@fontsource/*` para as fontes (IBM Plex Mono, Public Sans, Work Sans, Newsreader e DM Serif Display, ADR-018); `@vercel/analytics` e `@vercel/speed-insights` (Vercel Web Analytics e Speed Insights, componentes `<Analytics />` e `<SpeedInsights />` em `App.tsx`, ADR-009); CSS nativo (`mix-blend-mode`, máscaras, filtros SVG pontuais) dentro do orçamento de performance.
 - **Desenvolvimento:** ESLint (flat config) com `typescript-eslint`, `eslint-plugin-react-hooks`, `eslint-plugin-jsx-a11y`; Prettier com `prettier-plugin-tailwindcss`; `vite-imagetools` para gerar as variantes de imagem na build (ADR-016).
 - **Nunca crie `tailwind.config.js`.** A v4 é configurada em CSS.
 - **Não atualize o React Router para a v8** nem o TypeScript para 6.1+ ou 7 sem ADR (o `typescript-eslint` exige TS < 6.1).
 - **Proibido:** kits de UI, CSS-in-JS, outras ferramentas de analytics, rastreamento ou monitoramento além do Vercel Web Analytics e do Speed Insights, eventos customizados (`track`) sem ADR, bibliotecas de estado global, bibliotecas de animação além do Motion, bibliotecas de scroll (Lenis, GSAP ScrollTrigger e similares), scroll-jacking.
-- **Decisões pendentes (não tome sozinho):** biblioteca ou técnica de mapas e gráficos (SVG estático pré-processado, `d3-geo` + `d3-scale` ou MapLibre); forma de servir as fontes (`public/fonts/` ou `@fontsource/*`). Nada é instalado antes da decisão.
+- **Decisão pendente (não tome sozinho):** biblioteca ou técnica de mapas e gráficos (SVG estático pré-processado, `d3-geo` + `d3-scale` ou MapLibre). Nada é instalado antes da decisão.
 
 ## Conteúdo editorial: regra central
 
@@ -84,6 +84,10 @@ O Jornalismo fornece o conteúdo e **não edita o repositório**; um dev respons
 
 - A partir da Fase 2, **só tokens extraídos do Figma** (`src/styles/tokens.css`, documentados em `DESIGN_SYSTEM.md`). **Proibido valor arbitrário** (`w-[327px]`, `text-[#123456]`); o ESLint bloqueia `[` em `className`.
 - Não "melhore", não complete e não reinterprete o protótipo.
+- **Cor:** utilitários semânticos de tema (`bg-fundo`, `text-texto`, `text-texto-suave`, `bg-superficie`, `bg-destaque`, `text-sobre-destaque`, `border-borda`) e as cores primitivas (`bg-terra-900`). Troque o tema com `data-tema="a1"` a `"c"` na seção (A1 é o padrão; o A2 não tem `border-borda`). As cores padrão do Tailwind foram removidas.
+- **Espaço e raio:** `p-espaco-5` quando o valor estiver na escala do Figma; senão o múltiplo de 4px do Tailwind (`p-2.5`). Raios: `rounded-raio-12` etc.
+- **Tipografia:** use `font-public-sans` e as demais famílias; a escala é criada junto de cada componente, lida do frame (`DESIGN_SYSTEM.md`, seção Tipografia). Só existem os breakpoints `md` (768) e `lg` (1024); a base é o Mobile (360).
+- **Figma:** o MCP lê a cópia de trabalho (`deTyWOTv6xMUkI0jWhaJPP`), não o original do Design; confira com o Design se o original mudou antes de cada fase.
 
 ## Orçamento de performance
 
@@ -97,7 +101,7 @@ O Jornalismo fornece o conteúdo e **não edita o repositório**; um dev respons
 - **Scroll nativo.** Gatilhos com `useScroll` / `useInView` do Motion ou `IntersectionObserver`.
 - `prefers-reduced-motion`: desliga animações não essenciais e mantém 100% do conteúdo legível. O `<MotionConfig reducedMotion="user">` em `App.tsx` e a regra em `global.css` já fazem a base; confira cada tela.
 - **Imagens (ADR-016):** original em alta resolução em `src/assets/images/`, importado com `?responsiva` (a build gera larguras em AVIF e WebP, com largura e altura reais) e renderizado com `ImagemResponsiva`, que já põe `srcset`, `width`, `height` e `loading="lazy"`. Na primeira dobra, use `primeiraDobra`. O `sizes` vem do layout do protótipo em cada breakpoint.
-- Arquivos com hash em `/assets/` têm cache imutável de um ano (`vercel.json`). Nunca sirva arquivo que muda de conteúdo sem mudar de nome por esse caminho; `public/fonts/` e `public/data/` não têm hash e ficam com o cache padrão.
+- Arquivos com hash em `/assets/` têm cache imutável de um ano (`vercel.json`). Nunca sirva arquivo que muda de conteúdo sem mudar de nome por esse caminho; `public/data/` não tem hash e fica com o cache padrão.
 - Seções pesadas com `React.lazy`.
 - Se um efeito do protótipo não couber no orçamento, **não simplifique**: Stop & Ask.
 

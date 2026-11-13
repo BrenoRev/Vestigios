@@ -3,22 +3,24 @@
 > **Fonte única de verdade:** o protótipo no Figma.
 > https://www.figma.com/design/haaMnXS0jhXZjXyBKugccp/Vestigio-%E2%80%94-Deteriora%C3%A7%C3%A3o-do-Recife?node-id=2-2&t=UzVMO4knOonmD3pv-1
 >
-> **Estado: Fase 2, extração parcial.** Os valores abaixo vêm do arquivo `.fig` exportado pelo Design em 2026-11-13 (formato `fig-kiwi` versão 106), lido sem o MCP do Figma, que ainda não tem acesso de edição ao arquivo. Nenhum valor foi inventado. Detalhes da extração, inventário de telas e divergências em [`.memory/figma_specs.md`](./.memory/figma_specs.md).
+> **Estado: Fase 2 concluída em 2026-11-13** (ADR-017 e ADR-018). Os valores vêm do arquivo `.fig` exportado pelo Design e foram conferidos com o MCP do Figma na cópia de trabalho (fileKey `deTyWOTv6xMUkI0jWhaJPP`). Nenhum valor foi inventado. Inventário de telas, método de extração e divergências em [`.memory/figma_specs.md`](./.memory/figma_specs.md).
 >
 > **Regra a partir da Fase 2:** é proibido usar valor arbitrário inline (`w-[327px]`, `text-[#123456]`). Só tokens daqui.
 
-## O que já é token e o que espera decisão
+## Situação de cada grupo
 
-| Grupo                  | Situação                            | Motivo                                                                                                 |
-| ---------------------- | ----------------------------------- | ------------------------------------------------------------------------------------------------------ |
-| Cores primitivas (40)  | **Token** em `tokens.css`           | Variáveis do Figma, sem ambiguidade.                                                                   |
-| Temas por capítulo (6) | **Token** em `tokens.css` (`:root`) | Variáveis do Figma com `codeSyntax` definido pelo Design. O mecanismo de troca de tema espera decisão. |
-| Cores de dado (5)      | **Token** em `tokens.css` (`:root`) | Variáveis do Figma.                                                                                    |
-| Espaçamento (10)       | **Token** em `tokens.css`           | Variáveis do Figma. As telas usam valores fora da escala (ver Espaçamento).                            |
-| Tipografia             | **Sem token**                       | 215 de 216 textos das telas não usam os 17 estilos documentados.                                       |
-| Raios e bordas         | **Sem token**                       | O texto de Fundamentos e as telas divergem.                                                            |
-| Breakpoints e grid     | **Sem token**                       | As telas (360, 768, 1024) e o texto de Fundamentos (1440, 1200) divergem.                              |
-| Movimento              | **Sem token**                       | Curva numérica a confirmar; o hover anima cor, não `transform`/`opacity`.                              |
+| Grupo                  | Situação                     | Como usar                                                                                                                                                                                                                                                                                                   |
+| ---------------------- | ---------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Cores primitivas (40)  | **Token**                    | `bg-terra-900`, `text-areia-100`. As cores padrão do Tailwind foram removidas.                                                                                                                                                                                                                              |
+| Temas por capítulo (6) | **Token**                    | `data-tema="a1"` a `"c"` numa seção redefine `--cor-*`; use `bg-fundo`, `text-texto`, `text-texto-suave`, `bg-superficie`, `bg-destaque`, `text-sobre-destaque`, `border-borda`. Sem `data-tema`, vale o A1. No A2, `border-borda` não vale: a variável é herdada e renderiza a borda do tema do ancestral. |
+| Cores de dado (5)      | **Token** (`:root`)          | `var(--dado-abandonado)` etc.                                                                                                                                                                                                                                                                               |
+| Espaçamento            | **Token** + base do Tailwind | `p-espaco-5` quando o valor está na escala; senão o múltiplo de 4px do Tailwind (`p-2.5` = 10px). Nunca `[...]`.                                                                                                                                                                                            |
+| Raios                  | **Token**                    | `rounded-raio-12` etc. Os utilitários padrão de raio, tipografia e sombra do Tailwind (`rounded-lg`, `text-lg`, `shadow-*`) continuam existindo, mas não são do Figma e não devem ser usados.                                                                                                               |
+| Famílias de fonte (5)  | **Token** e carregadas       | `font-public-sans` etc. Fontes servidas por `@fontsource`.                                                                                                                                                                                                                                                  |
+| Escala tipográfica     | **Por componente**           | Tokens criados junto de cada componente, a partir do frame (ADR-018).                                                                                                                                                                                                                                       |
+| Breakpoints            | **Token**                    | `md` (768) e `lg` (1024); a base é o Mobile (360).                                                                                                                                                                                                                                                          |
+| Bordas                 | **Sem token**                | Utilitário criado quando o primeiro componente precisar (1,5px não existe no Tailwind).                                                                                                                                                                                                                     |
+| Movimento              | **Sem token**                | Definido junto do componente Botão (ADR-018).                                                                                                                                                                                                                                                               |
 
 ## Cores
 
@@ -118,11 +120,16 @@ Razão calculada a partir dos valores hexadecimais, para cada par de cada tema. 
 | B Mapa          | 14,76         | 13,20              | 9,87                | 8,83                     | 8,73             | 7,81                  | 8,73                      |
 | C Dossiê        | 14,49         | 16,56              | 8,89                | 10,16                    | 5,75             | 6,57                  | 6,57                      |
 
-**Falha encontrada:** A1, `cor/texto-suave` sobre `cor/superficie` dá 3,87:1, abaixo do AA para texto normal (passa só para texto grande). Pendente de decisão do Design; nenhuma cor foi alterada.
+**Falha encontrada:** A1, `cor/texto-suave` sobre `cor/superficie` dá 3,87:1, abaixo do AA para texto normal (passa só para texto grande). Decisão (ADR-018): nesse par, `texto-suave` só vale em texto grande (a partir de 24px, ou 18,66px em negrito); em texto menor use `texto`. Nenhuma cor foi alterada; o Design pode corrigir o Figma.
 
 ## Tipografia
 
-**Sem tokens por enquanto.** Há duas fontes de verdade em conflito dentro do Figma, descritas abaixo.
+**Decisão (ADR-018):** as telas são a verdade visual, e nelas a tipografia não segue os 17 estilos documentados (215 de 216 textos fogem deles) e varia de forma diferente por contexto entre Desktop e Tablet. Por isso **não há escala tipográfica congelada**. As cinco famílias estão carregadas e viraram token; a escala nasce junto de cada componente, assim:
+
+1. ler o frame com o MCP (`get_design_context`), nos três tamanhos;
+2. criar o token pela função do texto (por exemplo `titulo-secao`), com o tamanho de cada breakpoint e a altura de linha e o espaçamento entre letras do frame;
+3. reaproveitar um token só quando o valor for idêntico em todos os usos; valor diferente vira outro token;
+4. registrar aqui cada token com o frame de origem, e as divergências para o Design revisar.
 
 ### Estilos documentados (frame "Fundamentos", `2:771`, seção Tipografia)
 
@@ -148,40 +155,52 @@ Razão calculada a partir dos valores hexadecimais, para cada par de cada tema. 
 | `Comum/Legenda de fonte`    | IBM Plex Mono    | 400 (Regular)  | 11px    | 1.4×            | 0%                  | normal     |
 | `Comum/Nota técnica`        | IBM Plex Mono    | 400 (Regular)  | 12px    | 1.4×            | 0%                  | normal     |
 
-### O que as telas realmente usam (frames "Desktop", "Tablet" e "Mobile")
+### Tipografia observada por breakpoint (frames Desktop, Tablet e Mobile)
 
-Nas 216 camadas de texto das três telas, **nenhuma está ligada a um estilo de texto**, e 215 usam uma combinação de família, peso e tamanho que não existe nos 17 estilos. Combinações mais frequentes:
+Cada linha é uma combinação de família, peso, tamanho, altura de linha e espaçamento entre letras no Desktop, com o tamanho que o mesmo texto tem no Tablet e no Mobile. São os 97 textos do Desktop. O Mobile só tem 9 textos, e "n/d" quer dizer que o texto não existe nesse frame. A função é inferida pelo papel do elemento.
 
-| Família       | Peso     | Tamanho | Ocorrências |
-| ------------- | -------- | ------- | ----------- |
-| IBM Plex Mono | SemiBold | 22px    | 47          |
-| Public Sans   | Regular  | 18px    | 30          |
-| Public Sans   | Medium   | 18px    | 29          |
-| Public Sans   | Medium   | 16px    | 17          |
-| IBM Plex Mono | Regular  | 16px    | 13          |
-| IBM Plex Mono | SemiBold | 44px    | 10          |
-| Newsreader    | Medium   | 40px    | 8           |
-| Public Sans   | Regular  | 16px    | 8           |
-| Newsreader    | Medium   | 36px    | 8           |
-| IBM Plex Mono | Regular  | 22px    | 4           |
-| Work Sans     | Medium   | 25px    | 4           |
-| IBM Plex Mono | SemiBold | 18px    | 4           |
-| IBM Plex Mono | SemiBold | 36px    | 4           |
+| Textos | Desktop                                                                                  | Tablet                  | Mobile          | Função (inferida)                  |
+| ------ | ---------------------------------------------------------------------------------------- | ----------------------- | --------------- | ---------------------------------- |
+| 2      | Newsreader SemiBold 64/1                                                                 | 48                      | 36 (em 1 dos 2) | título de matéria e de seção       |
+| 8      | Newsreader Medium 40/1,2, −2%                                                            | 36                      | 28 (em 2 dos 8) | subtítulo de bloco                 |
+| 1      | Newsreader Regular 34/1,3, −2%                                                           | 28                      | 22              | texto da Quebra                    |
+| 1      | DM Serif Display Regular 48/1,3, −2%                                                     | 36                      | 28              | citação                            |
+| 2      | IBM Plex Mono Regular 22/1                                                               | 22                      | 16 (em 1 dos 2) | rótulo de seção                    |
+| 17     | IBM Plex Mono SemiBold 22/1 ou 0,69, −0,5%                                               | 22                      | n/d             | título de item e de cartão         |
+| 3      | IBM Plex Mono SemiBold 22/1, −0,5%                                                       | 18                      | n/d             | rótulo de esfera (cai no Tablet)   |
+| 1      | IBM Plex Mono SemiBold 22/0,69, −0,5%                                                    | n/d                     | n/d             | título de cartão                   |
+| 1      | IBM Plex Mono SemiBold 18/0,69, −0,5%                                                    | 16                      | n/d             | título de cartão em destaque       |
+| 4      | IBM Plex Mono SemiBold 44/1, −0,5%                                                       | 44                      | n/d             | número em destaque                 |
+| 2      | IBM Plex Mono SemiBold 44/1, −0,5%                                                       | 36                      | n/d             | número em destaque (cai no Tablet) |
+| 2      | IBM Plex Mono SemiBold 36/1, −0,5%                                                       | 28                      | n/d             | unidade do número                  |
+| 6      | IBM Plex Mono Regular 16/1                                                               | 16                      | n/d             | marcador de passo                  |
+| 1      | IBM Plex Mono Medium 18/1,45, −0,5%                                                      | 14                      | 14              | nome do autor                      |
+| 18     | Public Sans Regular 18/1,45 ou 1,5, −0,5%                                                | 18 (em 11) ou 16 (em 6) | n/d             | texto corrido                      |
+| 15     | Public Sans Medium 18/1,45 ou 1,5, −0,5%                                                 | 18 (em 10) ou 16 (em 5) | 16 (em 2)       | texto corrido em destaque          |
+| 5      | Public Sans Medium 16/1,5, −0,5%                                                         | 16                      | n/d             | texto de apoio                     |
+| 1      | Public Sans Regular 16/1,5, −0,5%                                                        | 16                      | n/d             | texto de apoio                     |
+| 1      | Public Sans Medium 22/1,45, −0,5%                                                        | 22                      | n/d             | texto de abertura                  |
+| 3      | Work Sans Bold 25/1,45, −0,5%                                                            | 22                      | n/d             | título de bloco                    |
+| 2      | Work Sans Medium 25/1,45, −0,5%                                                          | 25                      | n/d             | título de bloco                    |
+| 1      | Frase do Hero 28/1, −0,5% (estilo misto: Public Sans Bold e Regular sobre base Pacifico) | 24                      | n/d             | frase do Hero                      |
 
-### Famílias
+Lidos pelo MCP, fora da tabela acima: botão "Explorar o Mapa" em Work Sans Medium 22/1,5; menu da Navbar em IBM Plex Mono Regular 16/1,45, −0,5%, com a primeira entrada em Bold e sublinhada.
 
-| Família               | Onde aparece | Pesos nas telas e componentes                  |
-| --------------------- | ------------ | ---------------------------------------------- |
-| IBM Plex Mono         | 205 textos   | Regular, Medium, SemiBold, Bold                |
-| Public Sans           | 152 textos   | Regular, Medium, SemiBold, Bold                |
-| Work Sans             | 55 textos    | Regular, Medium, SemiBold, Bold                |
-| Newsreader            | 40 textos    | Regular, Medium, SemiBold                      |
-| Space Grotesk         | 8 textos     | Regular, Bold                                  |
-| DM Serif Display      | 7 textos     | Regular                                        |
-| Inter                 | 49 textos    | só nos frames de exploração de 1280 de largura |
-| Pacifico, Inria Serif | 3 textos     | só nos frames de exploração de 1280 de largura |
+Exceções para o Design confirmar (provável desvio): rótulos de esfera de 22 para 18 no Tablet (3); números de 44 para 36 só em 2 casos; texto corrido de 18 para 16 em 11 casos e de 18 para 18 em 21; altura de linha 0,69 em 9 títulos de cartão.
 
-Todas as famílias do site estão no Google Fonts. A forma de servir (`public/fonts/` ou `@fontsource/*`) e a conferência de licença de cada família seguem pendentes.
+### Famílias e pesos carregados
+
+Servidas por `@fontsource` (latim, `font-display: swap`), licença OFL-1.1 em todas. Pesos: os que as telas e os componentes usam.
+
+| Token                     | Família          | Pesos carregados        |
+| ------------------------- | ---------------- | ----------------------- |
+| `--font-ibm-plex-mono`    | IBM Plex Mono    | 300, 400, 500, 600, 700 |
+| `--font-public-sans`      | Public Sans      | 400, 500, 600, 700      |
+| `--font-work-sans`        | Work Sans        | 500, 600, 700           |
+| `--font-newsreader`       | Newsreader       | 400, 500, 600           |
+| `--font-dm-serif-display` | DM Serif Display | 400                     |
+
+Fora do carregamento: **Space Grotesk** (Regular em 2 textos de componentes, a confirmar), **Pacifico** (é a fonte base da frase do Hero, mas o texto visível usa Public Sans), **Inter** e **Inria Serif** (só nos frames de exploração de 1280).
 
 ## Espaçamento
 
@@ -200,15 +219,25 @@ Coleção "Espaço e forma" (`espaco/1` a `espaco/10`), documentada em "Fundamen
 | `--spacing-espaco-9`  | `espaco/9`        | 96px (6rem)    |
 | `--spacing-espaco-10` | `espaco/10`       | 120px (7,5rem) |
 
+**Decisão (ADR-018):** o Tailwind mantém a base de 4px, então os valores fora da escala (6, 10, 14, 22, 26, 36, 40) saem como múltiplos (`p-1.5`, `p-2.5`, `p-3.5`, `p-5.5`, `p-6.5`, `p-9`, `p-10`), sem valor arbitrário. Use `espaco-N` quando o valor estiver na escala. Atenção aos nomes parecidos: `p-10` é 40px (múltiplo de 4), enquanto `p-espaco-10` é 120px. Os valores fora dela ficam listados para o Design confirmar.
+
 **Divergência:** nas telas (Desktop, Tablet e Mobile) os espaços entre elementos (`stackSpacing`) incluem 6, 10, 14, 18, 22, 26, 28, 36, 37 e 40, e os preenchimentos incluem 13, 22, 23, 52, 54 e 68, que não existem na escala. Valores da escala que aparecem: 4, 8, 12, 16, 32, 48 e 72.
 
 ## Raios e bordas
 
-O texto de "Fundamentos" (seção Espaço, raio e grid) documenta: `raio/0` = 0, `raio/1` = 2, `raio/2` = 8, `raio/3` = 30 (zonas do mapa), `raio/cheio` = marcadores. Bordas: 1, 1,5 e 3. Não existem variáveis de raio no Figma, apenas esse texto.
+O texto de "Fundamentos" (seção Espaço, raio e grid) documenta `raio/0` = 0, `raio/1` = 2, `raio/2` = 8, `raio/3` = 30 (zonas do mapa) e `raio/cheio` (marcadores). Não existem variáveis de raio no Figma, só esse texto. As telas usam também 12 (botões e cartões), 16 e 20, que ficam sem nome no Figma. **Decisão (ADR-018):** todos viram token, os documentados com o nome do Figma e os observados com o nome pelo valor.
 
-**Divergência:** nas telas os raios usados são 16 (6 camadas), 12 (3) e 20 (2); nos botões é 12. Nenhum deles está na escala documentada. As espessuras de borda observadas no arquivo são 1 (882 camadas), 1,5, 2,5, 2, 0,75 e 3.
+| Token (`tokens.css`)  | Valor           | Origem                                     |
+| --------------------- | --------------- | ------------------------------------------ |
+| `--radius-raio-1`     | 2px (0,125rem)  | `raio/1`, documentado                      |
+| `--radius-raio-2`     | 8px (0,5rem)    | `raio/2`, documentado                      |
+| `--radius-raio-3`     | 30px (1,875rem) | `raio/3`, documentado (zonas do mapa)      |
+| `--radius-raio-cheio` | 9999px          | `raio/cheio`, documentado (marcadores)     |
+| `--radius-raio-12`    | 12px (0,75rem)  | observado: botões (36 variantes) e cartões |
+| `--radius-raio-16`    | 16px (1rem)     | observado: 6 camadas das telas             |
+| `--radius-raio-20`    | 20px (1,25rem)  | observado: 2 camadas das telas             |
 
-Sem tokens até o Design decidir qual escala vale.
+`raio/0` é `rounded-none`. Bordas documentadas: 1, 1,5 e 3 (observadas também 0,75, 2 e 2,5). O Tailwind só tem 1px pronto, então a borda de 1,5px vira utilitário próprio quando o primeiro componente precisar.
 
 ## Grid e breakpoints
 
@@ -222,7 +251,7 @@ Sem tokens até o Design decidir qual escala vale.
 
 Alvo de toque mínimo documentado: **44px**. Os botões têm 44 de altura em Tablet e Mobile (todos os temas) e 57 ou 60 no Desktop.
 
-Sem tokens de breakpoint até o Design decidir o que acontece acima de 1024.
+**Decisão (ADR-018):** mobile primeiro. A base é o Mobile (360); `md` = 768 (Tablet) e `lg` = 1024 (Desktop), que coincidem com os breakpoints padrão do Tailwind. Os outros (`sm`, `xl`, `2xl`) foram removidos, porque o design não os tem. Acima de 1024 o conteúdo fica centralizado na largura máxima do Desktop (1024, com conteúdo de 920 e margem de 52 de cada lado); as medidas do grid de 1440 do texto de "Fundamentos" não foram adotadas, porque não há tela desenhada nessa largura. Margens e colunas de Tablet e Mobile saem do frame, quando cada componente for implementado.
 
 ## Texturas e efeitos
 
@@ -243,4 +272,4 @@ O protótipo tem 31 interações, de dois tipos.
 | Hover   | Troca de variante (`Estado=Default` para `Hover`) | `SMART_ANIMATE` | 0,3 s       | `OUT_CUBIC` | 15 variantes do componente "Botões"            |
 | Clique  | Troca de variante (`Default` para `Selected`)     | nenhuma         | instantâneo | n/d         | 15 instâncias e 1 variante do "Menu Navegação" |
 
-**Hover do botão:** o preenchimento muda para uma cor literal mais escura (tema B: `#7a3b12` para `#53290e`; C: `#0a0d11`; D: `#7b290d`; E: `#df9450`). Isso é animação de cor, não de `transform`/`opacity`, e essas quatro cores não existem como variável. A curva numérica de `OUT_CUBIC` ainda precisa ser confirmada no Figma. Sem token até a decisão.
+**Hover do botão:** o preenchimento muda para uma cor literal mais escura (tema B: `#7a3b12` para `#53290e`; C: `#0a0d11`; D: `#7b290d`; E: `#df9450`). Isso é animação de cor, não de `transform`/`opacity`, e essas quatro cores não existem como variável. A curva numérica de `OUT_CUBIC` ainda precisa ser confirmada no Figma. **Decisão (ADR-018):** o hover é uma camada sobreposta, com a cor de hover, que anima só `opacity` (visual idêntico ao do protótipo e dentro do orçamento). A curva numérica de `OUT_CUBIC` e as cores de hover viram token junto do componente Botão.
