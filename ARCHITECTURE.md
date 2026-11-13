@@ -74,7 +74,6 @@ Não são pastas novas; são arquivos de configuração das ferramentas da stack
 | `src/types/pagina-inicial.ts`            | Formato do conteúdo da página inicial (ADR-019).                               |
 | `src/content/pagina-inicial.ts`          | Conteúdo da página inicial copiado do protótipo, marcado como provisório.      |
 | `src/content/texto.ts`                   | Ajudantes `negrito`, `sublinhado` e `negritoSublinhado` para texto corrido.    |
-| `src/components/ui/BlocoPendente.tsx`    | Bloco tarjado que renderiza uma pendência.                                     |
 | `src/pages/Inicio.tsx`                   | Página inicial (monta as seções com o conteúdo de `src/content`).              |
 | `src/routes/index.tsx`                   | Definição das rotas (React Router v7, `createBrowserRouter`).                  |
 
@@ -87,7 +86,7 @@ A pasta `figma/` (export local do protótipo, 63 MB) não é versionada: está n
 ```text
 docs/fontes.md ──(equipe de Jornalismo confirma)──> src/content/*.ts ──props──> src/components/** ──> src/pages/** ──> src/routes
                                                          │
-                                                         └── pendente(...) ──> BlocoPendente / aviso no check-conteudo (bloqueio da produção desligado, ADR-019)
+                                                         └── pendente(...) ──> aviso no check-conteudo (bloqueio da produção desligado, ADR-019)
 ```
 
 - Componentes não importam texto editorial de lugar nenhum além das props; páginas e seções importam de `src/content/` e repassam.

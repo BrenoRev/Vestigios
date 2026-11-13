@@ -18,9 +18,6 @@ export function ehPendente(valor: unknown): valor is Pendente {
   );
 }
 
-/** Fica aqui, e não no componente, por causa da trava de texto em JSX do ESLint. */
-export const ROTULO_PENDENTE = "PENDENTE";
-
 /**
  * Texto do protótipo ainda sem confirmação: provisorio(texto, "o que falta, quem confirma").
  * Fica marcado na tela e entra no aviso de scripts/check-conteudo.mjs.

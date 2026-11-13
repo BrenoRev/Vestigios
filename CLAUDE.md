@@ -68,7 +68,7 @@ O Jornalismo fornece o conteúdo e **não edita o repositório**; um dev respons
 - Tipos em `src/types/content.ts`: `Fonte`, `Dado`, `Imagem`, `Pendente`. Um dado sem `fonteId` não compila; uma imagem sem `credito`, `licenca` ou `acervo` não compila.
 - `docs/fontes.md` é a **única fonte de verdade** para o que entra em `src/content/`.
 - Texto que aparece no Figma é **referência de layout**. Só vira conteúdo depois de confirmado pela equipe de Jornalismo.
-- **Placeholder honesto:** onde faltar conteúdo, use `pendente("o que falta e quem deve fornecer")`, importado de `src/content/pendente.ts`, e renderize com `BlocoPendente`. `scripts/check-conteudo.mjs` lista as pendências; ele falha a build de produção quando `BLOQUEIA_PRODUCAO` estiver ligado (hoje desligado, ADR-019).
+- **Placeholder honesto:** onde faltar conteúdo, use `pendente("o que falta e quem deve fornecer")`, importado de `src/content/pendente.ts`, e renderize com `EspacoReservado` (imagem ou ícone) ou `PendenciaApuracao` (texto). `scripts/check-conteudo.mjs` lista as pendências; ele falha a build de produção quando `BLOQUEIA_PRODUCAO` estiver ligado (hoje desligado, ADR-019).
 - **Texto do protótipo ainda não confirmado:** `provisorio(conteudo, "o que falta, quem confirma")`, também de `src/content/pendente.ts`. Não muda a aparência na tela; entra no aviso do `check-conteudo` e na lista de `docs/fontes.md`. Enquanto `BLOQUEIA_PRODUCAO` estiver `false` em `scripts/check-conteudo.mjs` (ADR-019), pendência e texto provisório só avisam, em qualquer ambiente; o fechamento (Fase 5) liga a chave e zera ambos.
 
 ### Proibições editoriais absolutas
@@ -116,7 +116,7 @@ O Jornalismo fornece o conteúdo e **não edita o repositório**; um dev respons
 ## Estrutura e convenções
 
 - A árvore de pastas está congelada em `ARCHITECTURE.md`. **Pasta nova só com ADR** em `.memory/decisions.md`.
-- Componentes: PascalCase, um por arquivo, export nomeado, nome do arquivo igual ao do componente (`BlocoPendente.tsx` exporta `BlocoPendente`).
+- Componentes: PascalCase, um por arquivo, export nomeado, nome do arquivo igual ao do componente (`EspacoReservado.tsx` exporta `EspacoReservado`).
 - Seções da reportagem: `src/components/sections/`, uma por bloco do protótipo, com o nome do frame do Figma.
 - Hooks: `src/hooks/useNome.ts`.
 - Conteúdo: `src/content/<assunto>.ts` em kebab-case; exports em camelCase.
