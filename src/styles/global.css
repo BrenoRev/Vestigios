@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "./fonts.css";
 @import "./tokens.css";
 
 /* Cobre só animações CSS; as do Motion são reduzidas pelo MotionConfig em App.tsx. */

@@ -24,6 +24,7 @@ Professores: **Nivan Ferreira**, **Guilherme Ranoya** e **Rodrigo Cunha**.
 - [React Router v7](https://reactrouter.com), em modo SPA
 - [Motion](https://motion.dev) para animações
 - [Phosphor Icons](https://phosphoricons.com)
+- [Fontsource](https://fontsource.org) para servir as fontes (IBM Plex Mono, Public Sans, Work Sans, Newsreader, DM Serif Display)
 - [Vercel Web Analytics](https://vercel.com/docs/analytics) para métricas de audiência, sem cookies
 - [Vercel Speed Insights](https://vercel.com/docs/speed-insights) para Core Web Vitals reais
 - ESLint e Prettier
@@ -74,7 +75,6 @@ npm run verificar && npm run format:check && npm run check:conteudo
 .memory/        estado do projeto, decisões (ADRs) e especificações do Figma
 docs/           metodologia, registro de fontes e direito de resposta
 public/data/    dados tratados e leves servidos ao site
-public/fonts/   fontes tipográficas
 scripts/        check-conteudo.mjs e scripts de tratamento de dados
 src/assets/     imagens e texturas
 src/components/ layout, seções da reportagem e componentes de interface

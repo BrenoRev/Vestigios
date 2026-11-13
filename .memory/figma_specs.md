@@ -4,6 +4,10 @@
 >
 > Extração da Fase 2 feita em 2026-11-13 a partir do arquivo `.fig` exportado pelo Design (`figma/Vestigio — Deterioração do Recife.fig`, 63 MB, exportado em 2026-11-13T22:09:50Z). A pasta `figma/` não vai para o Git (`.gitignore`). Toda medida cita o frame (nome e `node-id`). Tokens consolidados em [`DESIGN_SYSTEM.md`](../DESIGN_SYSTEM.md).
 
+## Cópia de trabalho e acesso do MCP
+
+O MCP do Figma não tem acesso de edição ao arquivo do Design (`haaMnXS0jhXZjXyBKugccp`). O responsável fez uma cópia (fileKey `deTyWOTv6xMUkI0jWhaJPP`, nó raiz `2:2`) na conta que o MCP usa, e a leitura passou a funcionar (`create_session`, `get_metadata`, `get_design_context`, `get_screenshot`). A cópia tem 4 páginas visíveis (Prototipação, Ilustração, Logo, Componentes) e a mesma estrutura do `.fig`. **A cópia não acompanha o original:** antes de cada fase, conferir com o Design se o original mudou.
+
 ## Como foi extraído
 
 O MCP do Figma recusou a leitura (a conta conectada não tem acesso de edição ao arquivo), então o `.fig` foi lido direto:
@@ -27,27 +31,29 @@ O leitor não está no repositório (exigiria uma dependência fora da stack). P
 
 ## Telas e frames
 
-| Tela / frame                   | `node-id` | Largura × altura | Observações                                                                           |
-| ------------------------------ | --------- | ---------------- | ------------------------------------------------------------------------------------- |
-| Desktop                        | `7:5`     | 1024 × 8282      | Coluna única. Seções: Hero, 1ª Matéria, Quebra, Guia de Leitura, Navbar.              |
-| Tablet                         | `7:4`     | 768 × 8409       | Mesmas seções; a terceira está nomeada "Desktop" (1216 de altura), provável "Quebra". |
-| Mobile                         | `7:3`     | 360 × 2559       | Hero, 1ª Matéria e "Quebra" (nomeada "Desktop", 1033); sem Guia de Leitura.           |
-| Guia de Leitura (mobile)       | `35:1376` | 360 × 5783       | Fora do frame Mobile.                                                                 |
-| Guia de Leitura (mobile, topo) | `35:1143` | 360 × 301        |                                                                                       |
-| Recife em Foco                 | `2:80`    | 1280 × 1983      | Exploração; usa texto de preenchimento.                                               |
-| Patrimônio em risco            | `2:108`   | 1280 × 1306      | Exploração.                                                                           |
-| Patrimônio em risco            | `2:128`   | 1280 × 1115      | Exploração.                                                                           |
-| Pull quote 1                   | `2:149`   | 1280 × 1062      | Exploração, com `lorem ipsum`.                                                        |
-| Feature cards 1                | `2:177`   | 1280 × 704       | Exploração (3 cards).                                                                 |
-| Quote 1                        | `2:199`   | 1280 × 653       | Exploração.                                                                           |
-| Feature 3                      | `2:228`   | 1280 × 1268      | Exploração.                                                                           |
-| Fundamentos                    | `2:771`   | 1600 × 3107      | Documentação do design system (cores, tipografia, espaço, raio e grid).               |
-| paleta de cores                | `2:761`   | 1017 × 281       | Sete círculos: azul escuro, azul, terracota, bege, cinza, grafite, bege-fundo.        |
+| Tela / frame                   | `node-id` | Largura × altura | Observações                                                                                                |
+| ------------------------------ | --------- | ---------------- | ---------------------------------------------------------------------------------------------------------- |
+| Desktop                        | `7:5`     | 1024 × 8282      | Coluna única. Seções: Hero, 1ª Matéria, Quebra, Guia de Leitura, Navbar.                                   |
+| Tablet                         | `7:4`     | 768 × 8409       | Mesmas seções; a terceira está nomeada "Desktop" (1216 de altura), provável "Quebra".                      |
+| Mobile                         | `7:3`     | 360 × 2559       | Hero, 1ª Matéria e "Quebra" (nomeada "Desktop", 1033); o Guia de Leitura está nos frames separados abaixo. |
+| Guia de Leitura (mobile)       | `35:1376` | 360 × 5783       | Fora do frame Mobile.                                                                                      |
+| Guia de Leitura (mobile, topo) | `35:1143` | 360 × 301        |                                                                                                            |
+| Recife em Foco                 | `2:80`    | 1280 × 1983      | Exploração; usa texto de preenchimento.                                                                    |
+| Patrimônio em risco            | `2:108`   | 1280 × 1306      | Exploração.                                                                                                |
+| Patrimônio em risco            | `2:128`   | 1280 × 1115      | Exploração.                                                                                                |
+| Pull quote 1                   | `2:149`   | 1280 × 1062      | Exploração, com `lorem ipsum`.                                                                             |
+| Feature cards 1                | `2:177`   | 1280 × 704       | Exploração (3 cards).                                                                                      |
+| Quote 1                        | `2:199`   | 1280 × 653       | Exploração.                                                                                                |
+| Feature 3                      | `2:228`   | 1280 × 1268      | Exploração.                                                                                                |
+| Fundamentos                    | `2:771`   | 1600 × 3107      | Documentação do design system (cores, tipografia, espaço, raio e grid).                                    |
+| paleta de cores                | `2:761`   | 1017 × 281       | Sete círculos: azul escuro, azul, terracota, bege, cinza, grafite, bege-fundo.                             |
 
 ## Fluxo de navegação
 
 - A leitura é uma página só, em rolagem, com a Navbar (55 de altura) nos três tamanhos (`Property 1` = `navbar-mobile`, `navbar-tablet`, `navbar-desktop`; fundo `#2a2118`).
 - O "Menu Navegação" alterna entre `Default` e `Selected` com clique (troca instantânea de variante, sem transição). O Figma não define para onde cada item do menu leva.
+- A Navbar lista seis capítulos, na ordem: **O Recife** (ativo, em negrito e sublinhado), **Guia de Leitura**, **O Problema**, **Mapa dos Dados**, **Os Responsáveis**, **O Futuro**. São rótulos de interface (a confirmar com o Jornalismo antes de entrar em `src/content/`). A correspondência com os temas A1, A2, A3, A4, B e C é provável pelos nomes (Antes, Esvaziamento, Ruína, Reconstrução, Mapa, Dossiê), mas o Figma não a diz.
+- O Hero tem um botão "Explorar o Mapa". O Figma não define o destino; o capítulo "Mapa dos Dados" é o provável.
 - Não existe página de erro 404, página de metodologia nem página de créditos desenhadas.
 
 ## Seções da reportagem (ordem do protótipo)
@@ -135,11 +141,45 @@ Os ícones são vetores do próprio arquivo (por exemplo `Icon`, `Icon-quebrado`
 8. **Selo de estatuto da fonte** tem 5 tipos; o tipo `Fonte` do código tem 6 (falta `imprensa`).
 9. **"Pendência de apuração"** existe como componente visual; no código, `pendente(...)` é ferramenta de desenvolvimento que nunca vai ao ar.
 10. **Cores das telas:** em Desktop, Tablet, Mobile e Navbar, 0 de 140 preenchimentos sólidos estão ligados a variáveis. Das 13 cores sólidas distintas, 7 existem nos primitivos e 6 não: `#f8f8f8` (32×), `#474a4e` (24×), `#6e695f` (9×), `#6f3713` (8×), `#f9f0e2` (3×) e `#000000` (3×).
-11. **Telas e nomes:** Tablet e Mobile chamam de "Desktop" o frame que provavelmente equivale à "Quebra" (mesma estrutura, um bloco de texto); o Mobile não inclui o Guia de Leitura.
+11. **Telas e nomes:** Tablet e Mobile chamam de "Desktop" o frame que provavelmente equivale à "Quebra" (mesma estrutura, um bloco de texto); o Guia de Leitura do Mobile está em frames separados (`35:1376` e `35:1143`), fora do frame Mobile.
 
-## Decisões abertas da Fase 2
+## Hero e Navbar (lidos pelo MCP)
 
-Registradas aqui no formato do Stop & Ask. Quem responde cada uma está entre parênteses. A resposta vira ADR em `decisions.md` (skill `registrar-decisao`).
+- **Hero** (`2:57`, 1024 × 542): fundo `#2a2118` (`terra/900`) com uma foto a 10% de opacidade; logo em máscara de 643 × 230, cor `#e9dfcc` (`areia/100`); frase de 28 (24 no Tablet) em `#f9f0e2` (cor fora das variáveis), alinhada à direita; botão com borda de 1,5 branca, raio 12, preenchimento horizontal `espaco-5`, vertical `espaco-3`, altura mínima 44 e desfoque de fundo de 2px.
+- **Navbar** (`15:782`, 1024 × 55): fundo `rgba(42,33,24,0.6)` com desfoque de fundo de 7px, itens com 46 de espaço entre eles e 16 de preenchimento vertical.
+- O logo é uma imagem usada como máscara (não é vetor); a foto de fundo do Hero não tem crédito nem licença.
+
+## Alertas editoriais do conteúdo de layout
+
+O texto das telas é referência de layout e **não foi copiado** para `src/content/`. Pontos que o Jornalismo precisa tratar antes de qualquer texto entrar:
+
+1. **Hero:** a frase afirma que o esvaziamento "não é acidente". Isso afirma intenção como fato, o que a regra editorial 2 proíbe. A forma aceita descreve o padrão observado, nomeia quem se beneficia e deixa a intenção como pergunta aberta.
+2. **Números sem fonte no Figma:** as telas trazem cifras (prazos de processos, quantidades de imóveis, contagens da Defesa Civil e de ONGs, ano de referência). Cada uma precisa de fonte registrada em `docs/fontes.md`, com ano de referência.
+3. **Pendência de apuração:** o componente aparece ao lado de números ainda não confirmados. É um elemento público de interface (dado "a apurar"), diferente do `pendente()` de desenvolvimento, que nunca vai ao ar.
+4. **Pessoas e instituições:** os textos citam órgãos (Iphan, Fundarpe, Prefeitura, Defesa Civil) e uma ONG. Nomear órgão público como fonte é diferente de nomear pessoa ou empresa, mas cada citação precisa de fonte.
+
+## Decisões da Fase 2
+
+Todas resolvidas em 2026-11-13, por delegação do responsável, no ADR-018. A tabela resume; os blocos abaixo ficam como registro das opções que foram consideradas.
+
+| #   | Tema                           | Escolha                                                                                                                      |
+| --- | ------------------------------ | ---------------------------------------------------------------------------------------------------------------------------- |
+| 1   | Tipografia                     | As telas são a verdade; escala criada por componente, a partir do frame; famílias já carregadas.                             |
+| 2   | Breakpoints e grid             | Mobile primeiro, `md` 768 e `lg` 1024; acima disso, conteúdo centralizado em 1024.                                           |
+| 3   | Escalas de espaço e de raio    | Espaço: escala `espaco-N` mais múltiplos de 4px do Tailwind; raios: 7 tokens.                                                |
+| 4   | Troca de tema                  | `data-tema` na seção, `--cor-*` e utilitários semânticos; A1 é o padrão.                                                     |
+| 5   | Tema padrão do Tailwind        | Cores padrão removidas; espaço e tipografia ficam.                                                                           |
+| 6   | Hover dos botões               | Camada sobreposta animando `opacity`.                                                                                        |
+| 7   | Estados e componentes ausentes | Foco visível com a cor de destaque do tema; só o que está desenhado; Selo de `imprensa` fica sem selo até o Design desenhar. |
+| 8   | Contraste do A1                | `texto-suave` sobre `superficie` só em texto grande.                                                                         |
+| 9   | Imagens e logo                 | Nenhuma foto sem crédito e licença; o logo é arte do projeto e entra com o Botão e o Hero.                                   |
+| 10  | Fontes                         | `@fontsource`, latim, 16 pesos em 5 famílias. Instalado.                                                                     |
+| 11  | Acesso do MCP                  | Resolvido pela cópia de trabalho.                                                                                            |
+| 12  | Cores fora das variáveis       | Tratadas por componente, com nome pelo papel, quando o componente que as usa for implementado.                               |
+
+### Registro das opções consideradas
+
+Formato do Stop & Ask. Quem responderia cada uma estava entre parênteses.
 
 ```text
 DECISÃO NECESSÁRIA 1 (Design): fonte de verdade da tipografia
@@ -236,7 +276,7 @@ Parado: componente Botão.
 DECISÃO NECESSÁRIA 7 (Design): estados e componentes ausentes
 Contexto: não há estado de foco em nenhum componente; faltam hover para Menu, Filtro, Aba e
 Marcador; o Selo de estatuto tem 5 tipos e o código tem 6 (falta "imprensa"); "Pendência de
-apuração" existe como componente visual; Mobile não inclui o Guia de Leitura.
+apuração" existe como componente visual; o Guia de Leitura do Mobile está em frames separados.
 Opções:
 A) O Design completa os estados e responde sobre Selo, Pendência e Mobile.
 B) Implementar só o que está desenhado e adicionar foco com estilo padrão do navegador.

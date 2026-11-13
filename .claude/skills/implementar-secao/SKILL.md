@@ -14,7 +14,7 @@ description: Fases 3 e 4 do Vestígios. Constrói layout base, componente de int
 
 ## Ler o frame
 
-- Com o MCP do Figma: `create_session` (fileKey `haaMnXS0jhXZjXyBKugccp`), depois `get_screenshot` e `get_design_context` do `node-id`, em cada breakpoint que o protótipo tiver. Carregue a skill `figma-design-to-code` antes de `get_design_context`, se ela existir.
+- Com o MCP do Figma: `create_session` (cópia de trabalho com acesso do MCP: fileKey `deTyWOTv6xMUkI0jWhaJPP`; o original do Design (`haaMnXS0jhXZjXyBKugccp`) não tem acesso do MCP), depois `get_screenshot` e `get_design_context` do `node-id`, em cada breakpoint que o protótipo tiver. Carregue a skill `figma-design-to-code` antes de `get_design_context`, se ela existir.
 - A saída do Figma é referência. Traduza para os tokens do projeto; não cole código gerado.
 - Medida que não bate com nenhum token: **não crie valor arbitrário**. Use `registrar-decisao`.
 
