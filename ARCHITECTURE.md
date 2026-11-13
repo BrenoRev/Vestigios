@@ -21,7 +21,7 @@
 ├── public/
 │   └── data/              # dados tratados e leves servidos ao site (JSON, GeoJSON)
 ├── scripts/
-│   └── check-conteudo.mjs # bloqueia a build de produção com pendências editoriais
+│   └── check-conteudo.mjs # avisa de pendências e texto provisório; bloqueia a produção quando ligado (ADR-019)
 ├── src/
 │   ├── assets/
 │   │   ├── images/        # fotos; crédito e licença registrados em src/content
@@ -54,9 +54,9 @@
 └── vercel.json            # fallback de rotas da SPA e headers de cache e segurança
 ```
 
-## Arquivos que existem na Fase 1 além da árvore
+## Arquivos além da árvore
 
-Não são pastas novas; são arquivos de configuração das ferramentas da stack ou o mínimo da Fase 1.
+Não são pastas novas; são arquivos de configuração das ferramentas da stack, de conteúdo e de tipos.
 
 | Arquivo                                  | Papel                                                                          |
 | ---------------------------------------- | ------------------------------------------------------------------------------ |
@@ -71,9 +71,14 @@ Não são pastas novas; são arquivos de configuração das ferramentas da stack
 | `src/content/site.ts`                    | Nome do produto.                                                               |
 | `src/components/ui/ImagemResponsiva.tsx` | Renderiza uma `Imagem` como `<picture>` com `srcset` em AVIF e WebP (ADR-016). |
 | `src/types/imagens.d.ts`                 | Tipo dos imports de imagem com `?responsiva`.                                  |
+| `src/types/pagina-inicial.ts`            | Formato do conteúdo da página inicial (ADR-019).                               |
+| `src/content/pagina-inicial.ts`          | Conteúdo da página inicial copiado do protótipo, marcado como provisório.      |
+| `src/content/texto.ts`                   | Ajudantes `negrito`, `sublinhado` e `negritoSublinhado` para texto corrido.    |
 | `src/components/ui/BlocoPendente.tsx`    | Bloco tarjado que renderiza uma pendência.                                     |
-| `src/pages/Inicio.tsx`                   | Rota mínima da Fase 1.                                                         |
+| `src/pages/Inicio.tsx`                   | Página inicial (monta as seções com o conteúdo de `src/content`).              |
 | `src/routes/index.tsx`                   | Definição das rotas (React Router v7, `createBrowserRouter`).                  |
+
+`src/assets/images/logo.webp` é o logo do projeto (máscara do componente `Logo`).
 
 A pasta `figma/` (export local do protótipo, 63 MB) não é versionada: está no `.gitignore` e não faz parte da árvore acima (ADR-017).
 
@@ -82,7 +87,7 @@ A pasta `figma/` (export local do protótipo, 63 MB) não é versionada: está n
 ```text
 docs/fontes.md ──(equipe de Jornalismo confirma)──> src/content/*.ts ──props──> src/components/** ──> src/pages/** ──> src/routes
                                                          │
-                                                         └── pendente(...) ──> BlocoPendente (dev/preview) / build de produção bloqueada
+                                                         └── pendente(...) ──> BlocoPendente / aviso no check-conteudo (bloqueio da produção desligado, ADR-019)
 ```
 
 - Componentes não importam texto editorial de lugar nenhum além das props; páginas e seções importam de `src/content/` e repassam.

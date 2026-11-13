@@ -9,7 +9,7 @@ Produza um relatório com cada item como **ok**, **falha** (com `arquivo:linha` 
 
 ## Checklist
 
-1. **Zero pendências:** `npm run check:conteudo` sem ocorrências e `npm run build` passando.
+1. **Zero pendências e zero texto provisório:** `npm run check:conteudo` sem ocorrências (`pendente(` e `provisorio(`) e `npm run build` passando. Mude `BLOQUEIA_PRODUCAO` para `true` em `scripts/check-conteudo.mjs` (ADR-019) e confirme que a build de produção falha ao reintroduzir uma pendência de teste.
 2. **Créditos completos** no README e na página de créditos do site, se o protótipo tiver uma.
 3. **Metodologia publicada:** `docs/metodologia.md` sem `[pendente]` e a página de metodologia no site com o mesmo conteúdo.
 4. **Varredura editorial:** peça o agente `revisor-editorial` sobre `src/content/`, `docs/` e textos de gráfico. Foco em afirmação de intenção não comprovada, pessoa nomeada sem os três registros, dado antigo como atual, imprensa como dado primário, foto sem crédito.
