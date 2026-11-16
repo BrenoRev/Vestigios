@@ -4,13 +4,23 @@ import type { ItemNavegacao } from "../../types/pagina-inicial";
 interface NavbarProps {
   rotulo: string;
   itens: readonly ItemNavegacao[];
+  ativoInicial?: string;
+  /** "fluxo" ocupa espaço na página, para quando não há Hero por baixo. */
+  posicao?: "sobreposta" | "fluxo";
 }
 
-export function Navbar({ rotulo, itens }: NavbarProps) {
-  const [ativo, setAtivo] = useState(itens[0]?.alvo);
+export function Navbar({
+  rotulo,
+  itens,
+  ativoInicial,
+  posicao = "sobreposta",
+}: NavbarProps) {
+  const [ativo, setAtivo] = useState(ativoInicial ?? itens[0]?.alvo);
 
   return (
-    <header className="absolute inset-x-0 top-0 z-10 bg-terra-900/60 backdrop-blur-navbar">
+    <header
+      className={`${posicao === "sobreposta" ? "absolute inset-x-0 top-0 z-10" : "relative"} bg-terra-900/60 backdrop-blur-navbar`}
+    >
       <nav aria-label={rotulo} className="relative">
         <ul className="rolagem-oculta flex gap-11 overflow-x-auto px-6 py-4 md:px-9 lg:justify-center lg:gap-11.5 lg:px-0">
           {itens.map((item) => {
