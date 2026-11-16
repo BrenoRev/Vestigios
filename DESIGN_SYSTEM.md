@@ -287,3 +287,23 @@ O protótipo tem 31 interações, de dois tipos.
 | Clique  | Troca de variante (`Default` para `Selected`)     | nenhuma         | instantâneo | n/d         | 15 instâncias e 1 variante do "Menu Navegação" |
 
 **Hover do botão:** o preenchimento muda para uma cor literal mais escura (tema B: `#7a3b12` para `#53290e`; C: `#0a0d11`; D: `#7b290d`; E: `#df9450`). Isso é animação de cor, não de `transform`/`opacity`, e essas quatro cores não existem como variável. A curva numérica de `OUT_CUBIC` ainda precisa ser confirmada no Figma. **Decisão (ADR-018):** o hover é uma camada sobreposta, com a cor de hover, que anima só `opacity` (visual idêntico ao do protótipo e dentro do orçamento). A curva numérica de `OUT_CUBIC` e as cores de hover viram token junto do componente Botão.
+
+## Tokens do protótipo do mapa (branch `prototipo/mapa-mock`, ADR-021)
+
+Só existem nesta branch. Lidos dos PNGs que o Design exportou do Fundamentos e da página Componentes (o MCP do Figma não tem acesso de leitura com o assento atual).
+
+| Token                         | Valor                   | Origem no Figma                                       |
+| ----------------------------- | ----------------------- | ----------------------------------------------------- |
+| `--font-space-grotesk`        | Space Grotesk 400 e 700 | `B · Mapa/*`                                          |
+| `--leading-mapa-corpo`        | 1.55                    | `B · Mapa/Corpo` 15/155%                              |
+| `--leading-mapa-ficha`        | 1.1                     | `B · Mapa/Ficha` 28/110%                              |
+| `--leading-mapa-titulo`       | 1.15                    | `B · Mapa/Título` 34/115%                             |
+| `--text-12`                   | 12px                    | `Comum/Nota técnica` e `C · Dossiê/Rótulo`            |
+| `--tracking-rotulo`           | 0.1em                   | `C · Dossiê/Rótulo` (10%), número da Aba de prédio    |
+| `--color-dado-*` (utilitário) | `var(--dado-*)`         | `dado/abandonado`, `reversao`, `a-confirmar` e `agua` |
+
+Medidas dos componentes: Marcador Padrão 18 px com borda 2 px `noite/900`, Selecionado 40 px com anel branco de 3 px a 7 px da borda; Filtro sem raio, 16 × 12 px de padding; Aba de prédio sem raio, 16 × 8 px de padding, número em Public Sans Bold 12 e nome em Public Sans 15.
+
+A imagem "Escala tipográfica responsiva" (Título 28/36/40, Corpo 16/18/18, Legenda 12/12/14) contradiz os estilos fixos `B · Mapa/*`; o protótipo segue os estilos fixos. A confirmar com o Design.
+
+A pedido do responsável, a página do mapa usa o tema claro C sobre `bg-pagina`, como a página inicial, e não o tema B do Fundamentos. A água fica em `papel/200` em vez de `dado/agua`.

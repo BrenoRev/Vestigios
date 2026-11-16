@@ -77,7 +77,9 @@
   --font-newsreader: "Newsreader", serif;
   --font-public-sans: "Public Sans", ui-sans-serif, system-ui, sans-serif;
   --font-work-sans: "Work Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-space-grotesk: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
 
+  --text-12: 0.75rem;
   --text-14: 0.875rem;
   --text-15: 0.9375rem;
   --text-16: 1rem;
@@ -98,9 +100,13 @@
   --leading-citacao: 1.3;
   --leading-texto: 1.45;
   --leading-apuracao: 1.4;
+  --leading-mapa-corpo: 1.55;
+  --leading-mapa-ficha: 1.1;
+  --leading-mapa-titulo: 1.15;
 
   --tracking-titulo: -0.02em;
   --tracking-texto: -0.005em;
+  --tracking-rotulo: 0.1em;
 
   --blur-navbar: 7px;
   --blur-botao: 2px;
@@ -129,6 +135,10 @@
   --color-destaque: var(--cor-destaque);
   --color-sobre-destaque: var(--cor-sobre-destaque);
   --color-borda: var(--cor-borda);
+  --color-dado-abandonado: var(--dado-abandonado);
+  --color-dado-reversao: var(--dado-reversao);
+  --color-dado-a-confirmar: var(--dado-a-confirmar);
+  --color-dado-agua: var(--dado-agua);
 }
 
 :root {
