@@ -1,6 +1,6 @@
 /*
  * Gera src/prototipo/mapa-base.json: os bairros e a água do Recife como
- * `path` SVG já projetados, a posição de cada prédio do mock e os
+ * `path` SVG já projetados, com centro e caixa de cada bairro, a posição de cada prédio do mock e os
  * enquadramentos (ADR-021).
  *
  * Bases da Prefeitura do Recife (dados.recife.pe.gov.br, ODbL), fora do Git:
@@ -104,12 +104,49 @@ const projetarAneis = (geometria) =>
     .map(anelProjetado)
     .filter((a) => a.length > 2);
 
+function areaECentroide(anel) {
+  let area = 0;
+  let cx = 0;
+  let cy = 0;
+  for (let i = 0, j = anel.length - 1; i < anel.length; j = i++) {
+    const [xi, yi] = anel[i];
+    const [xj, yj] = anel[j];
+    const f = xj * yi - xi * yj;
+    area += f;
+    cx += (xi + xj) * f;
+    cy += (yi + yj) * f;
+  }
+  return { area: Math.abs(area / 2), x: cx / (3 * area), y: cy / (3 * area) };
+}
+
+// O centro vem do maior anel, não do conjunto: bairros com ilhas ou
+// pedaços soltos puxariam o símbolo proporcional para a água.
+function centroDoBairro(projetados) {
+  const [maior] = projetados
+    .map(areaECentroide)
+    .sort((a, b) => b.area - a.area);
+  return { x: arredonda(maior.x), y: arredonda(maior.y) };
+}
+
+function caixa(projetados) {
+  const xs = projetados.flat().map(([x]) => x);
+  const ys = projetados.flat().map(([, y]) => y);
+  return [
+    Math.min(...xs),
+    Math.min(...ys),
+    Math.max(...xs),
+    Math.max(...ys),
+  ].map(arredonda);
+}
+
 const bairrosProjetados = bairros.features.map((f) => {
   const projetados = projetarAneis(f.geometry);
   return {
     nome: f.properties.EBAIRRNOMEOF,
     aneis: projetados,
     d: caminho(projetados),
+    centro: centroDoBairro(projetados),
+    caixa: caixa(projetados),
   };
 });
 
@@ -154,7 +191,12 @@ function enquadramento(ids) {
 
 const saida = {
   lado: LADO,
-  bairros: bairrosProjetados.map(({ nome, d }) => ({ nome, d })),
+  bairros: bairrosProjetados.map(({ nome, d, centro, caixa }) => ({
+    nome,
+    d,
+    centro,
+    caixa,
+  })),
   agua: aguaProjetada,
   pontos,
   enquadramentos: {
