@@ -5,6 +5,7 @@ export interface LinhaTabela {
 }
 
 interface TabelaPrediosProps {
+  id?: string;
   legenda: string;
   aviso: string;
   cabecalhos: readonly string[];
@@ -15,6 +16,7 @@ interface TabelaPrediosProps {
 }
 
 export function TabelaPredios({
+  id = "legenda-tabela",
   legenda,
   aviso,
   cabecalhos,
@@ -26,7 +28,7 @@ export function TabelaPredios({
   return (
     <div>
       <h2
-        id="legenda-tabela"
+        id={id}
         className="font-space-grotesk text-28 leading-mapa-ficha font-bold"
       >
         {legenda}
@@ -36,7 +38,7 @@ export function TabelaPredios({
       </p>
       <div className="mt-espaco-3 overflow-x-auto">
         <table
-          aria-labelledby="legenda-tabela"
+          aria-labelledby={id}
           className="w-full border-collapse text-left font-space-grotesk text-15 leading-mapa-corpo"
         >
           <thead>

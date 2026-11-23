@@ -8,7 +8,8 @@ export interface CampoFicha {
 
 interface FichaPredioProps {
   id: string;
-  abaId: string;
+  /** Sem aba (ficha avulsa), o painel não leva o papel de tabpanel. */
+  abaId?: string;
   aviso: string;
   nome: string;
   situacao: SituacaoPredio;
@@ -34,7 +35,7 @@ export function FichaPredio({
   return (
     <div
       id={id}
-      role="tabpanel"
+      role={abaId ? "tabpanel" : undefined}
       aria-labelledby={abaId}
       className="bg-superficie p-espaco-5"
     >
