@@ -3,7 +3,7 @@
 > Todo agente lê este arquivo no início e o atualiza ao fim de cada tarefa. Manter curto e atual; histórico fica no Git e em `decisions.md`.
 
 **Fase atual:** 2, Figma e design tokens, concluída (ADR-017 e ADR-018); aguardando confirmação do responsável para a Fase 3 (layout base).
-**Última atualização:** 2026-11-16
+**Última atualização:** 2026-11-23
 
 > **Esta cópia está na branch `prototipo/mapa-mock`, que é SÓ DE PROTÓTIPO e nunca vai para a `main`** (sem push, PR, merge ou Vercel, por ordem do responsável). Ela tem dados fictícios em `src/prototipo/mapa-mock.ts`.
 
@@ -36,6 +36,7 @@
 ## Em andamento
 
 - **Protótipo do mapa (branch `prototipo/mapa-mock`, commits locais, sem push nem PR):** rota `/prototipo/mapa` (lazy, 82 KB gzip) com mapa SVG pré-processado (`scripts/gerar-mapa-prototipo.mjs`: 94 bairros e 42 corpos d'água ≥ 2 ha da Prefeitura, fora do Git), 6 prédios reais com atributos fictícios, filtros Todos/situação, enquadramentos Recife/Centro, página inteira no tema claro C sobre `bg-pagina` (pedido do responsável, contra o "B · Mapa (noite)" do Fundamentos), abas e ficha, legenda, tabela acessível, Navbar e aviso "DADOS FICTÍCIOS — PROTÓTIPO". Marcador, Filtro e Aba seguem os PNGs exportados do Figma (`~/Downloads/Vestigio — Deterioração do Recife*.zip`), conferidos por `revisor-fidelidade` e `revisor-tecnico` (2026-11-16). O MCP do Figma conecta, mas recusa leitura: a conta tem só assento View. Decisões técnicas e de design em ADR-021 (só nesta branch); escolhas sem Figma listadas no fim do ADR-021 e no `DESIGN_SYSTEM.md`, para levar ao Design.
+  - **2026-11-23, mapa interativo (não commitado):** mapa maior (2/3 da largura no `lg`), zoom/arrasto/pinça, indicadores fictícios por bairro em coroplético (taxa) ou círculos (contagem), linha do tempo 2012–2026 com play, dica ao passar o cursor, painel do bairro com série, ranking e tabela dos bairros. Prédios viraram camada que liga e desliga; o marcador abre a ficha. `MapaPredios` foi substituído por `MapaInterativo`; `AbaPredio` ficou sem uso. Decisões no adendo de 2026-11-23 do ADR-021. Verificado: `npm run verificar`, `format:check` e capturas em 1440 px e 390 px (toque e movimento reduzido). Depois, no mesmo dia, virou tela cheia com cartões que abrem no clique (adendo "tela cheia" do ADR-021). Pendente: rodar `revisor-tecnico` e `revisor-fidelidade`; levar ao Design a lista de escolhas sem Figma do adendo.
 
 - Página inicial completa (Navbar, Hero, 1ª Matéria, Quebra, Guia de Leitura) nos três tamanhos, com o texto do Figma como provisório (ADR-019), na branch `feat/pagina-inicial`.
 
