@@ -66,14 +66,43 @@ export interface Enquadramento {
   y: number;
 }
 
+export interface BairroBase {
+  nome: string;
+  d: string;
+  /** Centroide do maior anel do bairro. */
+  centro: { x: number; y: number };
+  /** [x mínimo, y mínimo, x máximo, y máximo]. */
+  caixa: readonly number[];
+}
+
 /** Saída de scripts/gerar-mapa-prototipo.mjs, em unidades do viewBox. */
 export interface BaseMapa {
   lado: number;
-  bairros: readonly { nome: string; d: string }[];
+  bairros: readonly BairroBase[];
   /** Corpos d'água de 2 ha ou mais, inclusive o mar. */
   agua: readonly string[];
   pontos: Readonly<Record<string, { x: number; y: number }>>;
   enquadramentos: Readonly<Record<NomeEnquadramento, Enquadramento>>;
+}
+
+/**
+ * Contagem vira símbolo proporcional e taxa vira coroplético: pintar uma
+ * contagem por área faria bairros grandes parecerem piores (Monmonier).
+ */
+export type TipoIndicador = "contagem" | "taxa";
+
+export type IdIndicador = "semUso" | "taxaSemUso" | "protegidos";
+
+export interface IndicadorBairros {
+  id: IdIndicador;
+  tipo: TipoIndicador;
+  /** Um valor por ano de `anos`, na mesma ordem. */
+  valores: Readonly<Record<string, readonly number[]>>;
+}
+
+export interface SerieIndicadores {
+  anos: readonly number[];
+  indicadores: readonly IndicadorBairros[];
 }
 
 /** Rótulos de interface do mapa; o conteúdo dos prédios vem em `Predio`. */
@@ -116,4 +145,29 @@ export interface TextosMapa {
     vazia: string;
     predio: string;
   };
+  indicadores: Readonly<
+    Record<IdIndicador, { nome: string; unidade: string; descricao: string }>
+  >;
+  rotuloIndicadores: string;
+  regraCodificacao: string;
+  rotuloAno: string;
+  tocar: string;
+  pausar: string;
+  zoom: { aproximar: string; afastar: string; inicio: string };
+  dicaRolagem: string;
+  dicaGestos: string;
+  mostrarPredios: string;
+  legendaPredios: string;
+  legendaClasses: string;
+  legendaCirculos: string;
+  bairrosNaClasse: string;
+  bairroVazio: string;
+  limparSelecao: string;
+  fechar: string;
+  posicao: string;
+  de: string;
+  medianaRecife: string;
+  serieTitulo: string;
+  ranking: string;
+  tabelaBairros: { legenda: string; bairro: string };
 }
