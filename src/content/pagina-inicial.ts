@@ -1,22 +1,15 @@
 import type {
   ConteudoGuia,
   ConteudoHero,
-  ConteudoPrimeiraMateria,
+  ConteudoMateria,
   ConteudoQuebra,
   ItemNavegacao,
 } from "../types/pagina-inicial";
 import { pendente, provisorio } from "./pendente";
 import { negrito, negritoSublinhado, sublinhado } from "./texto";
 
-const PREENCHIMENTO =
-  "texto de preenchimento do protótipo; o texto da reportagem vem do Jornalismo";
-const SEM_FONTE =
-  "fato ou número sem fonte em docs/fontes.md; Jornalismo registra fonte e ano";
 const INTENCAO =
   "afirma intenção como fato (regra editorial 2); Jornalismo reformula";
-const AUTORIA = "autoria e licença do texto; Jornalismo confirma";
-const REPETIDO =
-  "subtítulo repetido do capítulo 4 no protótipo; Jornalismo fornece o texto";
 
 export const rotuloNavegacao = "Capítulos da reportagem";
 
@@ -42,63 +35,55 @@ export const hero: ConteudoHero = {
   botao: { rotulo: "Explorar o Mapa", alvo: "mapa-dos-dados" },
 };
 
-export const primeiraMateria: ConteudoPrimeiraMateria = {
+export const primeiraMateria: ConteudoMateria = {
   alvo: "o-recife",
   rotulo: "O Recife",
-  titulo: provisorio("Título da Matéria", PREENCHIMENTO),
+  titulo: "Recife: uma alma perdida em meio a destroços",
   blocos: [
     {
-      subtitulo: provisorio("First subheader", PREENCHIMENTO),
-      texto: provisorio(
-        "The first paragraph of an article is often an introduction to the text. Sometimes it’s called the “lead,” and sometimes that word is spelled “lede.” When you’re writing an article—whether it’s for a blog or a review site or somewhere else—it’s always a good idea to begin with something interesting to hook a reader. If it’s a piece of thought leadership, maybe you want to start with a little anecdote, or a familiar problem. If you’re putting together something for businesses, you might start off with a relevant piece of data.",
-        PREENCHIMENTO,
-      ),
+      subtitulo: "Uma cidade feita de memória",
+      paragrafos: [
+        "Recife, capital de Pernambuco conhecida como Veneza Brasileira. Cidade do frevo, dos rios e do mangue. Terra de Lenine, Nação Zumbi e Reginaldo Rossi. Local que abriga os mais bravos Leões do Norte. A cidade do Recife é marcada por uma história de luta, cultura e beleza, que carrega em seus prédios as memórias de cada pessoa que passou por ali.",
+        "Nas últimas décadas, essa terra marcada por um encanto único passou a ser transformada em ruínas por um forte processo de deterioração. Prédios foram abandonados e destruídos, ruas ficaram mais vazias e a cidade, que antes era marcada por um movimento constante, perdeu sua chama, seu brilho e sua alma.",
+      ],
     },
     {
-      subtitulo: provisorio(
-        "Another subheader to break up text",
-        PREENCHIMENTO,
-      ),
-      texto: provisorio(
-        "The second paragraph of an article is sometimes called the “nut graph,” which is short for “nutshell paragraph.” That’s because this is usually where the article gets to the heart of the matter—the main point. After the first section, the reader is ready to hear what’s truly at stake in this piece of writing. They’re invested. They’re paying attention. If your piece is long enough to have long, multi-paragraph sections, then you’ll want to use this strategy throughout to make sure you’re holding reader attention in a consistent way.",
-        PREENCHIMENTO,
-      ),
+      subtitulo: "O que esta reportagem mostra",
+      paragrafos: [
+        "Ao longo da reportagem, você encontrará informações sobre o processo de deterioração que acontece no Recife. Reunimos dados, entrevistas e histórias que ajudam a entender por que isso está acontecendo na cidade.",
+        "Pelas memórias do Teatro Valdemar de Oliveira, analisamos a degradação sofrida por sua estrutura ao longo dos anos e como isso afeta a vida da população recifense. Também contamos a história de mais dois prédios, o Casarão da Várzea e a Igreja São José do Ribamar, que mostram que a deterioração não se limita a um único lugar: ela se espalha por toda a cidade.",
+        "Por fim, apresentamos os órgãos responsáveis por uma possível revitalização e o futuro que se pode esperar para uma cidade que, um dia, foi considerada um organismo vivo e pulsante.",
+      ],
     },
   ],
   citacao: {
-    texto: provisorio(
-      "“A large, heavily bolded quote for emphasis and breaking up content.”",
-      PREENCHIMENTO,
-    ),
-    autor: provisorio("Full Name", PREENCHIMENTO),
+    texto: "“Agora, o quadro é de total abandono e falta de interesse.”",
+    autor: "Jorge de Souza, dramaturgo e roteirista",
   },
 };
 
 export const quebra: ConteudoQuebra = {
-  estrofes: provisorio(
+  estrofes: [
     [
-      [
-        "Recife, por quanto tempo mais você estará entre nós,",
-        "contando suas memórias e histórias?",
-      ],
-      [
-        "O Recife guarda nas paredes o que o tempo já esqueceu,",
-        "nos casarões de portas fechadas,",
-        "os sonhos de quem já viveu.",
-      ],
-      ["A cidade cresce, se apaga,", "vende o passado, esquece o chão."],
-      ["E o que resta da velha paisagem", "sobrevive na recordação."],
-      ["Volte, Recife! Sua ausência me aperta o coração."],
-      ["Quantas gerações ainda vão te perder? Quantos te deixaram na mão?"],
-      [
-        "Recife, não deixe que o tempo",
-        "leve o que não pode voltar:",
-        "uma cidade sem memória",
-        "desaprendeu a se amar.",
-      ],
+      "Recife, por quanto tempo mais você estará entre nós,",
+      "contando suas memórias e histórias?",
     ],
-    AUTORIA,
-  ),
+    [
+      "O Recife guarda nas paredes o que o tempo já esqueceu,",
+      "nos casarões de portas fechadas,",
+      "os sonhos de quem já viveu.",
+    ],
+    ["A cidade cresce, se apaga,", "vende o passado, esquece o chão."],
+    ["E o que resta da velha paisagem", "sobrevive na recordação."],
+    ["Volte, Recife! Sua ausência me aperta o coração."],
+    ["Quantas gerações ainda vão te perder? Quantos te deixaram na mão?"],
+    [
+      "Recife, não deixe que o tempo",
+      "leve o que não pode voltar:",
+      "uma cidade sem memória",
+      "desaprendeu a se amar.",
+    ],
+  ],
 };
 
 const iconePendente = pendente("ícone do conceito, Design");
@@ -108,7 +93,7 @@ export const guia: ConteudoGuia = {
   rotulo: "Guia de Leitura",
   titulo: "Conceitos importantes para entender esta reportagem",
   introducao:
-    "Antes de seguir com a leitura, vale conhecer alguns conceitos que ajudam a entender o que vem pela frente.",
+    "Antes de seguir com a leitura, vale parar em alguns conceitos que ajudam a entender tudo o que vem depois.",
 
   prediosHistoricos: {
     cabecalho: {
@@ -129,7 +114,7 @@ export const guia: ConteudoGuia = {
       {
         titulo: "Memória e Identidade",
         texto:
-          "Mostram como as pessoas viviam, trabalhavam e se relacionam em cada época;",
+          "Mostram como as pessoas viviam, trabalhavam e se relacionavam em cada época.",
       },
       {
         titulo: "Valor arquitetônico",
@@ -149,21 +134,21 @@ export const guia: ConteudoGuia = {
       titulo: ["O que é ", sublinhado("deterioração"), "?"],
       paragrafos: [
         [
-          "Deterioração é o processo em que algo passa de um estado íntegro para um estado pior, sofrendo ",
-          negrito("danos, desgaste ou perda de qualidade."),
+          "Deterioração é o processo em que algo passa de um estado bom ou íntegro para um estado pior: sofre ",
+          negrito("dano, desgaste ou perda de qualidade."),
         ],
         "Nesta reportagem, a palavra aparece em dois sentidos:",
       ],
     },
     sentidos: [
       {
-        titulo: "Material Ou Física",
+        titulo: "Dano material ou físico",
         texto:
           "Desgaste, estrago ou apodrecimento de estruturas pelo uso ou pela ação do tempo, como infiltrações, rachaduras e telhados que cedem.",
         icone: iconePendente,
       },
       {
-        titulo: "Figurado",
+        titulo: "Declínio figurado",
         texto:
           "Estado de decadência de uma região, de uma instituição ou de uma sociedade, que perde vida, gente e função.",
         icone: iconePendente,
@@ -190,9 +175,9 @@ export const guia: ConteudoGuia = {
       titulo: ["O que muda quando um imóvel é ", negrito("tombado?")],
       efeitos: [
         {
-          titulo: ["Objetiva mais ", sublinhado("proteção")],
+          titulo: ["Objetivo: mais ", sublinhado("proteção")],
           texto:
-            "O tombamento impede a destruição, demolição, mutilação ou descaracterização do bem.",
+            "O tombamento impede a destruição, a demolição, a mutilação ou a descaracterização do bem, para que as próximas gerações também possam conhecê-lo.",
           icone: iconePendente,
         },
         {
@@ -217,29 +202,24 @@ export const guia: ConteudoGuia = {
         {
           titulo: [sublinhado("Sem autorização"), ", nada acontece"],
           texto:
-            "Reformas, restaurações, pinturas e modificações precisam de autorização do órgão responsável.",
+            "Qualquer reforma, restauração, pintura ou modificação precisa de autorização prévia do órgão responsável.",
           icone: iconePendente,
         },
         {
           titulo: ["Existe ", sublinhado("indenização"), "?"],
-          texto: provisorio(
-            [
-              "Em regra, não há indenização, ",
-              negrito("pois o proprietário não perde o bem."),
-              " A exceção é quando existe prejuízo anormal e comprovado.",
-            ],
-            SEM_FONTE,
-          ),
+          texto: [
+            "Em regra, não há indenização, ",
+            negrito("pois o proprietário não perde o bem."),
+            " A exceção é quando existe prejuízo anormal e comprovado.",
+          ],
           icone: iconePendente,
         },
       ],
     },
     funcionamento: {
       titulo: [negrito("Como funciona"), " o tombamento?"],
-      introducao: provisorio(
+      introducao:
         "Na esfera federal, o Decreto-Lei nº 25, de 1937, define o caminho:",
-        SEM_FONTE,
-      ),
       etapas: [
         {
           titulo: "Abertura de Processo",
@@ -255,10 +235,7 @@ export const guia: ConteudoGuia = {
         {
           titulo: "Notificação do proprietário",
           paragrafos: [
-            provisorio(
-              "O proprietário recebe a notificação e tem 15 dias para concordar ou contestar.",
-              SEM_FONTE,
-            ),
+            "O proprietário recebe a notificação e tem 15 dias para concordar ou contestar.",
           ],
         },
         {
@@ -285,10 +262,8 @@ export const guia: ConteudoGuia = {
     },
     destaque: {
       titulo: "A proteção começa antes da decisão final",
-      texto: provisorio(
+      texto:
         "O tombamento provisório já produz os mesmos efeitos de proteção do definitivo. Isso significa que a proteção começa assim que o proprietário recebe a notificação, sem precisar esperar o fim da análise.",
-        SEM_FONTE,
-      ),
       icone: iconePendente,
     },
   },
@@ -319,52 +294,42 @@ export const guia: ConteudoGuia = {
         ),
       },
     ],
-    iep: provisorio(
-      [
-        "Em 1997, a Prefeitura criou os ",
-        negrito("Imóveis Especiais de Preservação"),
-        " (IEP): prédios de arquitetura significativa que não podem ser demolidos.",
-      ],
-      SEM_FONTE,
-    ),
-    obrigacao: provisorio(
-      [
-        "Proprietários e moradores precisam manter as características originais desses imóveis ",
-        negrito("por conta própria."),
-      ],
-      SEM_FONTE,
-    ),
+    iep: [
+      "Em 1997, a Prefeitura criou os ",
+      negrito("Imóveis Especiais de Preservação"),
+      " (IEP): prédios de arquitetura significativa que não podem ser demolidos.",
+    ],
+    obrigacao: [
+      "Proprietários e moradores precisam manter as características originais desses imóveis ",
+      negrito("por conta própria."),
+    ],
     imagem: pendente(
       "imagem do capítulo 4 (837 × 268 no Desktop), com crédito e licença; Design e Jornalismo",
     ),
-    impasse: provisorio(
-      [
-        "É aqui que nasce um dos maiores impasses desta reportagem: ",
-        negrito("preservar custa caro, e a "),
-        negritoSublinhado("lei coloca a conta no dono."),
-      ],
-      SEM_FONTE,
-    ),
+    impasse: [
+      "É aqui que nasce um dos maiores impasses desta reportagem: ",
+      negrito("preservar custa caro, e a "),
+      negritoSublinhado("lei coloca a conta no dono."),
+    ],
   },
 
   duracao: {
     cabecalho: {
       titulo: [sublinhado("Quanto tempo dura"), " um tombamento?"],
-      paragrafos: ["Uma dimensão do problema aparece nos números:"],
+      paragrafos: [
+        "O decreto fixa prazos curtos para cada etapa, mas não limita a duração total. Na prática, a análise pode durar anos. Dois casos mostram o tamanho da espera:",
+      ],
     },
     estatisticas: [
       {
-        numero: provisorio("23", SEM_FONTE),
+        numero: "23",
         unidade: "anos",
-        legenda: provisorio(
-          "Processo em tramite de um imóvel em São Paulo",
-          SEM_FONTE,
-        ),
+        legenda: "Processo em trâmite de um imóvel em São Paulo",
       },
       {
-        numero: provisorio("18", SEM_FONTE),
+        numero: "18",
         unidade: "anos",
-        legenda: provisorio("Espera de um terreiro na Bahia", SEM_FONTE),
+        legenda: "Espera de um terreiro na Bahia",
       },
     ],
     pendencia: pendente(
@@ -379,66 +344,48 @@ export const guia: ConteudoGuia = {
         " vivem essa situação no Recife?",
       ],
       paragrafos: [
-        provisorio(
-          "Três esferas do poder público atuam na preservação do patrimônio da cidade:",
-          REPETIDO,
-        ),
+        "Quatro recortes ajudam a dimensionar a situação: o que a cidade protege, o que está abandonado, o que corre risco de cair e o que a espera custa. Cada levantamento usou um recorte diferente, por isso os números não se somam.",
       ],
     },
     protegidos: {
       titulo: "Prédios protegidos",
       estatisticas: [
         {
-          numero: provisorio("263", SEM_FONTE),
-          legenda: provisorio(
-            "Imóveis Especiais de Preservação em 2022",
-            SEM_FONTE,
-          ),
+          numero: "263",
+          legenda: "Imóveis Especiais de Preservação em 2022",
         },
         {
-          numero: provisorio("47", SEM_FONTE),
-          legenda: provisorio("Bens tombados pelo Iphan em 2022", SEM_FONTE),
+          numero: "47",
+          legenda: "Bens tombados pelo Iphan em 2022",
         },
       ],
-      observacao: provisorio(
-        [
-          "Só nas zonas de preservação do centro histórico, a Prefeitura contou pelo menos ",
-          negrito("4.191 imóveis."),
-        ],
-        SEM_FONTE,
-      ),
+      observacao: [
+        "Só nas zonas de preservação do centro histórico, a Prefeitura contou pelo menos ",
+        negrito("4.191 imóveis."),
+      ],
     },
     foraDaConta: {
       titulo: "E os que não estão nessa conta?",
-      observacao: provisorio(
-        [
-          "só no bairro de Santo Antônio, um levantamento da ONG Habitat para a Humanidade identificou ",
-          negrito("42 imóveis sem uso"),
-        ],
-        SEM_FONTE,
-      ),
+      observacao: [
+        "Só no bairro de Santo Antônio, um levantamento da ONG Habitat para a Humanidade identificou ",
+        negrito("42 imóveis sem uso"),
+      ],
       estatisticas: [
         {
-          numero: provisorio("112", SEM_FONTE),
-          legenda: provisorio(
-            [
-              "Prédios ",
-              negrito("com mais de cinco andares"),
-              " em algum estado de abandono.",
-            ],
-            SEM_FONTE,
-          ),
+          numero: "112",
+          legenda: [
+            "Prédios ",
+            negrito("com mais de cinco andares"),
+            " em algum estado de abandono.",
+          ],
         },
         {
-          numero: provisorio("136", SEM_FONTE),
-          legenda: provisorio(
-            [
-              "Imóveis do centro com",
-              negrito(" risco estrutural alto ou muito alto. "),
-              "Segundo a defesa civil em 2026",
-            ],
-            SEM_FONTE,
-          ),
+          numero: "136",
+          legenda: [
+            "Imóveis do centro com",
+            negrito(" risco estrutural alto ou muito alto. "),
+            "Segundo a Defesa Civil em 2025.",
+          ],
         },
       ],
       pendencia: pendente(
@@ -450,18 +397,15 @@ export const guia: ConteudoGuia = {
       imagem: pendente(
         "foto da demolição na Rua da Guia (454 × 331 no Desktop), crédito e licença; Jornalismo",
       ),
-      texto: provisorio(
-        [
-          "O edifício nº 88 da Rua da Guia, no Bairro do Recife, passou ",
-          negrito(
-            "mais de 20 anos abandonado e dez sob monitoramento da Defesa Civil",
-          ),
-          ", até a ",
-          negritoSublinhado("demolição"),
-          " começar, em junho de 2022.",
-        ],
-        SEM_FONTE,
-      ),
+      texto: [
+        "O edifício nº 88 da Rua da Guia, no Bairro do Recife, passou ",
+        negrito(
+          "mais de 20 anos abandonado e dez sob monitoramento da Defesa Civil",
+        ),
+        ", até a ",
+        negritoSublinhado("demolição"),
+        " começar, em junho de 2022.",
+      ],
       pendencia: pendente(
         "[Registro da demolição do edifício localizado na Rua da Guia, no Bairro do Recife.\n\nCrédito: a confirmar.]",
       ),

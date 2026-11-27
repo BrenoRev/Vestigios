@@ -3,7 +3,7 @@
 > Todo agente lê este arquivo no início e o atualiza ao fim de cada tarefa. Manter curto e atual; histórico fica no Git e em `decisions.md`.
 
 **Fase atual:** 2, Figma e design tokens, concluída (ADR-017 e ADR-018); aguardando confirmação do responsável para a Fase 3 (layout base).
-**Última atualização:** 2026-11-23
+**Última atualização:** 2026-11-27
 
 > **Esta cópia está na branch `prototipo/mapa-mock`, que é SÓ DE PROTÓTIPO e nunca vai para a `main`** (sem push, PR, merge ou Vercel, por ordem do responsável). Ela tem dados fictícios em `src/prototipo/mapa-mock.ts`.
 
@@ -32,6 +32,8 @@
 - Fase 2 (decisões): as 12 decisões foram tomadas por delegação do responsável (ADR-018). `tokens.css` com famílias, raios, breakpoints `md`/`lg`, cores padrão removidas e troca de tema por `data-tema`; `fonts.css` com 16 pesos em 5 famílias; MCP lendo a cópia de trabalho do Figma. Verificado em página de teste.
 - Fases 3 e 4 (página inicial): Container, Navbar, Botão (temas A a F), Logo, Texto, marcadores de pendência e as quatro seções, com tokens de tipografia e efeitos (ADR-019). Medidas de Tablet e Mobile do Guia lidas do `.fig` porque o MCP do Figma bateu no limite de chamadas.
 - `.claude/` com 6 skills (extrair-design-tokens, implementar-secao, registrar-fonte, registrar-decisao, entregar-tarefa, fechamento) e 3 agentes de revisão (revisor-editorial, revisor-tecnico, revisor-fidelidade). ADR-010.
+
+- Textos oficiais do Jornalismo na página inicial (ADR-022): 1ª Matéria, Quebra e Guia confirmados; novas seções Valdemar, Casarão, Ribamar, Quem pode agir e O futuro usando o componente `Materia`. Pendências de fonte em `docs/fontes.md`.
 
 ## Em andamento
 

@@ -58,24 +58,25 @@
 
 Não são pastas novas; são arquivos de configuração das ferramentas da stack, de conteúdo e de tipos.
 
-| Arquivo                                  | Papel                                                                          |
-| ---------------------------------------- | ------------------------------------------------------------------------------ |
-| `package.json`, `package-lock.json`      | Dependências e scripts.                                                        |
-| `tsconfig.json`                          | TypeScript (configuração única: ver ADR-002).                                  |
-| `vite.config.ts`                         | Vite com os plugins de React e Tailwind v4.                                    |
-| `eslint.config.js`                       | ESLint flat config, com as travas editoriais e de design system.               |
-| `.prettierrc.json`, `.prettierignore`    | Prettier.                                                                      |
-| `.gitignore`                             | Git.                                                                           |
-| `index.html`                             | Ponto de entrada do Vite.                                                      |
-| `src/content/pendente.ts`                | Função `pendente()` e guarda `ehPendente()`.                                   |
-| `src/content/site.ts`                    | Nome do produto.                                                               |
-| `src/components/ui/ImagemResponsiva.tsx` | Renderiza uma `Imagem` como `<picture>` com `srcset` em AVIF e WebP (ADR-016). |
-| `src/types/imagens.d.ts`                 | Tipo dos imports de imagem com `?responsiva`.                                  |
-| `src/types/pagina-inicial.ts`            | Formato do conteúdo da página inicial (ADR-019).                               |
-| `src/content/pagina-inicial.ts`          | Conteúdo da página inicial copiado do protótipo, marcado como provisório.      |
-| `src/content/texto.ts`                   | Ajudantes `negrito`, `sublinhado` e `negritoSublinhado` para texto corrido.    |
-| `src/pages/Inicio.tsx`                   | Página inicial (monta as seções com o conteúdo de `src/content`).              |
-| `src/routes/index.tsx`                   | Definição das rotas (React Router v7, `createBrowserRouter`).                  |
+| Arquivo                                  | Papel                                                                             |
+| ---------------------------------------- | --------------------------------------------------------------------------------- |
+| `package.json`, `package-lock.json`      | Dependências e scripts.                                                           |
+| `tsconfig.json`                          | TypeScript (configuração única: ver ADR-002).                                     |
+| `vite.config.ts`                         | Vite com os plugins de React e Tailwind v4.                                       |
+| `eslint.config.js`                       | ESLint flat config, com as travas editoriais e de design system.                  |
+| `.prettierrc.json`, `.prettierignore`    | Prettier.                                                                         |
+| `.gitignore`                             | Git.                                                                              |
+| `index.html`                             | Ponto de entrada do Vite.                                                         |
+| `src/content/pendente.ts`                | Função `pendente()` e guarda `ehPendente()`.                                      |
+| `src/content/site.ts`                    | Nome do produto.                                                                  |
+| `src/components/ui/ImagemResponsiva.tsx` | Renderiza uma `Imagem` como `<picture>` com `srcset` em AVIF e WebP (ADR-016).    |
+| `src/types/imagens.d.ts`                 | Tipo dos imports de imagem com `?responsiva`.                                     |
+| `src/types/pagina-inicial.ts`            | Formato do conteúdo da página inicial (ADR-019).                                  |
+| `src/content/pagina-inicial.ts`          | Hero, 1ª Matéria, Quebra e Guia de Leitura, com os textos oficiais do Jornalismo. |
+| `src/content/materias.ts`                | Matérias Valdemar, Casarão, Ribamar, Quem pode agir e O futuro (ADR-022).         |
+| `src/content/texto.ts`                   | Ajudantes `negrito`, `sublinhado` e `negritoSublinhado` para texto corrido.       |
+| `src/pages/Inicio.tsx`                   | Página inicial (monta as seções com o conteúdo de `src/content`).                 |
+| `src/routes/index.tsx`                   | Definição das rotas (React Router v7, `createBrowserRouter`).                     |
 
 `src/assets/images/logo.webp` é o logo do projeto (máscara do componente `Logo`).
 
