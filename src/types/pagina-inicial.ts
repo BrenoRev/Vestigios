@@ -20,12 +20,17 @@ export interface ConteudoHero {
   botao: ItemNavegacao;
 }
 
-export interface ConteudoPrimeiraMateria {
+export interface BlocoMateria {
+  subtitulo?: Texto;
+  paragrafos: readonly Texto[];
+}
+
+export interface ConteudoMateria {
   alvo: string;
   rotulo: string;
   titulo: Texto;
-  blocos: readonly { subtitulo: Texto; texto: Texto }[];
-  citacao: { texto: Texto; autor: Texto };
+  blocos: readonly BlocoMateria[];
+  citacao?: { texto: Texto; autor: Texto };
 }
 
 export type Estrofes = readonly (readonly string[])[];

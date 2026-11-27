@@ -1,8 +1,15 @@
 import { Navbar } from "../components/layout/Navbar";
 import { GuiaDeLeitura } from "../components/sections/GuiaDeLeitura";
 import { HeroSection } from "../components/sections/HeroSection";
-import { PrimeiraMateria } from "../components/sections/PrimeiraMateria";
+import { Materia } from "../components/sections/Materia";
 import { Quebra } from "../components/sections/Quebra";
+import {
+  casarao,
+  futuro,
+  responsaveis,
+  ribamar,
+  valdemar,
+} from "../content/materias";
 import {
   guia,
   hero,
@@ -18,9 +25,14 @@ export function Inicio() {
       <Navbar rotulo={rotuloNavegacao} itens={navegacao} />
       <main>
         <HeroSection conteudo={hero} />
-        <PrimeiraMateria conteudo={primeiraMateria} />
+        <Materia conteudo={primeiraMateria} />
         <Quebra conteudo={quebra} />
         <GuiaDeLeitura conteudo={guia} />
+        <Materia conteudo={valdemar} />
+        <Materia conteudo={casarao} />
+        <Materia conteudo={ribamar} />
+        <Materia conteudo={responsaveis} />
+        <Materia conteudo={futuro} />
       </main>
     </div>
   );
